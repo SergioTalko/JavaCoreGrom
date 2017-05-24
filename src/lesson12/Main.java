@@ -6,8 +6,8 @@ package lesson12;
 public class Main {
     public static void main(String[] args) {
         Bank usBank = new USBank(456, "USA", Currency.USD, 150, 2000, 3,44434343);
-        Bank euBank = new USBank(1222, "Sweden", Currency.EUR, 100, 1400, 4,44434343);
-        Bank chinaBank = new USBank(124, "China", Currency.EUR, 130, 1550, 6,444343434 );
+        Bank euBank = new EUBank(1222, "Sweden", Currency.EUR, 100, 1400, 4,44434343);
+        Bank chinaBank = new ChinaBank(124, "China", Currency.EUR, 130, 1550, 6,444343434 );
         User user1 = new User(1001, "Denis", 12000, 40, "GMD", 1500 , euBank);
         User user2 = new User(1044, "Jack", 10000, 40, "GMD", 1700 , euBank);
         User user3 = new User(1055, "Mao", 200, 40, "GMD", 1500 , usBank);
