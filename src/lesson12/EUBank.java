@@ -38,7 +38,7 @@ public class EUBank extends Bank {
     }
 
     @Override
-    public double getComission(int amount) {
+    public double getCommission(int amount) {
         //commision - 5% if USD and up to 1000, 7% if USD and more than 1000
         //2% if EUR and up to 1000 and 4% if EUR and more than 1000
 
