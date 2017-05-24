@@ -13,10 +13,10 @@ public class EUBank extends Bank {
     public int getLimitOfWithdrawal() {
         //limit of withdrawal = 2000 if currency is USD and 2200 if currency is EUR
 
-        if (getCurrency() == Currency.EUR) {
-            return 2200;
+        if (getCurrency() == Currency.USD) {
+            return 2000;
         }
-        return 2000;
+        return 2200;
     }
 
     @Override
