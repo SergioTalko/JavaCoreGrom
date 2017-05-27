@@ -5,6 +5,9 @@ import java.util.Arrays;
 public class UniqueCount {
 
     public int uniqueCount(int[] array) {
+        if (array == null){
+            return 0;
+        }
 
         Arrays.sort(array);
 

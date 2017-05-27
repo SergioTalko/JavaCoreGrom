@@ -4,7 +4,9 @@ public class HomeTaskOne {
 
     public int[] sortAscending(int[] arr) {
 
-        //zminna int min hranit znachenie minimalnogo inta masiva
+        if (arr == null) {
+            return null;
+        }
         for (int first = 0; first < arr.length; first++) {
             int min = arr[first];
 
@@ -25,6 +27,10 @@ public class HomeTaskOne {
     }
 
     public int[] sortDescending(int[] array) {
+        if (array == null) {
+            return null;
+        }
+
         for (int first = 0; first < array.length; first++) {
             int min = array[first];
 
