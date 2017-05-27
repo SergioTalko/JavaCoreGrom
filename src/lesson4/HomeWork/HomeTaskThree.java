@@ -1,8 +1,5 @@
 package lesson4.HomeWork;
 
-/**
- * Created by SERGIO on 22.03.2017.
- */
 public class HomeTaskThree {
 
     public boolean compareSums(int a, int b, int c, int d) {

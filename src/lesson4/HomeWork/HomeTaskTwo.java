@@ -1,8 +1,5 @@
 package lesson4.HomeWork;
 
-/**
- * Created by SERGIO on 21.03.2017.
- */
 public class HomeTaskTwo {
 
     public int findDivCount(short a, short b, int n) {
