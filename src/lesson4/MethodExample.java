@@ -1,8 +1,5 @@
 package lesson4;
 
-/**
- * Created by SERGIO on 21.03.2017.
- */
 public class MethodExample {
     public static void main(String[] args) {
         System.out.println(increaser(5, 20));

@@ -1,8 +1,5 @@
 package lesson4;
 
-/**
- * Created by SERGIO on 21.03.2017.
- */
 public class PracticeExample {
     public static void main(String[] args) {
         System.out.println(min(2, 5, 10));
