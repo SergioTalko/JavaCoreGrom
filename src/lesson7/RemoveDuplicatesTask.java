@@ -1,6 +1,6 @@
 package lesson7;
 
-import lesson5.HomeTaskOne;
+import lesson5.HomeWork.HomeTaskOne;
 
 import java.util.Arrays;
 
@@ -44,7 +44,7 @@ public class RemoveDuplicatesTask {
 
     public static int[] removeDuplicates2(int[] arr) {
 
-       HomeTaskOne.sortAscending(arr);
+       Arrays.sort(arr);
 
         int a = 0;
         int b = 1;

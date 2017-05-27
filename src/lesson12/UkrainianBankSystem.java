@@ -43,7 +43,7 @@ public class UkrainianBankSystem implements BankSystem {
 
 
     private void printWithdrawalErrorMsg(int amount, User user) {
-        System.err.println("Can`t withdraw money " + amount + " from user " + user.toString());
+        System.err.println("Can`t Withdraw money " + amount + " from user " + user.toString());
     }
 
     private void printFundErrorMsg(User user, int amount) {

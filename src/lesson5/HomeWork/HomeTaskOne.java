@@ -1,21 +1,8 @@
-package lesson5;
+package lesson5.HomeWork;
 
-import java.util.Arrays;
-
-/**
- * Created by SERGIO on 24.03.2017.
- */
 public class HomeTaskOne {
-    public static void main(String[] args) {
 
-        int[] array = {1, 2, 3, 4, 65, 4, 33};
-        System.out.println(Arrays.toString(sortAscending(array)));
-        System.out.println(Arrays.toString(sortDescending(array)));
-
-
-    }
-
-    public static int[] sortAscending(int[] arr) {
+    public int[] sortAscending(int[] arr) {
 
         //zminna int min hranit znachenie minimalnogo inta masiva
         for (int first = 0; first < arr.length; first++) {
@@ -37,7 +24,7 @@ public class HomeTaskOne {
         return arr;
     }
 
-    public static int[] sortDescending(int[] array) {
+    public int[] sortDescending(int[] array) {
         for (int first = 0; first < array.length; first++) {
             int min = array[first];
 

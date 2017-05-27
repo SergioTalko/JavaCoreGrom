@@ -1,21 +1,8 @@
-package lesson5;
+package lesson5.HomeWork;
 
-import java.util.Arrays;
-
-/**
- * Created by SERGIO on 24.03.2017.
- */
 public class HomeTaskOne2Bubbles {
-    public static void main(String[] args) {
 
-        int[] array = {10, 1, 2, 33, 44, 11,1, 4};
-
-        System.out.println(Arrays.toString(sortAscending(array)));
-        System.out.println(Arrays.toString(sortDescending(array)));
-
-    }
-
-    public static int[] sortAscending(int[] array) {
+    public int[] sortAscending(int[] array) {
 
         int cycle = 0;
         boolean change = true;
@@ -29,15 +16,15 @@ public class HomeTaskOne2Bubbles {
                     array[i + 1] = index;        // vremenny index zapisuem na 2 mesto masiva
                     change = true;               // perenos vidbuvsya
 
-                    }
                 }
             }
+        }
 
         return array;
     }
 
 
-    public static int[] sortDescending(int[] array) {
+    public int[] sortDescending(int[] array) {
         int cycle = 0;
         boolean change = true;
         while (change) {
