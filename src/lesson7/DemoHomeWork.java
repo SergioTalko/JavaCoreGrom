@@ -1,6 +1,6 @@
 package lesson7;
 
-import lesson6.Order;
+import lesson6.HomeWork.Order;
 
 import java.util.Date;
 

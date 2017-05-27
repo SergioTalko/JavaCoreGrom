@@ -1,16 +1,13 @@
 package lesson6;
 
-/**
- * Created by SERGIO on 29.03.2017.
- */
 public class Car {
 
-    int price;
-    int yearOfManufacturing;
-    String color;
-    String ownerName;
-    double weight;
-    int horsePower;
+    public int price;
+    public int yearOfManufacturing;
+    public String color;
+    public String ownerName;
+    public double weight;
+    public int horsePower;
 
     public Car(int price, int yearOfManufacturing, String ownerName) {
         this.price = price;
@@ -18,15 +15,15 @@ public class Car {
         this.ownerName = ownerName;
     }
 
-    void startRun() {
+    public void startRun() {
         System.out.println("I am running....");
     }
 
-    void stopRun() {
+    public void stopRun() {
         System.out.println("I am stopping....");
     }
 
-    void changeOwner(String newOwnerName) {
+    public void changeOwner(String newOwnerName) {
 
         ownerName = newOwnerName;
     }

@@ -1,11 +1,7 @@
-package lesson6;
-
+package lesson6.HomeWork;
 
 import java.util.Date;
 
-/**
- * Created by SERGIO on 29.03.2017.
- */
 public class Order {
 
     long id;
@@ -47,12 +43,9 @@ public class Order {
     public boolean isValidType() {
         boolean isValid = false;
 
-        if (type == "Buy") {
+        if (type == "Buy" || type == "Sale")
             isValid = true;
-        }
-        if (type == "Sale") {
-            isValid = true;
-        }
+
         return isValid;
     }
 

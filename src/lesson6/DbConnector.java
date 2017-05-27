@@ -1,8 +1,5 @@
 package lesson6;
 
-/**
- * Created by SERGIO on 29.03.2017.
- */
 public class DbConnector {
     String host;
     int port;

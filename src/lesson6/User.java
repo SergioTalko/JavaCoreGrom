@@ -2,9 +2,6 @@ package lesson6;
 
 import java.util.Date;
 
-/**
- * Created by SERGIO on 29.03.2017.
- */
 public class User {
     String name;
     int age;
