@@ -2,9 +2,6 @@ package lesson5.HomeWork;
 
 import java.util.Arrays;
 
-/**
- * Created by SERGIO on 27.05.2017.
- */
 public class DemoLesson5 {
     public static void main(String[] args) {
         HomeTaskOne homeTaskOne = new HomeTaskOne();
