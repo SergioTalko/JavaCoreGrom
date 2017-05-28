@@ -27,6 +27,8 @@ public class DemoLesson7 {
         System.out.println(secondLargest.secondLargest(array2));
         //3.повтори на початку і вкінці
         System.out.println(secondLargest.secondLargest(array4));
+        //4. 1 element
+        System.out.println(secondLargest.secondLargest(array3));
 
     }
 }

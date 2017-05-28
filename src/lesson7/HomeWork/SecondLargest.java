@@ -10,6 +10,11 @@ public class SecondLargest {
             return 0;
         }
 
+        if (array.length < 2){
+            System.err.println("Array have 1 element " + array[0] );
+            return 0;
+        }
+
         int max = array[0];
         int secondLargest = max;
 
