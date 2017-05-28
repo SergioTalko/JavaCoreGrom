@@ -1,55 +1,24 @@
 package lesson9.HomeWork;
 
-import java.util.Arrays;
-import java.util.Objects;
-
-/**
- * Created by SERGIO on 12.04.2017.
- */
 public class UserRepository {
-    public static void main(String[] args) {
 
-        UserRepository userRepository = new UserRepository();
-        User[] users1 = userRepository.users;
-
-        System.out.println(Arrays.toString(users1));
-
-        User user = new User(1, "1", "1");
-        System.out.println(userRepository.save(user));
-        System.out.println(users1[0].getName());
-
-        System.out.println(Arrays.toString(users1));
-        user = new User(1, "2", "1");
-        userRepository.update(user);
-        System.out.println(user.getName());
-        userRepository.delete(1);
-        System.out.println(Arrays.toString(users1));
-
-
-    }
-
-    User[] users;
-
-
-    public UserRepository() {
-        users = new User[10];
-
-    }
+    User[] users = new User[10];
 
 
     private User findById(long id) {
-        int index = 0;
-        for (int i = index; i < users.length; i++) {
-            if (id == users[i].getId()) {
-                return users[i];
+        for (User user : users) {
+            if (user != null && user.getId() == id) {
+                return user;
             }
-            index++;
         }
         return null;
     }
 
 
     public User save(User user) {
+        if (user == null) {
+            return null;
+        }
         int count = 0;
         for (int i = 0; i < users.length; i++) {
             if (users[i] == null) {
@@ -73,7 +42,9 @@ public class UserRepository {
     }
 
     public User update(User user) {
-
+        if (user == null) {
+            return null;
+        }
 
         User findUserById = this.findById(user.getId());
 
@@ -90,11 +61,18 @@ public class UserRepository {
 
 
     public void delete(long id) {
-        for (int i = 0; i < users.length; i++) {
-            if (users[i].getId() == id) {
-                users[i] = null;
+
+        int index = 0;
+        User user = findById(id);
+
+        for (User us : users) {
+            if (us == user) {
+                users[index] = null;
                 break;
             }
+            index++;
         }
     }
+
+
 }

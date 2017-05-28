@@ -1,8 +1,5 @@
 package lesson9.HomeWork;
 
-/**
- * Created by SERGIO on 12.04.2017.
- */
 public class User {
     private long id;
     private String name;
@@ -24,5 +21,14 @@ public class User {
 
     public String getSessionId() {
         return sessionId;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sessionId='" + sessionId + '\'' +
+                '}';
     }
 }
