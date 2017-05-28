@@ -74,5 +74,7 @@ public class UserRepository {
         }
     }
 
-
+    public User getFindUserById(long id) {
+        return findById(id);
+    }
 }

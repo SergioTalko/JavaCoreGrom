@@ -45,6 +45,14 @@ public class Demo {
         System.out.println(userRepository.update(user));
         System.out.println(Arrays.toString(users));
 
+
+        //task method find
+        //1.find user by id
+        System.out.println(userRepository.getFindUserById(2));
+        //2.id not in array
+        System.out.println(userRepository.getFindUserById(88));
+
+
         //task method delete
         //1.delete
         userRepository.delete(1);
@@ -55,20 +63,12 @@ public class Demo {
         //3. видалення в пустому масиві
 
         n = 2;
-        while (n < 15){
+        while (n < 15) {
             userRepository.delete(n);
             n++;
         }
         System.out.println(Arrays.toString(users));
-
-
-
-        System.out.println();
-
-        System.out.println();
-
-
+        
     }
-
 
 }
