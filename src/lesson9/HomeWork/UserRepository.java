@@ -2,7 +2,7 @@ package lesson9.HomeWork;
 
 public class UserRepository {
 
-    User[] users = new User[10];
+   private User[] users = new User[10];
 
 
     private User findById(long id) {
@@ -76,5 +76,9 @@ public class UserRepository {
 
     public User getFindUserById(long id) {
         return findById(id);
+    }
+
+    public User[] getUsers() {
+        return users;
     }
 }

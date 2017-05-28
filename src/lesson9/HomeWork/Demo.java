@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Demo {
     public static void main(String[] args) {
         UserRepository userRepository = new UserRepository();
-        User[] users = userRepository.users;
+        User[] users = userRepository.getUsers();
         User user = new User(1, "1", "1");
 
 
@@ -68,7 +68,7 @@ public class Demo {
             n++;
         }
         System.out.println(Arrays.toString(users));
-        
+
     }
 
 }
