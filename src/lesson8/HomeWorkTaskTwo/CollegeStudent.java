@@ -1,8 +1,5 @@
 package lesson8.HomeWorkTaskTwo;
 
-/**
- * Created by SERGIO on 05.04.2017.
- */
 public class CollegeStudent extends Student {
     String collegeName;
     int rating;

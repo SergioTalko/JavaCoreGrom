@@ -1,10 +1,5 @@
 package lesson8.HomeWorkTaskTwo;
 
-import java.util.Objects;
-
-/**
- * Created by SERGIO on 05.04.2017.
- */
 public class Demo {
 
     public Student createHighestParent() {

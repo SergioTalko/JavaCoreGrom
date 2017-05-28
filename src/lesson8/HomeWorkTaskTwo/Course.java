@@ -2,9 +2,6 @@ package lesson8.HomeWorkTaskTwo;
 
 import java.util.Date;
 
-/**
- * Created by SERGIO on 05.04.2017.
- */
 public class Course {
     Date startDate;
     String name;
