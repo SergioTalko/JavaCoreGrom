@@ -1,11 +1,16 @@
 package lesson8.HomeWorkTaskOne;
 
-/**
- * Created by SERGIO on 05.04.2017.
- */
 public class Arithmetic {
 
-    public static boolean check(int[] array) {
+    public boolean check(int[] array) {
+        if (array == null) {
+            System.err.println("Array == null");
+            return false;
+        }
+        if (array.length < 2) {
+            System.err.println("Array have 1 element " + array[0]);
+            return false;
+        }
 
         int max = array[0];
         int min = max;
