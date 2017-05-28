@@ -1,23 +1,14 @@
-package lesson7;
+package lesson7.HomeWork;
 
 import java.util.Arrays;
 
-/**
- * Created by SERGIO on 03.04.2017.
- */
 public class SecondLargest {
-    public static void main(String[] args) {
 
-        int[] array = {1, 11, 12, 0, -2, 11, 0, -2, 35, 99, 9, 10, 1};
-        int[] array2 = {1, 11, 12, 0, -2, 11, 0, -2, 35, 99, 9, 10, 1, 99, 99};
-
-
-        System.out.println(secondLargest(array2));
-        System.out.println(secondLargest2(array));
-
-    }
-
-    public static int secondLargest(int[] array) {
+    public int secondLargest(int[] array) {
+        if (array == null) {
+            System.err.println("array == null");
+            return 0;
+        }
 
         int max = array[0];
         int secondLargest = max;
@@ -34,18 +25,18 @@ public class SecondLargest {
         return secondLargest;
     }
 
-    public static int secondLargest2(int[] array){
+    public static int secondLargest2(int[] array) {
 
         Arrays.sort(array);
         int max = array[0];
         int secondLargest = max;
 
-        for(int i : array){
-            if(i > max)
+        for (int i : array) {
+            if (i > max)
                 max = i;
         }
-        for (int s : array){
-            if(s != max){
+        for (int s : array) {
+            if (s != max) {
                 secondLargest = s;
             }
         }
