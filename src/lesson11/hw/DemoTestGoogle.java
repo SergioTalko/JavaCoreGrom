@@ -3,9 +3,6 @@ package lesson11.hw;
 import java.util.Arrays;
 import java.util.Date;
 
-/**
- * Created by SERGIO on 29.05.2017.
- */
 public class DemoTestGoogle {
     public static void main(String[] args) {
         Room room1 = new Room(1, 100, 1, new Date(), "Continental", "Rome");

@@ -1,10 +1,5 @@
 package lesson11.hw;
 
-import java.util.Date;
-
-/**
- * Created by SERGIO on 05.05.2017.
- */
 public class TripAdvisorAPI implements API {
     Room[] rooms;
 

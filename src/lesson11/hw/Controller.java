@@ -1,8 +1,5 @@
 package lesson11.hw;
 
-/**
- * Created by SERGIO on 05.05.2017.
- */
 public class Controller {
     API[] apis;
 

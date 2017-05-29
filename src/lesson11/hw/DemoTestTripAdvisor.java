@@ -3,9 +3,6 @@ package lesson11.hw;
 import java.util.Arrays;
 import java.util.Date;
 
-/**
- * Created by SERGIO on 29.05.2017.
- */
 public class DemoTestTripAdvisor {
     public static void main(String[] args) {
 
