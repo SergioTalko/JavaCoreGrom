@@ -62,5 +62,7 @@ public class ElectronicsOrder extends Order {
     public void confirmShipping() {
         super.confirmShipping();
     }
+
+
 }
 

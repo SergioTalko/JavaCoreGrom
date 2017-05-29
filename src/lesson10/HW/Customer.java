@@ -26,4 +26,17 @@ public class Customer {
     public String getGender() {
         return gender;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 }

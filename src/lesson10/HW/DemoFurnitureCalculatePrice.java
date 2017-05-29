@@ -5,17 +5,30 @@ import java.util.Date;
 /**
  * Created by SERGIO on 21.04.2017.
  */
-public class Demo {
+public class DemoFurnitureCalculatePrice {
     public static void main(String[] args) {
         Customer customer = new Customer("1", "Киев", "Женский");
-        FurnitureOrder furnitureOrder = new FurnitureOrder("1", new Date(), "Киев", 800, customer, "1");
+        FurnitureOrder furnitureOrder = new FurnitureOrder("1", null, "Киев", 800, customer, "1");
 
+
+        //test furniture order task calculatePrice
+        //1.price < 5000
+        furnitureOrder.calculatePrice();
+        System.out.println(furnitureOrder.getTotalPrice());
+        //2.price > 5000
+        furnitureOrder = new FurnitureOrder("1", null, "Киев", 6000, customer, "1");
         furnitureOrder.calculatePrice();
         System.out.println(furnitureOrder.getTotalPrice());
 
-        furnitureOrder.validateOrder();
-        System.out.println(furnitureOrder.getDateConfirmed());
 
+
+
+
+
+
+
+
+        System.out.println("");
         furnitureOrder.confirmShipping();
         System.out.println(furnitureOrder.getDateShipped());
 

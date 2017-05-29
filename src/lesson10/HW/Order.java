@@ -2,9 +2,6 @@ package lesson10.HW;
 
 import java.util.Date;
 
-/**
- * Created by SERGIO on 21.04.2017.
- */
 public abstract class Order {
     private String itemName;
     private Date dateCreated;
@@ -76,5 +73,23 @@ public abstract class Order {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public void setShipToCity(String shipToCity) {
+        this.shipToCity = shipToCity;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "itemName='" + itemName + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", dateConfirmed=" + dateConfirmed +
+                ", dateShipped=" + dateShipped +
+                ", shipToCity='" + shipToCity + '\'' +
+                ", basePrice=" + basePrice +
+                ", totalPrice=" + totalPrice +
+                ", customerOwned=" + customerOwned +
+                '}';
     }
 }

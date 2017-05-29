@@ -38,4 +38,6 @@ public class FurnitureOrder extends Order {
     public void confirmShipping() {
         super.confirmShipping();
     }
+
+
 }
