@@ -1,8 +1,5 @@
 package lesson10.HW;
 
-/**
- * Created by SERGIO on 21.04.2017.
- */
 public class Customer {
     private String name;
     private String city;
@@ -36,7 +33,4 @@ public class Customer {
                 '}';
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
 }

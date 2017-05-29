@@ -75,9 +75,6 @@ public abstract class Order {
         this.totalPrice = totalPrice;
     }
 
-    public void setShipToCity(String shipToCity) {
-        this.shipToCity = shipToCity;
-    }
 
     @Override
     public String toString() {

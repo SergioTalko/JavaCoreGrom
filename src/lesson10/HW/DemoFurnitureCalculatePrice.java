@@ -1,10 +1,5 @@
 package lesson10.HW;
 
-import java.util.Date;
-
-/**
- * Created by SERGIO on 21.04.2017.
- */
 public class DemoFurnitureCalculatePrice {
     public static void main(String[] args) {
         Customer customer = new Customer("1", "Киев", "Женский");

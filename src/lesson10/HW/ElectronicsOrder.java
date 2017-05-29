@@ -2,9 +2,6 @@ package lesson10.HW;
 
 import java.util.Date;
 
-/**
- * Created by SERGIO on 21.04.2017.
- */
 public class ElectronicsOrder extends Order {
     private int guaranteeMonths;
 

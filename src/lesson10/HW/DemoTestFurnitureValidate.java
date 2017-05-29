@@ -1,8 +1,5 @@
 package lesson10.HW;
 
-/**
- * Created by SERGIO on 28.05.2017.
- */
 public class DemoTestFurnitureValidate {
     public static void main(String[] args) {
         Customer customer = new Customer("1", "Киев", "Женский");
