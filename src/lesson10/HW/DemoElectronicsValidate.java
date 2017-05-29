@@ -16,29 +16,29 @@ public class DemoElectronicsValidate {
         electronicsOrder.validateOrder();
         System.out.println(electronicsOrder.getDateConfirmed());
         electronicsOrder.setDateConfirmed(null);
-        //2. валідація  from Днепр to Одесса  Минимальная цена заказа > 100 пол == "Женский" ---valid
-        customer = new Customer("1", "Днепр", "Женский");
-        electronicsOrder = new ElectronicsOrder("1", null, "Одесса", 6000, customer, 1);
-        electronicsOrder.validateOrder();
-        System.out.println(electronicsOrder.getDateConfirmed());
-        electronicsOrder.setDateConfirmed(null);
-        //3. валідація  wrong city  Минимальная цена заказа > 100 пол == "Женский"---not valid
+        //2. валідація  wrong city  Минимальная цена заказа > 100 пол == "Женский"---not valid
         customer = new Customer("1", "Тест", "Женский");
         electronicsOrder = new ElectronicsOrder("1", null, "Киев", 6000, customer, 1);
         electronicsOrder.validateOrder();
         System.out.println(electronicsOrder.getDateConfirmed());
         electronicsOrder.setDateConfirmed(null);
-        //4. валідація cities valid  Минимальная цена заказа < 100 пол == "Женский"--- not valid
+        //3. валідація cities valid  Минимальная цена заказа < 100 пол == "Женский"--- not valid
         customer = new Customer("1", "Киев", "Женский");
         electronicsOrder = new ElectronicsOrder("1", null, "Киев", 90, customer, 1);
         electronicsOrder.validateOrder();
         System.out.println(electronicsOrder.getDateConfirmed());
         electronicsOrder.setDateConfirmed(null);
-        //5.  валідація cities valid  Минимальная цена заказа > 100 пол == "Мужской"--- not valid
+        //4.  валідація cities valid  Минимальная цена заказа > 100 пол == "Мужской"--- not valid
         customer = new Customer("Тест", "Киев", "Мужской");
         electronicsOrder = new ElectronicsOrder("1", null, "Киев", 700, customer, 1);
         electronicsOrder.validateOrder();
         System.out.println(electronicsOrder.getDateConfirmed());
+        //5. валідація  from Днепр to Одесса  Минимальная цена заказа > 100 пол == "Женский" ---valid
+        customer = new Customer("1", "Днепр", "Женский");
+        electronicsOrder = new ElectronicsOrder("1", null, "Одесса", 6000, customer, 1);
+        electronicsOrder.validateOrder();
+        System.out.println(electronicsOrder.getDateConfirmed());
+        electronicsOrder.setDateConfirmed(null);
     }
 }
 

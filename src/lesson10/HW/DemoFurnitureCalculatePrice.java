@@ -12,6 +12,7 @@ public class DemoFurnitureCalculatePrice {
 
 
         //test furniture order task calculatePrice
+        //коммисия за доставку - 5% от суммы заказа если сумма меньше 5000 и 2% в других случаях
         //1.price < 5000
         furnitureOrder.calculatePrice();
         System.out.println(furnitureOrder.getTotalPrice());
@@ -19,28 +20,6 @@ public class DemoFurnitureCalculatePrice {
         furnitureOrder = new FurnitureOrder("1", null, "Киев", 6000, customer, "1");
         furnitureOrder.calculatePrice();
         System.out.println(furnitureOrder.getTotalPrice());
-
-
-
-
-
-
-
-
-
-        System.out.println("");
-        furnitureOrder.confirmShipping();
-        System.out.println(furnitureOrder.getDateShipped());
-
-        ElectronicsOrder electronicsOrder = new ElectronicsOrder("1", new Date(), "Харьков", 1001, customer, 1);
-        electronicsOrder.calculatePrice();
-        System.out.println(electronicsOrder.getTotalPrice());
-
-        electronicsOrder.validateOrder();
-        System.out.println(electronicsOrder.getDateConfirmed());
-
-        electronicsOrder.confirmShipping();
-        System.out.println(electronicsOrder.getDateShipped());
 
     }
 }
