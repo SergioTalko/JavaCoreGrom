@@ -1,4 +1,7 @@
-package lesson11.hw;
+package lesson11.hw.TestCode;
+
+import lesson11.hw.BookingComAPI;
+import lesson11.hw.Room;
 
 import java.util.Arrays;
 import java.util.Date;

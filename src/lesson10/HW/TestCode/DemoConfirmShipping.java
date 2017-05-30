@@ -1,4 +1,7 @@
-package lesson10.HW;
+package lesson10.HW.TestCode;
+
+import lesson10.HW.Customer;
+import lesson10.HW.ElectronicsOrder;
 
 public class DemoConfirmShipping {
     public static void main(String[] args) {

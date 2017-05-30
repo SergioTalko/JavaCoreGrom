@@ -1,4 +1,6 @@
-package lesson11.hw;
+package lesson11.hw.TestCode;
+
+import lesson11.hw.*;
 
 import java.util.Arrays;
 import java.util.Date;
