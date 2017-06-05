@@ -1,8 +1,5 @@
 package lesson14;
 
-/**
- * Created by SERGIO on 05.06.2017.
- */
 public class Test implements Cloneable {
     private int someNumber;
     private String name;
@@ -25,6 +22,19 @@ public class Test implements Cloneable {
         Test test1 = (Test) test.clone();
         System.out.println(test1);
         System.out.println(test1.hashCode());
+
+        /*Test test2 = new Test(test.getSomeNumber(), test.getName());
+        System.out.println(test2);
+        System.out.println(test2.hashCode());*/
+
+    }
+
+    public int getSomeNumber() {
+        return someNumber;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
