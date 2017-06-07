@@ -7,10 +7,10 @@ import java.util.Arrays;
  */
 public class LibrarianRepository {
     private Librarian[] librarians = new Librarian[10];
-    AdminLogin admin;
+    AdminLogin adminLogin;
 
-    public LibrarianRepository(AdminLogin admin) {
-        this.admin = admin;
+    public LibrarianRepository(AdminLogin adminLogin) {
+        this.adminLogin = adminLogin;
     }
 
     private Librarian findById(long id) {
@@ -23,7 +23,8 @@ public class LibrarianRepository {
     }
 
     public Librarian save(Librarian librarian) {
-        if (admin.checkLogin != true) {
+
+        if (adminLogin.checkAdminLogin != true) {
             return null;
         }
         if (librarian == null) {
@@ -52,7 +53,7 @@ public class LibrarianRepository {
     }
 
     public Librarian update(Librarian librarian) {
-        if (admin.checkLogin != true) {
+        if (adminLogin.checkAdminLogin != true) {
             return null;
         }
         if (librarian == null) {
@@ -73,7 +74,7 @@ public class LibrarianRepository {
     }
 
     public void view() {
-        if (admin.checkLogin != true) {
+        if (adminLogin.checkAdminLogin != true) {
             System.err.println("You must login");
 
         } else
@@ -81,8 +82,9 @@ public class LibrarianRepository {
     }
 
     public void delete(long id) {
-        if (admin.checkLogin != true) {
+        if (adminLogin.checkAdminLogin != true) {
             return;
+
         }
 
         int index = 0;
@@ -96,7 +98,6 @@ public class LibrarianRepository {
             index++;
         }
     }
-
 
     public Librarian[] getLibrarians() {
         return librarians;

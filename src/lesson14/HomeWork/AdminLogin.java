@@ -3,10 +3,10 @@ package lesson14.HomeWork;
 /**
  * Created by SERGIO on 06.06.2017.
  */
-public class AdminLogin {
+public class AdminLogin implements Login {
     private String login;
     private String password;
-    public boolean checkLogin;
+    public boolean checkAdminLogin;
 
     public AdminLogin(String login, String password) {
         this.login = login;
@@ -15,18 +15,17 @@ public class AdminLogin {
 
     private void check() {
         if (login == "admin" && password == "admin123") {
-            checkLogin = true;
-        }
-        else checkLogin = false;
+            checkAdminLogin = true;
+        } else checkAdminLogin = false;
     }
 
-
+    @Override
     public void login() {
         check();
     }
 
-
+    @Override
     public void logout() {
-        checkLogin = false;
+        checkAdminLogin = false;
     }
 }
