@@ -40,6 +40,21 @@ public class Demo {
         LibrarianLogin librarianLogin2 = new LibrarianLogin("1", "2",librarians);
         librarianLogin2.login();
         System.out.println(librarianLogin2.checkLoginLibrarian);
+        System.out.println("");
+        librarianLogin.login();
+
+        Book book = new Book(1,"1","1","1","1",1,1,null);
+        BookRepository bookRepository = new BookRepository(librarianLogin);
+        Book[] books = bookRepository.getBooks();
+        bookRepository.save(book);
+        System.out.println(Arrays.toString(books));
+        System.out.println("");
+        //перегляд бібліотеки книжок якщо бібліотекар залогінений
+        bookRepository.view();
+        //видалення книжки якщо бібліотекар залогінений
+        bookRepository.delete(1);
+        System.out.println(Arrays.toString(books));
+
 
 
 

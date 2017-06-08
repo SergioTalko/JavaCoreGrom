@@ -26,4 +26,50 @@ public class Book {
         this.issued = issued;
         this.addedDate = addedDate;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getCallNo() {
+        return callNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getIssued() {
+        return issued;
+    }
+
+    public Date getAddedDate() {
+        return addedDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", callNo='" + callNo + '\'' +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", quantity=" + quantity +
+                ", issued=" + issued +
+                ", addedDate=" + addedDate +
+                '}';
+    }
 }
