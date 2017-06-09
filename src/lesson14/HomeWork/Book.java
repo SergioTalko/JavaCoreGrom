@@ -2,10 +2,7 @@ package lesson14.HomeWork;
 
 import java.util.Date;
 
-/**
- * Created by SERGIO on 06.06.2017.
- */
-public class Book {
+public class Book extends Object {
     private long id;
     private String callNo;
     private String name;
@@ -26,6 +23,7 @@ public class Book {
         this.issued = issued;
         this.addedDate = addedDate;
     }
+
 
     public long getId() {
         return id;
@@ -58,6 +56,36 @@ public class Book {
     public Date getAddedDate() {
         return addedDate;
     }
+
+
+    public void setCallNo(String callNo) {
+        this.callNo = callNo;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setIssued(int issued) {
+        this.issued = issued;
+    }
+
+    public void setAddedDate(Date addedDate) {
+        this.addedDate = addedDate;
+    }
+
 
     @Override
     public String toString() {
