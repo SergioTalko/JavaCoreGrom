@@ -1,6 +1,6 @@
 package lesson14.HomeWork;
 
-public class Librarian extends Object {
+public class Librarian {
     private long id;
     private String name;
     private String password;

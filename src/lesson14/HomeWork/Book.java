@@ -2,7 +2,7 @@ package lesson14.HomeWork;
 
 import java.util.Date;
 
-public class Book extends Object {
+public class Book {
     private long id;
     private String callNo;
     private String name;

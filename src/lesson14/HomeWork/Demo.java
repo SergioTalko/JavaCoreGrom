@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class Demo {
     public static void main(String[] args) {
-        Controller controller = new Controller();
+       /* Controller controller = new Controller();
         //логін адміна
         controller.adminLogin("admin", "admin123");
         Librarian librarian1 = new Librarian(1, "1", "1", "1", "1", "1", 1);
@@ -29,6 +29,6 @@ public class Demo {
         //save book
         controller.saveBook(book);
         //view array of books
-        controller.viewBooks();
+        controller.view();*/
     }
 }

@@ -19,18 +19,18 @@ public class DemoBookRepository {
         bookRepository.save(book3);
         bookRepository.save(book4);
         //view books in array
-        System.out.println(Arrays.toString(bookRepository.viewBooks()));
+        System.out.println(Arrays.toString(bookRepository.view()));
         //view issued books
         System.out.println(Arrays.toString(bookRepository.viewIssuedBooks()));
         //issue book
-        bookRepository.issueBook(1);
+        bookRepository.issue(1);
         //return book, but this book not issued
         bookRepository.returnBook(2);
         //view issued books
         System.out.println(Arrays.toString(bookRepository.viewIssuedBooks()));
         //delete book
         bookRepository.delete(3);
-        System.out.println(Arrays.toString(bookRepository.viewBooks()));
+        System.out.println(Arrays.toString(bookRepository.view()));
 
 
     }

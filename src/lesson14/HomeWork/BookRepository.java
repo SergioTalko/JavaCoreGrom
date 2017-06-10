@@ -1,10 +1,7 @@
 package lesson14.HomeWork;
 
-import java.util.Arrays;
+import java.util.Date;
 
-/**
- * Created by SERGIO on 10.06.2017.
- */
 public class BookRepository {
     private Book[] books = new Book[5];
 
@@ -53,7 +50,7 @@ public class BookRepository {
         return null;
     }
 
-    public void issueBook(long id) {
+    public void issue(long id) {
         Book book = findById(id);
         if (book == null) {
             System.err.println("Invalid id");
@@ -107,8 +104,7 @@ public class BookRepository {
         return issuedBooks;
     }
 
-
-    public Book[] viewBooks() {
+    public Book[] view() {
         int count = 0;
         for (Book book : books) {
             if (book != null) {
