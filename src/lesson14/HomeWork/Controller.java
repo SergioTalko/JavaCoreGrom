@@ -14,7 +14,7 @@ public class Controller {
         System.out.println(Arrays.toString(controller.viewIssuedBooks(1)));
     }
 
-    BookRepository bookRepository;
+    BookRepository bookRepository = new BookRepository();
 
 
     public void saveBook(long idLibrarian, Book book) {
