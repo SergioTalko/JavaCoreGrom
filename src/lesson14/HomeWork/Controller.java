@@ -8,13 +8,13 @@ public class Controller {
         Librarian librarian1 = new Librarian(1, "1", "1", "1", "1", "1", 1);
         Book book = new Book(1, "1", "1", "1", "1", 1, 1, null);
         controller.saveBook(librarian1.getId(), book);
-        System.out.println( Arrays.toString(controller.viewBooks(1)));
+        System.out.println(Arrays.toString(controller.viewBooks(1)));
         controller.issueBook(librarian1.getId(), 1);
-        System.out.println( Arrays.toString(controller.viewBooks(1)));
-        System.out.println( Arrays.toString(controller.viewIssuedBooks(1)));
+        System.out.println(Arrays.toString(controller.viewBooks(1)));
+        System.out.println(Arrays.toString(controller.viewIssuedBooks(1)));
     }
 
-    BookRepository bookRepository = new BookRepository();
+    BookRepository bookRepository;
 
 
     public void saveBook(long idLibrarian, Book book) {
