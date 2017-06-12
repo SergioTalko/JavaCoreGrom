@@ -2,44 +2,48 @@ package lesson14.HomeWork;
 
 import java.util.Arrays;
 
-public class Controller extends BookRepository {
+public class Controller {
     public static void main(String[] args) {
         Controller controller = new Controller();
         Librarian librarian1 = new Librarian(1, "1", "1", "1", "1", "1", 1);
         Book book = new Book(1, "1", "1", "1", "1", 1, 1, null);
         controller.saveBook(librarian1.getId(), book);
-        System.out.println(Arrays.toString(controller.view()));
+        System.out.println( Arrays.toString(controller.viewBooks(1)));
         controller.issueBook(librarian1.getId(), 1);
-        System.out.println(Arrays.toString(controller.view()));
+        System.out.println( Arrays.toString(controller.viewBooks(1)));
+        System.out.println( Arrays.toString(controller.viewIssuedBooks(1)));
     }
+
+    BookRepository bookRepository = new BookRepository();
 
 
     public void saveBook(long idLibrarian, Book book) {
-        save(book);
+        bookRepository.save(book);
     }
 
     public void deleteBook(long idLibrarian, long idBook) {
-        delete(idBook);
+        bookRepository.delete(idBook);
     }
 
-    public void viewBooks(long idLibrarian) {
-        view();
+    public Book[] viewBooks(long idLibrarian) {
+        return bookRepository.view();
+
     }
 
     public void updateBook(long idLibrarian, Book book) {
-        update(book);
+        bookRepository.update(book);
     }
 
     public void issueBook(long idLibrarian, long idBook) {
-        issue(idBook);
+        bookRepository.issue(idBook);
     }
 
     public void returnBook(long idLibrarian, long idBook) {
-        returnBook(idBook);
+        bookRepository.returnBook(idBook);
     }
 
-    public void viewIssuedBooks(long idLibrarian) {
-        viewIssuedBooks();
+    public Book[] viewIssuedBooks(long idLibrarian) {
+        return bookRepository.viewIssuedBooks();
     }
 
 
