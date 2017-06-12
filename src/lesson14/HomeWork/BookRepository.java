@@ -1,5 +1,7 @@
 package lesson14.HomeWork;
 
+import java.util.Date;
+
 public class BookRepository {
     private Book[] books = new Book[5];
 
@@ -23,9 +25,11 @@ public class BookRepository {
                 return null;
             }
             if (books[i] == null) {
+                book.setAddedDate(new Date());
                 books[i] = book;
                 return books[i];
             }
+
         }
         return null;
     }
