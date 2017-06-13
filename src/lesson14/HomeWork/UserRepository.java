@@ -85,6 +85,29 @@ public class UserRepository {
         return usersArray;
     }
 
+    public void userLogin(long id, String login, String password) {
+        checkUser(id, login, password);
+    }
+
+    public void userLogout(long id) {
+        for (User us : users) {
+            if (us != null && us.getId() == id) {
+                us.setLogin(false);
+                break;
+            }
+        }
+    }
+
+
+    private void checkUser(long id, String login, String password) {
+        for (User us : users) {
+            if (us != null && id == us.getId() && login == us.getName() && password == us.getPassword()) {
+                us.setLogin(true);
+                break;
+            }
+        }
+    }
+
     private User findById(long id) {
         for (User librarian : users) {
             if (librarian != null && librarian.getId() == id) {

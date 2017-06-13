@@ -51,6 +51,17 @@ public class User {
         return phoneNumber;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public boolean isLogin() {
+        return login;
+    }
+
+    public void setLogin(boolean login) {
+        this.login = login;
+    }
 
     @Override
     public String toString() {
@@ -62,6 +73,8 @@ public class User {
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", phoneNumber=" + phoneNumber +
+                ", userType='" + userType + '\'' +
+                ", login=" + login +
                 '}';
     }
 }
