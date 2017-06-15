@@ -8,10 +8,10 @@ public class User {
     private String address;
     private String city;
     private int phoneNumber;
-    private String userType;
+    private UserType userType;
     private boolean login;
 
-    public User(long id, String name, String password, String email, String address, String city, int phoneNumber, String userType, boolean login) {
+    public User(long id, String name, String password, String email, String address, String city, int phoneNumber, UserType userType, boolean login) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -51,7 +51,7 @@ public class User {
         return phoneNumber;
     }
 
-    public String getUserType() {
+    public UserType getUserType() {
         return userType;
     }
 
@@ -73,7 +73,7 @@ public class User {
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", phoneNumber=" + phoneNumber +
-                ", userType='" + userType + '\'' +
+                ", userType=" + userType +
                 ", login=" + login +
                 '}';
     }

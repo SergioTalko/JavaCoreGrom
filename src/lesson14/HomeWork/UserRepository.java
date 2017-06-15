@@ -4,6 +4,10 @@ public class UserRepository {
     User[] users = new User[5];
 
 
+    public UserRepository() {
+        this.users[0] = new User(1, "admin", "admin123", "1", "1", "1", 1, UserType.admin, false);
+    }
+
     public User saveUser(User user) {
         if (users == null) {
             return null;
@@ -98,6 +102,14 @@ public class UserRepository {
         }
     }
 
+    private User findById(long id) {
+        for (User librarian : users) {
+            if (librarian != null && librarian.getId() == id) {
+                return librarian;
+            }
+        }
+        return null;
+    }
 
     private void checkUser(long id, String login, String password) {
         for (User us : users) {
@@ -108,13 +120,8 @@ public class UserRepository {
         }
     }
 
-    private User findById(long id) {
-        for (User librarian : users) {
-            if (librarian != null && librarian.getId() == id) {
-                return librarian;
-            }
-        }
-        return null;
+    public User[] getUsers() {
+        return users;
     }
 
 
