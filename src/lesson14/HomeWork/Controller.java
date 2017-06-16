@@ -25,13 +25,13 @@ public class Controller {
         return null;
     }
 
-    public void userLogin(long idUser, String login, String password) {
+    public void userLogin(User user) {
 
-        userRepository.userLogin(idUser, login, password);
+        userRepository.userLogin(user);
     }
 
-    public void userLogout(long idUser) {
-        userRepository.userLogout(idUser);
+    public void userLogout(User user) {
+        userRepository.userLogout(user);
     }
 
     public void updateBook(long idUser, Book book) {
@@ -111,5 +111,7 @@ public class Controller {
         return valid;
     }
 
-
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
 }

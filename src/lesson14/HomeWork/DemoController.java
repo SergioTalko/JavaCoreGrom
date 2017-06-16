@@ -8,9 +8,11 @@ public class DemoController {
         User librarian1 = new User(2, "1", "1", "1", "1", "1", 1, UserType.librarian, false);
         Book book = new Book(1, "1", "1", "1", "1", 1, 1, null);
 
+        User[] us = controller.getUserRepository().getUsers();
+
 
         //admin login
-        controller.userLogin(1, "admin", "admin123");
+        controller.userLogin(us[0]);
         //array users
         System.out.println(Arrays.toString(controller.viewLibrarian(1)));
         //save librarian
@@ -18,9 +20,9 @@ public class DemoController {
         //array user
         System.out.println(Arrays.toString(controller.viewLibrarian(1)));
         //admin logout
-        controller.userLogout(1);
+        controller.userLogout(us[0]);
         //librarian login
-        controller.userLogin(2, "1", "1");
+        controller.userLogin(librarian1);
         //array users(admin logout)
         System.out.println(Arrays.toString(controller.viewLibrarian(1)));
         //array books(array is empty)

@@ -89,13 +89,13 @@ public class UserRepository {
         return usersArray;
     }
 
-    public void userLogin(long id, String login, String password) {
-        checkUser(id, login, password);
+    public void userLogin(User user) {
+        checkUser(user);
     }
 
-    public void userLogout(long id) {
+    public void userLogout(User user) {
         for (User us : users) {
-            if (us != null && us.getId() == id) {
+            if (us != null && us == user) {
                 us.setLogin(false);
                 break;
             }
@@ -111,9 +111,9 @@ public class UserRepository {
         return null;
     }
 
-    private void checkUser(long id, String login, String password) {
+    private void checkUser(User user) {
         for (User us : users) {
-            if (us != null && id == us.getId() && login == us.getName() && password == us.getPassword()) {
+            if (us != null && us == user) {
                 us.setLogin(true);
                 break;
             }
