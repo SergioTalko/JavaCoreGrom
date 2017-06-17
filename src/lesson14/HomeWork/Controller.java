@@ -70,6 +70,9 @@ public class Controller {
     }
 
     public boolean checkLogin(User user) {
+        if(user == null){
+            return false;
+        }
         return user.isLogin();
 
     }
