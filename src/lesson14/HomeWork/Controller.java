@@ -25,15 +25,6 @@ public class Controller {
         return null;
     }
 
-    public void userLogin(User user) {
-
-        userRepository.userLogin(user);
-    }
-
-    public void userLogout(User user) {
-        userRepository.userLogout(user);
-    }
-
     public void updateBook(long idUser, Book book) {
         if (checkLibrarian(idUser))
             bookRepository.update(book);
@@ -78,6 +69,11 @@ public class Controller {
         return null;
     }
 
+    public boolean checkLogin(User user) {
+        return user.isLogin();
+
+    }
+
     private User findById(long id) {
         for (User us : userRepository.getUsers()) {
             if (us != null && us.getId() == id) {
@@ -93,7 +89,7 @@ public class Controller {
 
         User us = findById(idUser);
 
-        if (us != null && us.getUserType() == UserType.admin && us.isLogin() == true) {
+        if (us != null && us.getUserType() == UserType.admin && checkLogin(us)) {
             valid = true;
         }
         return valid;
@@ -105,11 +101,12 @@ public class Controller {
 
         User us = findById(idUser);
 
-        if (us != null && us.getUserType() == UserType.librarian && us.isLogin() == true) {
+        if (us != null && us.getUserType() == UserType.librarian && checkLogin(us)) {
             valid = true;
         }
         return valid;
     }
+
 
     public UserRepository getUserRepository() {
         return userRepository;

@@ -12,7 +12,9 @@ public class DemoController {
 
 
         //admin login
-        controller.userLogin(us[0]);
+        controller.userRepository.userLogin(1, "admin", "admin123");
+        //check login
+        System.out.println(controller.checkLogin(us[0]));
         //array users
         System.out.println(Arrays.toString(controller.viewLibrarian(1)));
         //save librarian
@@ -20,9 +22,13 @@ public class DemoController {
         //array user
         System.out.println(Arrays.toString(controller.viewLibrarian(1)));
         //admin logout
-        controller.userLogout(us[0]);
+        controller.userRepository.userLogout(1);
+        //check logout
+        System.out.println(controller.checkLogin(us[0]));
         //librarian login
-        controller.userLogin(librarian1);
+        controller.userRepository.userLogin(2, "1", "1");
+        //check librarian login
+        System.out.println(controller.checkLogin(librarian1));
         //array users(admin logout)
         System.out.println(Arrays.toString(controller.viewLibrarian(1)));
         //array books(array is empty)
