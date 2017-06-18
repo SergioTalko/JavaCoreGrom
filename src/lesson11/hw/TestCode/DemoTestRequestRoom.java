@@ -25,7 +25,7 @@ public class DemoTestRequestRoom {
         Room[] checkRequestRoom = controller.requestRooms(100, 2, "Rome", "Continental");
         //booking- valid id 1,2
         //trip valid id 1,2,5
-        //google valod id 2
+        //google valid id 2
         //total 6 rooms
         System.out.println(Arrays.toString(checkRequestRoom));
         System.out.println(checkRequestRoom.length);

@@ -11,9 +11,10 @@ public class Controller {
 
 
         int indexOfRoom = 0;
-        for (int i = 0; i < apis.length; i++) {
-            if (apis[i].findRooms(price, persons, city, hotel) != null) {
-                indexOfRoom += apis[i].findRooms(price, persons, city, hotel).length;
+
+        for (API api : apis) {
+            if (api.findRooms(price, persons, city, hotel) != null) {
+                indexOfRoom += api.findRooms(price, persons, city, hotel).length;
             }
         }
 
@@ -24,9 +25,9 @@ public class Controller {
         Room[] result = new Room[indexOfRoom];
 
         int index = 0;
-        for (int i = 0; i < apis.length; i++) {
-            if (apis[i].findRooms(price, persons, city, hotel) != null) {
-                for (Room room : apis[i].findRooms(price, persons, city, hotel)) {
+        for (API api : apis) {
+            if (api.findRooms(price, persons, city, hotel) != null) {
+                for (Room room : api.findRooms(price, persons, city, hotel)) {
                     result[index] = room;
                     index++;
                 }
