@@ -5,10 +5,6 @@ public class Controller {
     UserRepository userRepository = UserRepository.getInstance();
 
 
-
-
-
-
     public void saveBook(long idUser, Book book) {
         if (checkLibrarian(idUser))
             bookRepository.save(book);
@@ -73,7 +69,7 @@ public class Controller {
     }
 
     public boolean checkLogin(User user) {
-        if(user == null){
+        if (user == null) {
             return false;
         }
         return user.isLogin();
