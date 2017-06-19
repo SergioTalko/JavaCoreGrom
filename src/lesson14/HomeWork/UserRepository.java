@@ -4,9 +4,7 @@ public class UserRepository {
     private User[] users = new User[5];
 
 
-
-
-   public UserRepository() {
+    public UserRepository() {
         this.users[0] = new User(1, "admin", "admin123", "1", "1", "1", 1, UserType.admin, false);
     }
 
