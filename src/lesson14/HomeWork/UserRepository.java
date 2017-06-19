@@ -3,14 +3,10 @@ package lesson14.HomeWork;
 public class UserRepository {
     private User[] users = new User[5];
 
-    private static UserRepository ourInstance = new UserRepository();
-
-    public static UserRepository getInstance() {
-        return ourInstance;
-    }
 
 
-    private UserRepository() {
+
+   public UserRepository() {
         this.users[0] = new User(1, "admin", "admin123", "1", "1", "1", 1, UserType.admin, false);
     }
 

@@ -1,8 +1,15 @@
 package lesson14.HomeWork;
 
 public class Controller {
-    BookRepository bookRepository = new BookRepository();
-    UserRepository userRepository = UserRepository.getInstance();
+    private BookRepository bookRepository = new BookRepository();
+    private UserRepository userRepository;
+
+    public UserRepository getInstance() {
+        if (userRepository == null)
+            userRepository = new UserRepository();
+
+        return userRepository;
+    }
 
 
     public void saveBook(long idUser, Book book) {
@@ -110,7 +117,4 @@ public class Controller {
     }
 
 
-    public UserRepository getUserRepository() {
-        return userRepository;
-    }
 }
