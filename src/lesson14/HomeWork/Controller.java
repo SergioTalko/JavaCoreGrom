@@ -2,11 +2,14 @@ package lesson14.HomeWork;
 
 public class Controller {
     BookRepository bookRepository = new BookRepository();
-    UserRepository userRepository = new UserRepository();
+    UserRepository userRepository = UserRepository.getInstance();
+
+
+
+
 
 
     public void saveBook(long idUser, Book book) {
-
         if (checkLibrarian(idUser))
             bookRepository.save(book);
 

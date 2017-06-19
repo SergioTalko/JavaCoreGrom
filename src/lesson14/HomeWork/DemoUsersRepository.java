@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class DemoUsersRepository {
     public static void main(String[] args) {
-        UserRepository adminRepository = new UserRepository();
+        UserRepository adminRepository = UserRepository.getInstance();
         User librarian1 = new User(1, "1", "1", "1", "1", "1", 1, UserType.librarian, false);
         User librarian2 = new User(2, "2", "2", "1", "1", "1", 1, UserType.librarian, false);
 
