@@ -38,6 +38,15 @@ public class DemoController {
         //array books
         System.out.println(Arrays.toString(controller.viewBooks(2)));
 
+        controller = new Controller();
+        controller.getInstance().userLogin(1, "admin", "admin123");
+        //check login
+        System.out.println(controller.checkLogin(us[0]));
+        //array users
+        System.out.println(Arrays.toString(controller.viewLibrarian(1)));
+
+
+
 
 
 

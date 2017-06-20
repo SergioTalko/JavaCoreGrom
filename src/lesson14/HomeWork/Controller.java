@@ -55,22 +55,22 @@ public class Controller {
 
     public void saveLibrarian(long idUser, User user) {
         if (checkAdmin(idUser))
-            userRepository.saveUser(user);
+            getInstance().saveUser(user);
     }
 
     public void deleteLibrarian(long idAdmin, long idLibrarian) {
         if (checkAdmin(idAdmin))
-            userRepository.delete(idLibrarian);
+            getInstance().delete(idLibrarian);
     }
 
     public void updateLibrarian(long idUser, User user) {
         if (checkAdmin(idUser))
-            userRepository.updateUser(user);
+            getInstance().updateUser(user);
     }
 
     public User[] viewLibrarian(long idUser) {
         if (checkAdmin(idUser)) {
-            return userRepository.view();
+            return getInstance().view();
         }
         return null;
     }
@@ -84,7 +84,7 @@ public class Controller {
     }
 
     private User findById(long id) {
-        for (User us : userRepository.getUsers()) {
+        for (User us : getInstance().getUsers()) {
             if (us != null && us.getId() == id) {
                 return us;
             }
