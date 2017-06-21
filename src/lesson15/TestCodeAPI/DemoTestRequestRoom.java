@@ -1,4 +1,4 @@
-package lesson15.hwAPI.TestCode;
+package lesson15.TestCodeAPI;
 
 import lesson15.hwAPI.*;
 
