@@ -55,7 +55,7 @@ public class Controller {
 
     public Book[] viewIssuedBooks(long idUser) {
         if (checkLibrarian(idUser)) {
-            return bookRepository.viewIssuedBooks();
+            return getInstanceBook().viewIssuedBooks();
         }
         return null;
     }
