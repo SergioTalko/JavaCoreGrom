@@ -1,10 +1,17 @@
 package lesson14.HomeWork;
 
 public class Controller {
-    private BookRepository bookRepository = new BookRepository();
+    private BookRepository bookRepository;
     private UserRepository userRepository;
 
-    public UserRepository getInstance() {
+    public BookRepository getInstanceBook() {
+        if (bookRepository == null)
+            bookRepository = new BookRepository();
+
+        return bookRepository;
+    }
+
+    public UserRepository getInstanceUser() {
         if (userRepository == null)
             userRepository = new UserRepository();
 
@@ -14,36 +21,36 @@ public class Controller {
 
     public void saveBook(long idUser, Book book) {
         if (checkLibrarian(idUser))
-            bookRepository.save(book);
+            getInstanceBook().save(book);
 
     }
 
     public void deleteBook(long idUser, long idBook) {
         if (checkLibrarian(idUser))
-            bookRepository.delete(idBook);
+            getInstanceBook().delete(idBook);
     }
 
     public Book[] viewBooks(long idUser) {
 
         if (checkLibrarian(idUser)) {
-            return bookRepository.view();
+            return getInstanceBook().view();
         }
         return null;
     }
 
     public void updateBook(long idUser, Book book) {
         if (checkLibrarian(idUser))
-            bookRepository.update(book);
+            getInstanceBook().update(book);
     }
 
     public void issueBook(long idUser, long idBook) {
         if (checkLibrarian(idUser))
-            bookRepository.issue(idBook);
+            getInstanceBook().issue(idBook);
     }
 
     public void returnBook(long idUser, long idBook) {
         if (checkLibrarian(idUser))
-            bookRepository.returnBook(idBook);
+            getInstanceBook().returnBook(idBook);
     }
 
     public Book[] viewIssuedBooks(long idUser) {
@@ -55,22 +62,22 @@ public class Controller {
 
     public void saveLibrarian(long idUser, User user) {
         if (checkAdmin(idUser))
-            getInstance().saveUser(user);
+            getInstanceUser().saveUser(user);
     }
 
     public void deleteLibrarian(long idAdmin, long idLibrarian) {
         if (checkAdmin(idAdmin))
-            getInstance().delete(idLibrarian);
+            getInstanceUser().delete(idLibrarian);
     }
 
     public void updateLibrarian(long idUser, User user) {
         if (checkAdmin(idUser))
-            getInstance().updateUser(user);
+            getInstanceUser().updateUser(user);
     }
 
     public User[] viewLibrarian(long idUser) {
         if (checkAdmin(idUser)) {
-            return getInstance().view();
+            return getInstanceUser().view();
         }
         return null;
     }
@@ -84,7 +91,7 @@ public class Controller {
     }
 
     private User findById(long id) {
-        for (User us : getInstance().getUsers()) {
+        for (User us : getInstanceUser().getUsers()) {
             if (us != null && us.getId() == id) {
                 return us;
             }

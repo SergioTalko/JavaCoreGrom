@@ -8,11 +8,11 @@ public class DemoController {
         User librarian1 = new User(2, "1", "1", "1", "1", "1", 1, UserType.librarian, false);
         Book book = new Book(1, "1", "1", "1", "1", 1, 1, null);
 
-        User[] us = controller.getInstance().getUsers();
+        User[] us = controller.getInstanceUser().getUsers();
 
 
         //admin login
-        controller.getInstance().userLogin(1, "admin", "admin123");
+        controller.getInstanceUser().userLogin(1, "admin", "admin123");
         //check login
         System.out.println(controller.checkLogin(us[0]));
         //array users
@@ -22,11 +22,11 @@ public class DemoController {
         //array user
         System.out.println(Arrays.toString(controller.viewLibrarian(1)));
         //admin logout
-        controller.getInstance().userLogout(1);
+        controller.getInstanceUser().userLogout(1);
         //check logout
         System.out.println(controller.checkLogin(us[0]));
         //librarian login
-        controller.getInstance().userLogin(2, "1", "1");
+        controller.getInstanceUser().userLogin(2, "1", "1");
         //check librarian login
         System.out.println(controller.checkLogin(librarian1));
         //array users(admin logout)
@@ -38,12 +38,7 @@ public class DemoController {
         //array books
         System.out.println(Arrays.toString(controller.viewBooks(2)));
 
-        controller = new Controller();
-        controller.getInstance().userLogin(1, "admin", "admin123");
-        //check login
-        System.out.println(controller.checkLogin(us[0]));
-        //array users
-        System.out.println(Arrays.toString(controller.viewLibrarian(1)));
+
 
 
 
