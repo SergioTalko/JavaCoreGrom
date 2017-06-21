@@ -1,4 +1,4 @@
-package lesson9.HomeWork;
+package lesson15.hwUser;
 
 import java.util.Arrays;
 
@@ -44,28 +44,24 @@ public class Demo {
         System.out.println(Arrays.toString(users));
 
 
-        //task method find
-        //1.find user by id
-        System.out.println(userRepository.getFindUserById(2));
-        //2.id not in array
-        System.out.println(userRepository.getFindUserById(88));
-
 
         //task method delete
         //1.delete
-        userRepository.delete(1);
+        user = new User(1, "Test", "asjhk");
+        userRepository.delete(user);
         System.out.println(Arrays.toString(users));
         //2.dont have user in array
-        userRepository.delete(99);
+        userRepository.delete(null);
         System.out.println(Arrays.toString(users));
         //3. видалення в пустому масиві
 
-        n = 2;
+
+       /* n = 2;
         while (n < 15) {
-            userRepository.delete(n);
+            userRepository.delete(user);
             n++;
         }
-        System.out.println(Arrays.toString(users));
+        System.out.println(Arrays.toString(users));*/
 
     }
 
