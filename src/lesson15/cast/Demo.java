@@ -1,10 +1,5 @@
 package lesson15.cast;
 
-import java.util.Objects;
-
-/**
- * Created by SERGIO on 21.06.2017.
- */
 public class Demo {
     public static void main(String[] args) {
         InternetProvider provider = (InternetProvider) test();

@@ -1,8 +1,5 @@
 package lesson15.equals;
 
-/**
- * Created by SERGIO on 21.06.2017.
- */
 public class Demo {
     public static void main(String[] args) {
         File file1 = new File(111, "home/Documents/test", "txt");

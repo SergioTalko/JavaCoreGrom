@@ -1,8 +1,5 @@
 package lesson15.equals;
 
-/**
- * Created by SERGIO on 21.06.2017.
- */
 public class File {
     private int size;
     private String path;

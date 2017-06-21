@@ -1,8 +1,5 @@
 package lesson15.cast;
 
-/**
- * Created by SERGIO on 21.06.2017.
- */
 public class InstanceOfDemo {
     public static void main(String[] args) {
         Provider provider = new Provider();
