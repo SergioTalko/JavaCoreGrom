@@ -1,7 +1,7 @@
 package lesson15.hwAPI.TestCode;
 
-import lesson11.hw.Room;
-import lesson11.hw.TripAdvisorAPI;
+import lesson15.hwAPI.Room;
+import lesson15.hwAPI.TripAdvisorAPI;
 
 import java.util.Arrays;
 import java.util.Date;

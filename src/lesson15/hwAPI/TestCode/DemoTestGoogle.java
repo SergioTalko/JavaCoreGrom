@@ -1,7 +1,8 @@
 package lesson15.hwAPI.TestCode;
 
-import lesson11.hw.GoogleAPI;
-import lesson11.hw.Room;
+
+import lesson15.hwAPI.GoogleAPI;
+import lesson15.hwAPI.Room;
 
 import java.util.Arrays;
 import java.util.Date;

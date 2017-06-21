@@ -45,9 +45,9 @@ public class Controller {
 
         int duplicates = 0;
 
-        for (int i = 0; i < first.length; i++) {
-            for (int j = 0; j < second.length; j++) {
-                if (first[i].getPersons() == second[j].getPersons() && first[i].getPrice() == second[j].getPrice() && first[i].getCityName() == second[j].getCityName() && first[i].getHotelName() == second[j].getHotelName()) {
+        for (Room room : first) {
+            for (Room room2 : second) {
+                if (room.equals(room2) && room.hashCode() == room2.hashCode()) {
                     duplicates++;
                 }
             }
@@ -60,10 +60,10 @@ public class Controller {
 
         int indexCheck = 0;
 
-        for (int i = 0; i < first.length; i++) {
-            for (int j = 0; j < second.length; j++) {
-                if (first[i].getPersons() == second[j].getPersons() && first[i].getPrice() == second[j].getPrice() && first[i].getCityName() == second[j].getCityName() && first[i].getHotelName() == second[j].getHotelName()) {
-                    checkRoom[indexCheck] = first[i];
+        for (Room room : first) {
+            for (Room room2 : second) {
+                if (room.equals(room2) && room.hashCode() == room2.hashCode()) {
+                    checkRoom[indexCheck] = room;
                     indexCheck++;
                 }
             }
