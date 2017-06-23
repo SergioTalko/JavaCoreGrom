@@ -15,6 +15,7 @@ public class StringMethods {
         System.out.println(res);
         System.out.println(test.replaceAll("me", "T"));
         //String regex = {a-Z};
+        System.out.println(test);
         System.out.println(test.contains("mes"));
         String phrase = "Hello there guys";
         System.out.println(Arrays.toString(phrase.split(" ")));
