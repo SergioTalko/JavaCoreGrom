@@ -6,7 +6,9 @@ public class CountWords {
         if (input == null)
             return 0;
 
-        String[] words = input.split(" ");
+        String deleteBackspace = input.trim();
+
+        String[] words = deleteBackspace.split(" ");
 
         return words.length;
     }
