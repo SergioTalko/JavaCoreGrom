@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Demo {
     public static void main(String[] args) {
-        String str = "                 hhGGGGhh j jj j j jjjj jjj jjj ;    f0...         ";
+        String str = "                 one two three four         ";
         String str2 = null;
         String str3 = "HJJJJHJJJKklljkkfjkfkfkk  00  &&  l123d  KJfjjfjjckcjvjjvhjv";
         String str4 = ".l";
