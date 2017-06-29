@@ -1,51 +1,62 @@
 package lesson17.hw;
 
+import java.util.Arrays;
+
 public class MostCountedWord {
 
-    public static String mostCountedWord(String input) {
-        if (input == null) {
-            return null;
+    public String mostCountedWord(String input) {
+        if (!validInputString(input)) return null;
+
+        String[] words = inputStringToArray(input);
+
+        if (!ifOneWord(words)) return null;
+
+        int[] countWord = new int[words.length];
+
+        if (countWord.length == 1) return words[0];
+
+        for (int i = 0; i < countWord.length; i++) {
+            for (int j = i + 1; j < countWord.length; j++) {
+                if (words[i].equals(words[j])) {             //&& words[i].matches("(?i).*[a-zа-я].*")
+                    countWord[i]++;
+                }
+            }
         }
 
-
-        String[] words = input.trim().split(" +");
-        int[] count = new int[words.length];
-
-
-        for (String word : words) {
-            for (int i = 0; i < words.length; i++) {
-                if (word.equals(words[i])) {
-                    count[i]++;
+        String mostCount = words[0];
+        for (int i = 0; i < countWord.length; i++) {
+            for (int j = i + 1; j < countWord.length; j++) {
+                if (countWord[i] < countWord[j]) {
+                    mostCount = words[j];
                 }
             }
         }
 
 
-        for (int i = 0; i < count.length; i++) {
-            for (int j = i + 1; j < count.length; j++) {
-                if (count[i] < (count[j])) {
-                    words[i] = null;
-                }
-            }
-        }
+        return mostCount;
+    }
 
-        int index = 0;
-        for (String str : words) {
-            if (str == null) {
-                index++;
-            }
-        }
-        if (index == 0) {
-            return null;
-        }
+    //перевіриит стрінг на null та empty
+    private boolean validInputString(String input) {
 
+        return input == null || input.isEmpty() ? false : true;
+    }
 
-        for (String word : words) {
-            if (word != null) {
-                return word;
-            }
-        }
+    // вхідний стрінг в масив, з обрізаними пробілами на початку та в кінці та
+    //з розділеними словами по пробілу
+    private String[] inputStringToArray(String input) {
 
-        return null;
+        String[] words = input.trim().toLowerCase().split(" ");
+
+        return words;
+    }
+
+    //якщо в масиві залишилось одне слово і воно без літер
+    private boolean ifOneWord(String[] words) {
+
+        return words.length < 2 && words[0].toCharArray().length == 0 || !Character.isLetter(words[0].charAt(0)) ? false : true;
     }
 }
+
+
+
