@@ -1,7 +1,5 @@
 package lesson17.hw;
 
-import java.util.Arrays;
-
 public class MostCountedWord {
 
     public String mostCountedWord(String input) {
