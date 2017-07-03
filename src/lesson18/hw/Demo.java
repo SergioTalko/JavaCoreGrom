@@ -1,7 +1,5 @@
 package lesson18.hw;
 
-import lesson11.biginterfaceexample.SimpleReader;
-
 import java.util.Arrays;
 
 public class Demo {
