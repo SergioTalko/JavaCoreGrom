@@ -1,8 +1,5 @@
 package lesson18;
 
-/**
- * Created by SERGIO on 02.07.2017.
- */
 public class ArrayException {
     public static void main(String[] args) {
         int[] array = {1, 5, 0};
