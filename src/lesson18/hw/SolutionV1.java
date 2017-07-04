@@ -29,16 +29,21 @@ public class SolutionV1 {
         String[] words = text.split(" ");
 
         for (int i = 0; i < words.length; i++) {
-            try {
+            if (isDigit(words[i])){
                 count++;
-                Integer.parseInt(words[i]);
-
-
-            } catch (Exception e) {
-                count--;
             }
         }
 
         return count;
+    }
+
+    private boolean isDigit(String word) {
+
+        for (char ch : word.toCharArray()) {
+            if (!Character.isDigit(ch)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

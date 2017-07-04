@@ -26,14 +26,13 @@ public class SolutionV2 {
 
         String[] words = input.split(" ");
         for (String word : words) {
-            for (char ch : word.toCharArray()) {
-                if (!Character.isDigit(ch)) {
-                    count++;
-                    break;
-                }
+            if (word.chars().allMatch(Character::isDigit)) {
+                count++;
             }
         }
-        return words.length - count;
+
+        return count;
 
     }
 }
+
