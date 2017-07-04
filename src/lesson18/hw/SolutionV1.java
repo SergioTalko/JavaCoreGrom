@@ -5,21 +5,17 @@ public class SolutionV1 {
     public int[] findNumbers(String text) {
         if (text.isEmpty() || text == null) return null;
 
-
-        int n = 0;
         int index = 0;
         String[] words = text.split(" ");
         int[] res = new int[countNumbers(text)];
 
-        while (n < words.length) {
+        for (int i = 0; i < words.length; i++) {
             try {
-                res[index] = Integer.parseInt(words[n]);
-                n++;
+                res[index] = Integer.parseInt(words[i]);
                 index++;
 
             } catch (Exception e) {
-                System.out.println(words[n] + " not a number");
-                n++;
+                System.out.println(words[i] + " not a number");
             }
         }
 
@@ -30,17 +26,16 @@ public class SolutionV1 {
         if (text.isEmpty() || text == null) return 0;
 
         int count = 0;
-        int n = -1;
         String[] words = text.split(" ");
 
-        while (n < words.length) {
+        for (int i = 0; i < words.length; i++) {
             try {
-                n++;
-                Integer.parseInt(words[n]);
                 count++;
+                Integer.parseInt(words[i]);
 
 
             } catch (Exception e) {
+                count--;
             }
         }
 
