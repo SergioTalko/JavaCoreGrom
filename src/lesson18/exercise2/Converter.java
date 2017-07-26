@@ -36,7 +36,7 @@ public class Converter {
 
         try {
             return Integer.parseInt(input);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {       //type of exception
             System.out.println(input + " can not be converted to int");
             return 0;
         }
