@@ -9,9 +9,8 @@ public class UserRepository {
     }
 
     public User saveUser(User user) {
-        if (users == null) {
-            return null;
-        }
+        if (users == null) return null;
+
         int count = 0;
         for (int i = 0; i < users.length; i++) {
             if (users[i] == null) {

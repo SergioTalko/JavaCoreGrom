@@ -2,17 +2,7 @@ package lesson9.HomeWork;
 
 public class UserRepository {
 
-   private User[] users = new User[10];
-
-
-    private User findById(long id) {
-        for (User user : users) {
-            if (user != null && user.getId() == id) {
-                return user;
-            }
-        }
-        return null;
-    }
+    private User[] users = new User[10];
 
 
     public User save(User user) {
@@ -30,9 +20,8 @@ public class UserRepository {
         }
 
         for (int i = 0; i < users.length; i++) {
-            if (users[i] == user) {
-                return null;
-            }
+            if (users[i] == user) return null;
+
             if (users[i] == null) {
                 users[i] = user;
                 return users[i];
@@ -59,7 +48,6 @@ public class UserRepository {
         return null;
     }
 
-
     public void delete(long id) {
 
         int index = 0;
@@ -80,5 +68,14 @@ public class UserRepository {
 
     public User[] getUsers() {
         return users;
+    }
+
+    private User findById(long id) {
+        for (User user : users) {
+            if (user != null && user.getId() == id) {
+                return user;
+            }
+        }
+        return null;
     }
 }
