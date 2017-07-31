@@ -10,7 +10,7 @@ public class Storage {
     private long storageSize;
 
 
-    public Storage(long id, File[] files, String[] formatsSupported, String storageCountry, long storageSize) {
+    public Storage(long id, File[] files, String[] formatsSupported, String storageCountry, long storageSize) throws Exception {
         this.id = id;
         this.files = files;
         this.formatsSupported = formatsSupported;
@@ -19,13 +19,16 @@ public class Storage {
     }
 
 
-    private File[] filesArray(long size){
+    /*private void checkSameFile(Storage storage, File[] files) throws Exception {
 
-        File[] files = new File[(int)size];
-
-
-        return files;
-    }
+        for (File file1 : storage.getFiles()){
+            for (File file2 : storage.getFiles()){
+                if (file1 != null && file2 != null && file1.getId() == file2.getId()){
+                    throw  new Exception("Two same file in storage");
+                }
+            }
+        }
+    }*/
 
     public long getId() {
         return id;
