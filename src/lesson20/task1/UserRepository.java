@@ -12,7 +12,7 @@ public class UserRepository {
     public User save(User user) throws Exception {
         if (user == null) throw new UserNotFoundException("User is null");
 
-        if (users == null) throw new InternalServerException(" Storage is null");
+        if (users == null) throw new InternalServerException("Storage is null");
 
         if (checkSpaceInStorage() == 0) throw new InternalServerException("Not enough space to save user");
 
@@ -27,7 +27,7 @@ public class UserRepository {
     public User update(User user) throws Exception {
         if (user == null) throw new UserNotFoundException("User is null");
 
-        if (users == null) throw new InternalServerException("Storage is null");
+        if (users == null) throw new InternalServerException("Controller is null");
 
         if (findById(user.getId()) == null)
             throw new BadRequestException("User with id " + user.getId() + " cant find in storage");
@@ -36,7 +36,7 @@ public class UserRepository {
     }
 
     public void delete(long id) throws Exception {
-        if (users == null) throw new InternalServerException("Storage is null");
+        if (users == null) throw new InternalServerException("Controller is null");
 
 
         int index = 0;
@@ -66,6 +66,7 @@ public class UserRepository {
     }
 
     private int checkSpaceInStorage() {
+
         int count = 0;
         for (int i = 0; i < users.length; i++) {
             if (users[i] == null) {
