@@ -1,8 +1,5 @@
 package lesson20.task2;
 
-import lesson20.task1.exception.BadRequestException;
-import lesson20.task1.exception.InternalServerException;
-
 import java.util.Calendar;
 import java.util.Date;
 
