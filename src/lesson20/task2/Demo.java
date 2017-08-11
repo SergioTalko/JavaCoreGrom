@@ -28,11 +28,12 @@ public class Demo {
         controller.save(transaction7);
         controller.save(transaction8);
 
-        System.out.println(Arrays.toString(controller.transactionList()));
+        System.out.println(Arrays.toString(transactionDAO.getTransactionsPerDay(new Date())));
+        /*System.out.println(Arrays.toString(controller.transactionList()));
         System.out.println("");
         System.out.println(Arrays.toString(controller.transactionList(10)));
         System.out.println("");
-        System.out.println(Arrays.toString(controller.transactionList("Lviv")));
+        System.out.println(Arrays.toString(controller.transactionList("Lviv")));*/
 
 
     }

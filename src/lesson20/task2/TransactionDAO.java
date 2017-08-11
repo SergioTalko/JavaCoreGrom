@@ -10,7 +10,7 @@ public class TransactionDAO {
 
     public Transaction save(Transaction transaction) throws Exception {
 
-        checkBeforeSave(transaction);
+
         checkAllLimits(transaction);
         //
 
@@ -134,7 +134,7 @@ public class TransactionDAO {
     }
 
     private void checkAllLimits(Transaction transaction) throws Exception {
-
+        checkBeforeSave(transaction);
         Transaction[] transactions = getTransactionsPerDay(transaction.getDateCreated());
 
         if (transaction.getAmount() > utils.getLimitSimpleTransactionAmount())
@@ -195,7 +195,7 @@ public class TransactionDAO {
 
         int count = 0;
         for (Transaction tr : transactions) {
-
+            calendar.setTime(tr.getDateCreated());
             int trMonth = calendar.get(Calendar.MONTH);
             int trDay = calendar.get(Calendar.DAY_OF_MONTH);
 
@@ -205,7 +205,7 @@ public class TransactionDAO {
         Transaction[] result = new Transaction[count];
         int index = 0;
         for (Transaction tr : transactions) {
-            if (tr != null) calendar.setTime(tr.getDateCreated());
+            calendar.setTime(tr.getDateCreated());
             int trMonth = calendar.get(Calendar.MONTH);
             int trDay = calendar.get(Calendar.DAY_OF_MONTH);
 
