@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class TransactionDAO {
+
     private Transaction[] transactions = new Transaction[10];
     private Utils utils = new Utils();
 
@@ -108,6 +109,43 @@ public class TransactionDAO {
 
     } //amount
 
+    public Transaction[] getTransactionsPerDay(Date dateOfCurTransaction) throws InternalServerException {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateOfCurTransaction);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        int count = 0;
+        for (Transaction tr : transactions) {
+            if (tr != null) {
+                calendar.setTime(tr.getDateCreated());
+                int trMonth = calendar.get(Calendar.MONTH);
+                int trDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+                if (trMonth == month && trDay == day) {
+                    count++;
+                }
+            }
+        }
+        Transaction[] result = new Transaction[count];
+
+        int index = 0;
+        for (Transaction tr : transactions) {
+            if (tr != null) {
+                calendar.setTime(tr.getDateCreated());
+                int trMonth = calendar.get(Calendar.MONTH);
+                int trDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+                if (trMonth == month && trDay == day) {
+                    result[index] = tr;
+                    index++;
+                }
+            }
+        }
+        return result;
+    }
+
     //private
     private void checkBeforeSave(Transaction transaction) throws Exception {
         if (transaction == null) throw new BadRequestException("Cant save null");
@@ -127,9 +165,7 @@ public class TransactionDAO {
 
         if (checkSpaceInStorage() == 0)
             throw new InternalServerException("In storage not enough space to save transaction");
-
-        if (!validTransactionType(transaction))
-            throw new BadRequestException("Type of transaction must be INCOME or OUTCOME");
+        
 
     }
 
@@ -186,100 +222,6 @@ public class TransactionDAO {
 
     }
 
-
-    public Transaction[] getTransactionsPerDay(Date dateOfCurTransaction) throws InternalServerException {
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(dateOfCurTransaction);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        int count = 0;
-        for (Transaction tr : transactions) {
-            if (tr != null) {
-                calendar.setTime(tr.getDateCreated());
-                int trMonth = calendar.get(Calendar.MONTH);
-                int trDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-                if (trMonth == month && trDay == day) {
-                    count++;
-                }
-            }
-        }
-        Transaction[] result = new Transaction[count];
-
-        int index = 0;
-        for (Transaction tr : transactions) {
-            if (tr != null) {
-                calendar.setTime(tr.getDateCreated());
-                int trMonth = calendar.get(Calendar.MONTH);
-                int trDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-                if (trMonth == month && trDay == day) {
-                    result[index] = tr;
-                    index++;
-                }
-            }
-        }
-        return result;
-    }
-
-    public Transaction[] resultValidCity(String city) throws Exception {
-
-        if (city == null) throw new BadRequestException("City cant be null");
-
-        int count = 0;
-        for (Transaction tr : transactions) {
-            if (tr != null && tr.getCity().equals(city)) {
-                count++;
-            }
-        }
-
-        if (count == 0) return new Transaction[]{};
-
-        Transaction[] result = new Transaction[count];
-
-        int index = 0;
-        for (Transaction tr : transactions) {
-            if (tr != null && tr.getCity().equals(city)) {
-                result[index] = tr;
-                index++;
-            }
-
-        }
-        return result;
-    }
-
-    public Transaction[] resultValidAmount(int amount) throws Exception {
-
-        if (amount <= 0) throw new BadRequestException("Amount must be more than zero");
-
-        int count = 0;
-        for (Transaction tr : transactions) {
-            if (tr != null && tr.getAmount() == amount) {
-                count++;
-            }
-        }
-
-        if (count == 0) return new Transaction[]{};
-
-        Transaction[] result = new Transaction[count];
-
-        int index = 0;
-        for (Transaction tr : transactions) {
-            if (tr != null && tr.getAmount() == amount) {
-                result[index] = tr;
-                index++;
-            }
-
-        }
-        return result;
-    }
-
-    public Transaction[] getTransactions() {
-        return transactions;
-    }
-
     private int amountTransactionsPerDay(Transaction[] transactions) {
 
         int amount = 0;
@@ -303,12 +245,7 @@ public class TransactionDAO {
         return false;
     }
 
-    private boolean validTransactionType(Transaction transaction) {
-        return (transaction.getType() == TransactionType.INCOME || transaction.getType() == TransactionType.OUTCOME);
-
-    }
-
 
 }
 
-//Calendar wrong logic
+//

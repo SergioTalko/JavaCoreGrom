@@ -9,8 +9,8 @@ public class Utils {
     private String[] cities;
 
     public Utils() {
-        this.limitSimpleTransactionAmount = 100;
-        this.limitTransactionsPerDayAmount = 1000;
+        this.limitSimpleTransactionAmount = 50;
+        this.limitTransactionsPerDayAmount = 150;
         this.limitTransactionsPerDayCount = 6;
         this.cities = new String[]{"Test", "Test2", "Lviv"};
     }
