@@ -31,21 +31,7 @@ public class Utils {
         return cities;
     }
 
-    public void setLimitSimpleTransactionAmount(long limitSimpleTransactionAmount) {
-        this.limitSimpleTransactionAmount = limitSimpleTransactionAmount;
-    }
 
-    public void setLimitTransactionsPerDayAmount(long limitTransactionsPerDayAmount) {
-        this.limitTransactionsPerDayAmount = limitTransactionsPerDayAmount;
-    }
-
-    public void setLimitOperationsPerDay(long limitOperationsPerDay) {
-        this.limitTransactionsPerDayCount = limitOperationsPerDay;
-    }
-
-    public void setCities(String[] cities) {
-        this.cities = cities;
-    }
 }
 
 
