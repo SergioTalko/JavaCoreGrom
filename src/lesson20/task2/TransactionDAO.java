@@ -195,22 +195,25 @@ public class TransactionDAO {
 
         int count = 0;
         for (Transaction tr : transactions) {
-            calendar.setTime(tr.getDateCreated());
-            int trMonth = calendar.get(Calendar.MONTH);
-            int trDay = calendar.get(Calendar.DAY_OF_MONTH);
+            if (tr != null) {
+                calendar.setTime(tr.getDateCreated());
+                int trMonth = calendar.get(Calendar.MONTH);
+                int trDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-            if (tr != null && trMonth == month && trDay == day)
-                count++;
+                if (trMonth == month && trDay == day)
+                    count++;
+            }
         }
         Transaction[] result = new Transaction[count];
         int index = 0;
         for (Transaction tr : transactions) {
-            calendar.setTime(tr.getDateCreated());
-            int trMonth = calendar.get(Calendar.MONTH);
-            int trDay = calendar.get(Calendar.DAY_OF_MONTH);
+            if (tr != null) {
+                calendar.setTime(tr.getDateCreated());
+                int trMonth = calendar.get(Calendar.MONTH);
+                int trDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-            if (tr != null && trMonth == month && trDay == day) {
-                result[index] = tr;
+                if (trMonth == month && trDay == day)
+                    result[index] = tr;
             }
             index++;
         }
