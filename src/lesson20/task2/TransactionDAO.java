@@ -52,7 +52,7 @@ public class TransactionDAO {
         if ((amountTransactionsPerDay(transactions) + transaction.getAmount()) > utils.getLimitTransactionsPerDayAmount())
             throw new LimitExceeded("You have used the amount daily limit");
 
-        if (!checkValidCity(transaction)) throw new LimitExceeded(transaction.getCity() + " city is not allowed here");
+        if (!checkValidCity(transaction)) throw new BadRequestException(transaction.getCity() + " city is not allowed here");
 
     }
 
