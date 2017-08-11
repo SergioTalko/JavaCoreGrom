@@ -159,13 +159,17 @@ public class TransactionDAO {
 
         if (transaction.getId() <= 0) throw new InternalServerException(transaction.getId() + " id is incorrect");
 
+        if (transaction.getDescription() == null) throw new BadRequestException("Description cant be null");
+
+        if (transaction.getType() == null) throw new BadRequestException("Type cant be null");
+
         if (transaction.getDateCreated() == null) throw new InternalServerException("Date cant be null");
 
         findSameTransaction(transaction);
 
         if (checkSpaceInStorage() == 0)
             throw new InternalServerException("In storage not enough space to save transaction");
-        
+
 
     }
 

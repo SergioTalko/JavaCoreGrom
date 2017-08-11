@@ -18,7 +18,7 @@ public class Demo {
         Transaction transaction8 = new Transaction(8, "Test2", 50, "test", TransactionType.INCOME, new Date(100));
 
 
-       // controller.save(transaction);
+        // controller.save(transaction);
 
         controller.save(transaction2);
         controller.save(transaction3);
@@ -28,7 +28,7 @@ public class Demo {
         controller.save(transaction7);
         controller.save(transaction8);
 
-       // System.out.println(Arrays.toString(transactionDAO.getTransactionsPerDay(new Date())));
+        // System.out.println(Arrays.toString(transactionDAO.getTransactionsPerDay(new Date())));
         System.out.println(Arrays.toString(controller.transactionList()));
         System.out.println("");
         System.out.println(Arrays.toString(controller.transactionList(40)));
