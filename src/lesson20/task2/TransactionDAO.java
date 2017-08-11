@@ -19,43 +19,6 @@ public class TransactionDAO {
 
     } //save
 
-    private void checkBeforeSave(Transaction transaction) throws Exception {
-        if (transaction == null) throw new BadRequestException("Cant save null");
-
-        if (transactions == null) throw new InternalServerException("Please try again later.Storage is null");
-
-        if (transaction.getAmount() < 0) throw new BadRequestException(transaction.getAmount() + " value is incorrect");
-
-        if (transaction.getCity() == null) throw new InternalServerException("Please try again later.List of cities is null");
-
-        if (transaction.getId() <= 0) throw new InternalServerException(transaction.getId() + " id is incorrect");
-
-        if (transaction.getDateCreated() == null) throw new InternalServerException("Date cant be null");
-
-        findSameTransaction(transaction);
-
-        if (checkSpaceInStorage() == 0)
-            throw new BadRequestException("In storage not enough space to save transaction");
-
-    }
-
-    private void checkAllLimits(Transaction transaction) throws Exception {
-
-        Transaction[] transactions = getTransactionsPerDay(transaction.getDateCreated());
-
-        if (transaction.getAmount() > utils.getLimitSimpleTransactionAmount())
-            throw new LimitExceeded("Please check your amount limit for operation");
-
-        if (transactions.length >= utils.getLimitOperationsPerDay())
-            throw new LimitExceeded("Too much operations per day");
-
-        if ((amountTransactionsPerDay(transactions) + transaction.getAmount()) > utils.getLimitTransactionsPerDayAmount())
-            throw new LimitExceeded("You have used the amount daily limit");
-
-        if (!checkValidCity(transaction)) throw new BadRequestException(transaction.getCity() + " city is not allowed here");
-
-    }
-
     public Transaction[] transactionList() throws Exception {
         if (transactions == null)
             throw new InternalServerException("Please try again later.Array is null");
@@ -146,6 +109,48 @@ public class TransactionDAO {
     } //amount
 
     //private
+    private void checkBeforeSave(Transaction transaction) throws Exception {
+        if (transaction == null) throw new BadRequestException("Cant save null");
+
+        if (transactions == null) throw new InternalServerException("Please try again later.Storage is null");
+
+        if (transaction.getAmount() < 0) throw new BadRequestException(transaction.getAmount() + " value is incorrect");
+
+        if (transaction.getCity() == null)
+            throw new BadRequestException("Field City cant be null");
+
+        if (transaction.getId() <= 0) throw new InternalServerException(transaction.getId() + " id is incorrect");
+
+        if (transaction.getDateCreated() == null) throw new InternalServerException("Date cant be null");
+
+        findSameTransaction(transaction);
+
+        if (checkSpaceInStorage() == 0)
+            throw new InternalServerException("In storage not enough space to save transaction");
+
+        if (!validTransactionType(transaction))
+            throw new BadRequestException("Type of transaction must be INCOME or OUTCOME");
+
+    }
+
+    private void checkAllLimits(Transaction transaction) throws Exception {
+
+        Transaction[] transactions = getTransactionsPerDay(transaction.getDateCreated());
+
+        if (transaction.getAmount() > utils.getLimitSimpleTransactionAmount())
+            throw new LimitExceeded("Please check your amount limit for operation");
+
+        if (transactions.length >= utils.getLimitOperationsPerDay())
+            throw new LimitExceeded("Too much operations per day");
+
+        if ((amountTransactionsPerDay(transactions) + transaction.getAmount()) > utils.getLimitTransactionsPerDayAmount())
+            throw new LimitExceeded("You have used the amount daily limit");
+
+        if (!checkValidCity(transaction))
+            throw new BadRequestException(transaction.getCity() + " city is not allowed here");
+
+    }
+
     private void findSameTransaction(Transaction transaction) throws Exception {
 
         for (Transaction tr : transactions) {
@@ -289,6 +294,11 @@ public class TransactionDAO {
             }
         }
         return false;
+    }
+
+    private boolean validTransactionType(Transaction transaction) {
+        return (transaction.getType() == TransactionType.INCOME || transaction.getType() == TransactionType.OUTCOME);
+
     }
 
 
