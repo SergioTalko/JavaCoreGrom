@@ -14,8 +14,8 @@ public class Demo {
         Transaction transaction4 = new Transaction(4, "Test2", 16, "test", TransactionType.INCOME, new Date());
         Transaction transaction5 = new Transaction(5, "Test", 16, "test", TransactionType.INCOME, new Date());
         Transaction transaction6 = new Transaction(6, "Test", 10, "test", TransactionType.INCOME, new Date());
-        Transaction transaction7 = new Transaction(7, "Lviv", 20, "test", TransactionType.INCOME, new Date());
-        Transaction transaction8 = new Transaction(8, "Test2", 40, "test", TransactionType.INCOME, new Date());
+        Transaction transaction7 = new Transaction(7, "Lviv", 20, "test", TransactionType.INCOME, new Date(100));
+        Transaction transaction8 = new Transaction(8, "Test2", 40, "test", TransactionType.INCOME, new Date(100));
 
 
         controller.save(transaction);
@@ -28,12 +28,12 @@ public class Demo {
         controller.save(transaction7);
         controller.save(transaction8);
 
-        System.out.println(Arrays.toString(transactionDAO.getTransactionsPerDay(new Date())));
-        /*System.out.println(Arrays.toString(controller.transactionList()));
+       // System.out.println(Arrays.toString(transactionDAO.getTransactionsPerDay(new Date())));
+        System.out.println(Arrays.toString(controller.transactionList()));
         System.out.println("");
-        System.out.println(Arrays.toString(controller.transactionList(10)));
+        System.out.println(Arrays.toString(controller.transactionList(40)));
         System.out.println("");
-        System.out.println(Arrays.toString(controller.transactionList("Lviv")));*/
+        System.out.println(Arrays.toString(controller.transactionList("Lviv")));
 
 
     }

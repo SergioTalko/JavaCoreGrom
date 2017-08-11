@@ -187,7 +187,8 @@ public class TransactionDAO {
     }
 
 
-    public Transaction[] getTransactionsPerDay(Date dateOfCurTransaction) {
+    public Transaction[] getTransactionsPerDay(Date dateOfCurTransaction) throws InternalServerException {
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(dateOfCurTransaction);
         int month = calendar.get(Calendar.MONTH);
@@ -200,11 +201,13 @@ public class TransactionDAO {
                 int trMonth = calendar.get(Calendar.MONTH);
                 int trDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-                if (trMonth == month && trDay == day)
+                if (trMonth == month && trDay == day) {
                     count++;
+                }
             }
         }
         Transaction[] result = new Transaction[count];
+
         int index = 0;
         for (Transaction tr : transactions) {
             if (tr != null) {
@@ -212,10 +215,11 @@ public class TransactionDAO {
                 int trMonth = calendar.get(Calendar.MONTH);
                 int trDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-                if (trMonth == month && trDay == day)
+                if (trMonth == month && trDay == day) {
                     result[index] = tr;
+                    index++;
+                }
             }
-            index++;
         }
         return result;
     }
