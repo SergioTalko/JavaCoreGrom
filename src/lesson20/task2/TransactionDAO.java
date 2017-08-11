@@ -9,6 +9,7 @@ public class TransactionDAO {
 
 
     public Transaction save(Transaction transaction) throws Exception {
+
         checkBeforeSave(transaction);
         checkAllLimits(transaction);
         //
@@ -21,15 +22,15 @@ public class TransactionDAO {
     private void checkBeforeSave(Transaction transaction) throws Exception {
         if (transaction == null) throw new BadRequestException("Cant save null");
 
-        if (transactions == null) throw new BadRequestException("Storage is null");
+        if (transactions == null) throw new InternalServerException("Please try again later.Storage is null");
 
         if (transaction.getAmount() < 0) throw new BadRequestException(transaction.getAmount() + " value is incorrect");
 
-        if (transaction.getCity() == null) throw new BadRequestException("List of cities is null");
+        if (transaction.getCity() == null) throw new InternalServerException("Please try again later.List of cities is null");
 
         if (transaction.getId() <= 0) throw new InternalServerException(transaction.getId() + " id is incorrect");
 
-        if (transaction.getDateCreated() == null) throw new BadRequestException("Date cant be null");
+        if (transaction.getDateCreated() == null) throw new InternalServerException("Date cant be null");
 
         findSameTransaction(transaction);
 
