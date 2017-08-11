@@ -18,15 +18,15 @@ public class Demo {
         Transaction transaction8 = new Transaction(8, "Test2", 40, "test", TransactionType.INCOME, new Date());
 
 
-        controller.saveTransaction(transaction);
+        controller.save(transaction);
 
-        controller.saveTransaction(transaction2);
-        controller.saveTransaction(transaction3);
-        controller.saveTransaction(transaction4);
-        controller.saveTransaction(transaction5);
-        controller.saveTransaction(transaction6);
-        controller.saveTransaction(transaction7);
-        controller.saveTransaction(transaction8);
+        controller.save(transaction2);
+        controller.save(transaction3);
+        controller.save(transaction4);
+        controller.save(transaction5);
+        controller.save(transaction6);
+        controller.save(transaction7);
+        controller.save(transaction8);
 
         System.out.println(Arrays.toString(controller.transactionList()));
         System.out.println("");

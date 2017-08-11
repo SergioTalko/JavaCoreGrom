@@ -2,25 +2,25 @@ package lesson20.task2;
 
 public class Utils {
 
-    private long limitMoneyForOperation;
-    private long limitMoneyPerDay;
+    private long limitSimpleTransactionAmount;
+    private long limitTransactionsPerDayAmount;
     private long limitTransactionsPerDayCount;
 
     private String[] cities;
 
     public Utils() {
-        this.limitMoneyForOperation = 100;
-        this.limitMoneyPerDay = 1000;
+        this.limitSimpleTransactionAmount = 100;
+        this.limitTransactionsPerDayAmount = 1000;
         this.limitTransactionsPerDayCount = 10;
         this.cities = new String[]{"Test", "Test2", "Lviv"};
     }
 
-    public long getLimitMoneyForOperation() {
-        return limitMoneyForOperation;
+    public long getLimitSimpleTransactionAmount() {
+        return limitSimpleTransactionAmount;
     }
 
-    public long getLimitMoneyPerDay() {
-        return limitMoneyPerDay;
+    public long getLimitTransactionsPerDayAmount() {
+        return limitTransactionsPerDayAmount;
     }
 
     public long getLimitOperationsPerDay() {
@@ -31,12 +31,12 @@ public class Utils {
         return cities;
     }
 
-    public void setLimitMoneyForOperation(long limitMoneyForOperation) {
-        this.limitMoneyForOperation = limitMoneyForOperation;
+    public void setLimitSimpleTransactionAmount(long limitSimpleTransactionAmount) {
+        this.limitSimpleTransactionAmount = limitSimpleTransactionAmount;
     }
 
-    public void setLimitMoneyPerDay(long limitMoneyPerDay) {
-        this.limitMoneyPerDay = limitMoneyPerDay;
+    public void setLimitTransactionsPerDayAmount(long limitTransactionsPerDayAmount) {
+        this.limitTransactionsPerDayAmount = limitTransactionsPerDayAmount;
     }
 
     public void setLimitOperationsPerDay(long limitOperationsPerDay) {
@@ -47,3 +47,5 @@ public class Utils {
         this.cities = cities;
     }
 }
+
+

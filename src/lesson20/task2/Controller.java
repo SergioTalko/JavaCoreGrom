@@ -9,17 +9,17 @@ public class Controller {
     private Utils utils = new Utils();
 
 
-    public Transaction saveTransaction(Transaction transaction) throws Exception {
+    public Transaction save(Transaction transaction) throws Exception {
         Transaction[] transactions = transactionDAO.getTransactionsPerDay(transaction.getDateCreated());
 
 
-        if (transaction.getAmount() > utils.getLimitMoneyForOperation())
+        if (transaction.getAmount() > utils.getLimitSimpleTransactionAmount())
             throw new LimitExceeded("Please check your amount limit for operation");
 
         if (transactions.length >= utils.getLimitOperationsPerDay())
             throw new LimitExceeded("Too much operations per day");
 
-        if ((amountTransactionsPerDay(transactions) + transaction.getAmount()) > utils.getLimitMoneyPerDay())
+        if ((amountTransactionsPerDay(transactions) + transaction.getAmount()) > utils.getLimitTransactionsPerDayAmount())
             throw new LimitExceeded("You have used the amount daily limit");
 
         if (!checkValidCity(transaction)) throw new LimitExceeded(transaction.getCity() + " city is not allowed here");
