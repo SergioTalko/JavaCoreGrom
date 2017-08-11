@@ -4,13 +4,14 @@ public class Utils {
 
     private long limitMoneyForOperation;
     private long limitMoneyPerDay;
-    private long limitOperationsPerDay;
+    private long limitTransactionsPerDayCount;
+    
     private String[] validCity;
 
     public Utils() {
         this.limitMoneyForOperation = 100;
         this.limitMoneyPerDay = 1000;
-        this.limitOperationsPerDay = 10;
+        this.limitTransactionsPerDayCount = 10;
         this.validCity = new String[]{"Test", "Test2", "Lviv"};
     }
 
@@ -23,7 +24,7 @@ public class Utils {
     }
 
     public long getLimitOperationsPerDay() {
-        return limitOperationsPerDay;
+        return limitTransactionsPerDayCount;
     }
 
     public String[] getValidCity() {
@@ -39,7 +40,7 @@ public class Utils {
     }
 
     public void setLimitOperationsPerDay(long limitOperationsPerDay) {
-        this.limitOperationsPerDay = limitOperationsPerDay;
+        this.limitTransactionsPerDayCount = limitOperationsPerDay;
     }
 
     public void setValidCity(String[] validCity) {
