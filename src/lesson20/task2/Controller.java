@@ -64,7 +64,7 @@ public class Controller {
 
     private boolean checkValidCity(Transaction transaction) {
 
-        for (String city : utils.getValidCity()) {
+        for (String city : utils.getCities()) {
             if (transaction.getCity().equals(city)) {
                 return true;
             }
