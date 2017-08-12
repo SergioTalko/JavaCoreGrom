@@ -183,7 +183,7 @@ public class TransactionDAO {
         if (transaction.getAmount() > utils.getLimitSimpleTransactionAmount())
             throw new LimitExceeded("Cant save transaction with id " + transaction.getId() + " Please check your amount limit for operation");
 
-        if (transactionsPerDay.length >= utils.getLimitOperationsPerDay())
+        if (transactionsPerDay.length + 1 > utils.getLimitOperationsPerDay())
             throw new LimitExceeded("Cant save transaction with id " + transaction.getId() + "Too much operations per day");
 
         if ((amountTransactionsPerDay(transactionsPerDay) + transaction.getAmount()) > utils.getLimitTransactionsPerDayAmount())
