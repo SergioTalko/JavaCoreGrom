@@ -152,23 +152,23 @@ public class TransactionDAO {
 
         if (transactions == null) throw new InternalServerException("Please try again later.Storage is null");
 
-        if (transaction.getAmount() < 0) throw new BadRequestException(transaction.getAmount() + " value is incorrect");
+        if (transaction.getAmount() < 0) throw new BadRequestException("Transaction with id " + transaction.getId() + " have incorrect value");
 
         if (transaction.getCity() == null)
             throw new BadRequestException("Field City cant be null");
 
         if (transaction.getId() <= 0) throw new InternalServerException(transaction.getId() + " id is incorrect");
 
-        if (transaction.getDescription() == null) throw new BadRequestException("Description cant be null");
+        if (transaction.getDescription() == null) throw new BadRequestException("Transaction with id " + transaction.getId() + " have null in field description");
 
-        if (transaction.getType() == null) throw new BadRequestException("Type cant be null");
+        if (transaction.getType() == null) throw new BadRequestException("Transaction with id " + transaction.getId() + " have null in field type");
 
-        if (transaction.getDateCreated() == null) throw new InternalServerException("Date cant be null");
+        if (transaction.getDateCreated() == null) throw new InternalServerException("Transaction with id " + transaction.getId() + " have null in field date");
 
         findSameTransaction(transaction);
 
         if (checkSpaceInStorage() == 0)
-            throw new InternalServerException("In storage not enough space to save transaction");
+            throw new InternalServerException("For transaction with id " + transaction.getId() + " not enough space in storage");
 
 
     }
@@ -178,16 +178,16 @@ public class TransactionDAO {
         Transaction[] transactions = getTransactionsPerDay(transaction.getDateCreated());
 
         if (transaction.getAmount() > utils.getLimitSimpleTransactionAmount())
-            throw new LimitExceeded("Please check your amount limit for operation");
+            throw new LimitExceeded("Cant save transaction with id " + transaction.getId() + " Please check your amount limit for operation");
 
         if (transactions.length >= utils.getLimitOperationsPerDay())
-            throw new LimitExceeded("Too much operations per day");
+            throw new LimitExceeded("Cant save transaction with id " + transaction.getId() + "Too much operations per day");
 
         if ((amountTransactionsPerDay(transactions) + transaction.getAmount()) > utils.getLimitTransactionsPerDayAmount())
-            throw new LimitExceeded("You have used the amount daily limit");
+            throw new LimitExceeded("Cant save transaction with id " + transaction.getId() + "You have used the amount daily limit");
 
         if (!checkValidCity(transaction))
-            throw new BadRequestException(transaction.getCity() + " city is not allowed here");
+            throw new BadRequestException("Cant save transaction with id " + transaction.getId() + transaction.getCity() + " city is not allowed here");
 
     }
 
@@ -222,7 +222,7 @@ public class TransactionDAO {
             index++;
         }
 
-        throw new InternalServerException("Please try again later");
+        throw new InternalServerException("Cant save transaction with id " + transaction.getId() + "Please try again later");
 
     }
 
