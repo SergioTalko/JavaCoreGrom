@@ -11,9 +11,8 @@ public class TransactionDAO {
 
     public Transaction save(Transaction transaction) throws Exception {
 
-
+        checkBeforeSave(transaction);
         checkAllLimits(transaction);
-        //
 
 
         return saveTransaction(transaction);
@@ -152,18 +151,22 @@ public class TransactionDAO {
 
         if (transactions == null) throw new InternalServerException("Please try again later.Storage is null");
 
-        if (transaction.getAmount() < 0) throw new BadRequestException("Transaction with id " + transaction.getId() + " have incorrect value");
+        if (transaction.getAmount() < 0)
+            throw new BadRequestException("Transaction with id " + transaction.getId() + " have incorrect value");
 
         if (transaction.getCity() == null)
             throw new BadRequestException("Field City cant be null");
 
         if (transaction.getId() <= 0) throw new InternalServerException(transaction.getId() + " id is incorrect");
 
-        if (transaction.getDescription() == null) throw new BadRequestException("Transaction with id " + transaction.getId() + " have null in field description");
+        if (transaction.getDescription() == null)
+            throw new BadRequestException("Transaction with id " + transaction.getId() + " have null in field description");
 
-        if (transaction.getType() == null) throw new BadRequestException("Transaction with id " + transaction.getId() + " have null in field type");
+        if (transaction.getType() == null)
+            throw new BadRequestException("Transaction with id " + transaction.getId() + " have null in field type");
 
-        if (transaction.getDateCreated() == null) throw new InternalServerException("Transaction with id " + transaction.getId() + " have null in field date");
+        if (transaction.getDateCreated() == null)
+            throw new InternalServerException("Transaction with id " + transaction.getId() + " have null in field date");
 
         findSameTransaction(transaction);
 
@@ -174,16 +177,16 @@ public class TransactionDAO {
     }
 
     private void checkAllLimits(Transaction transaction) throws Exception {
-        checkBeforeSave(transaction);
-        Transaction[] transactions = getTransactionsPerDay(transaction.getDateCreated());
+
+        Transaction[] transactionsPerDay = getTransactionsPerDay(transaction.getDateCreated());
 
         if (transaction.getAmount() > utils.getLimitSimpleTransactionAmount())
             throw new LimitExceeded("Cant save transaction with id " + transaction.getId() + " Please check your amount limit for operation");
 
-        if (transactions.length >= utils.getLimitOperationsPerDay())
+        if (transactionsPerDay.length >= utils.getLimitOperationsPerDay())
             throw new LimitExceeded("Cant save transaction with id " + transaction.getId() + "Too much operations per day");
 
-        if ((amountTransactionsPerDay(transactions) + transaction.getAmount()) > utils.getLimitTransactionsPerDayAmount())
+        if ((amountTransactionsPerDay(transactionsPerDay) + transaction.getAmount()) > utils.getLimitTransactionsPerDayAmount())
             throw new LimitExceeded("Cant save transaction with id " + transaction.getId() + "You have used the amount daily limit");
 
         if (!checkValidCity(transaction))

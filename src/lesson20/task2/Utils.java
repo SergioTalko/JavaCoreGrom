@@ -8,9 +8,6 @@ public class Utils {
 
     private String[] cities = new String[]{"Test", "Test2", "Lviv"};
 
-    public Utils() {
-
-    }
 
     public long getLimitSimpleTransactionAmount() {
         return limitSimpleTransactionAmount;
