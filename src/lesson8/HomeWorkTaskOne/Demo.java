@@ -14,7 +14,7 @@ public class Demo {
         //2.от -2147483648 до 2147483647
         System.out.println(adder.add(-2147483648, 2147483647));
 
-        //task "check"
+        //task "validate"
         //1.перший і останній < 100
         System.out.println(adder.check(array));
         //2. > 100
