@@ -2,10 +2,10 @@ package lesson22.repository;
 
 public class UserRepository {
 
-    private User[] users = new User[10];
+    private static User[] users = new User[10];
 
 
-    public User save(User user) {
+    public static User save(User user) {
         if (user == null) {
             return null;
         }
@@ -30,12 +30,12 @@ public class UserRepository {
         return null;
     }
 
-    public User update(User user) {
+    public static User update(User user) {
         if (user == null) {
             return null;
         }
 
-        User findUserById = this.findById(user.getId());
+        User findUserById = findById(user.getId());
 
         if (findUserById == null) {
             return null;
@@ -48,7 +48,7 @@ public class UserRepository {
         return null;
     }
 
-    public void delete(long id) {
+    public static void delete(long id) {
 
         int index = 0;
         User user = findById(id);
@@ -62,15 +62,15 @@ public class UserRepository {
         }
     }
 
-    public User getFindUserById(long id) {
+    public static User getFindUserById(long id) {
         return findById(id);
     }
 
-    public User[] getUsers() {
+    public static User[] getUsers() {
         return users;
     }
 
-    private User findById(long id) {
+    private static User findById(long id) {
         for (User user : users) {
             if (user != null && user.getId() == id) {
                 return user;
