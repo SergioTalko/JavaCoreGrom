@@ -20,5 +20,8 @@ public class Demo {
         toolDAO.save(tool1);
 
         System.out.println(Arrays.deepToString(toolDAO.getAll()));
+
+     //   GeneralDAO<Order> orderDAO = new GeneralDAO<>();
+
     }
 }
