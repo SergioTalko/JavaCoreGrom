@@ -13,6 +13,17 @@ public class ArrayListTest {
 
         if (orders == null) throw new Exception("Array is null");
 
+        int count = 0;
+        for (Order order : orders) {
+            if (order == null) {
+                count++;
+            }
+        }
+
+        if (count == orders.length) {
+            list.add(new Order(1, 1, "1", "1", "1"));
+        }
+
         for (Order order : orders) {
             if (order != null) {
                 list.add(order);      //add
@@ -33,7 +44,7 @@ public class ArrayListTest {
         }
 
         if (list.size() < 1) {
-            list.add(null);
+            list.add(new Order(1, 1, "1", "1", "1"));
         }
         ArrayList<Order> listClone = new ArrayList<>(list.subList(0, list.size()));
 
@@ -51,11 +62,9 @@ public class ArrayListTest {
         }
 
 
-        for (Order order : orders) {
-            if (order != null) {
-                list.add(order);
-            }
-        }
+        list.clear();
+        list.add(new Order(1, 1, "1", "1", "1"));
+
 
         while (list.size() < 5) {
             list.add(list.get(0));
