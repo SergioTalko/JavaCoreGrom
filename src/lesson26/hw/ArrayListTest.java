@@ -1,7 +1,7 @@
 package lesson26.hw;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ArrayListTest {
 
@@ -79,33 +79,11 @@ public class ArrayListTest {
         return list;
     }
 
-    //some validation
-    /*private static boolean validationOrder(Order order) {
-              return order.getId() < 0 || order.getCurrency() == null || order.getPrice() <= 0;
-    }*/
 
 }
 
 
-   /* add(E e) +
 
-    add(int index, E element) +
-
-    remove(int index)+
-
-    remove(Object o)+
-
-    addAll(Collection c)+
-
-    subList(int fromIndex, int toIndex)+
-
-    set(int index, E element)+
-
-    boolean contains(Object o)+
-
-    Object[] toArray()
-
-    clear()*/
 
 
 
