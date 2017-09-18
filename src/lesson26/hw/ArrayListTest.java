@@ -15,7 +15,7 @@ public class ArrayListTest {
 
         for (Order order : orders) {
             if (order != null) {
-                list.add(order);       //add
+                list.add(order);      //add
             }
         }
 
