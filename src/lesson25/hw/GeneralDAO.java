@@ -11,6 +11,8 @@ public class GeneralDAO<T> {
 
         if (array == null) throw new Exception("Storage " + array + " is null");
 
+        if (t instanceof String && (((String) t).trim()).length() == 0 ) throw new Exception("You save empty string");
+
         if (!checkFreeSpace())
             throw new Exception("Storage don't have enough free space for save this " + t + " element");
 
