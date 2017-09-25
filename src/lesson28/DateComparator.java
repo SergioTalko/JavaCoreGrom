@@ -1,7 +1,5 @@
 package lesson28;
 
-import lesson21.Company;
-
 import java.util.Comparator;
 
 public class DateComparator implements Comparator<Capability> {
