@@ -1,6 +1,5 @@
 package lesson28;
 
-import java.util.Calendar;
 import java.util.Comparator;
 
 public class DateComparator implements Comparator<Capability>
