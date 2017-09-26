@@ -6,10 +6,10 @@ import java.util.Date;
 
 public class DemoComparator {
     public static void main(String[] args) {
-        Capability capability1 = new Capability(1001, "test", "1", false, new Date(1000));
-        Capability capability2 = new Capability(1005, "test", "1", false, new Date(50));
-        Capability capability3 = new Capability(900, "test", "1", true, new Date(200));
-        Capability capability4 = new Capability(900, "test", "1", false, new Date(40));
+        Capability capability1 = new Capability(1001, "test", "1", false, new Date(400000000));
+        Capability capability2 = new Capability(1005, "test", "1", false, new Date(300000000));
+        Capability capability3 = new Capability(900, "test", "1", true, new Date(100000000));
+        Capability capability4 = new Capability(900, "test", "1", false, new Date(2000000000));
 
 
         ArrayList<Capability> capabilities = new ArrayList<>();
@@ -20,7 +20,7 @@ public class DemoComparator {
 
         // capabilities.sort(new IsActiveComparator());
         // capabilities.sort(new FullComparator());
-        //capabilities.sort(new DateComparator());
+        capabilities.sort(new DateComparator());
         System.out.println(capabilities);
 
 

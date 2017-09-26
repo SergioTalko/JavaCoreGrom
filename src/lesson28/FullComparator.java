@@ -9,15 +9,11 @@ public class FullComparator implements Comparator<Capability> {
     public int compare(Capability o1, Capability o2) {
         if (!o1.getChannelName().equals(o2.getChannelName())) {
             return o1.getChannelName().compareTo(o2.getChannelName());
-        }
-        if (!o1.getFingerPrint().equals(o2.getFingerPrint())) {
+        } else if (!o1.getFingerPrint().equals(o2.getFingerPrint())) {
             return o1.getFingerPrint().compareTo(o2.getFingerPrint());
+        } else if (!o2.getDateCreated().equals(o1.getDateCreated())) {
+            return o2.getDateCreated().compareTo(o1.getDateCreated());
         }
-        if (o1.getDateCreated().getTime() < o2.getDateCreated().getTime()) {
-            return 1;
-        } else if (o1.getDateCreated().getTime() == o2.getDateCreated().getTime()) {
-            return 0;
-        } else
-            return -1;
+        return 0;
     }
 }
