@@ -41,7 +41,7 @@ public class HashSetTest {
 
 
         price = 1;
-        while (findByPrice(price) != null && orderHashSet.size() > 5) {
+        while (orderHashSet.size() > 5) {
             orderHashSet.remove(findByPrice(price));
             price++;
         }
@@ -49,14 +49,14 @@ public class HashSetTest {
         return orderHashSet;
     }
 
-    private Order findByPrice(int price) {
+    private Order findByPrice(int price) throws Exception {
 
         for (Order order1 : orderHashSet) {
             if (price == order1.getPrice()) {
                 return order1;
             }
         }
-        return null;
+        throw new Exception("We dont have this order with price " + price);
     }
 
 }
