@@ -15,7 +15,6 @@ public class HashSetTest {
             }
         }
 
-
         HashSet<Order> secondSet = new HashSet<>();
 
         secondSet.addAll(orderHashSet);
