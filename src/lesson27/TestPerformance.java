@@ -8,9 +8,9 @@ public class TestPerformance {
     public static void main(String[] args) {
         ArrayList<String> arrayList = new ArrayList<>();
 
-       // testAddMethod();
-        //testReoveMethod();
-        testGetMethod();
+        testAddMethod();
+        testReoveMethod();
+        //  testGetMethod();
 
 
         LinkedList<String> linkedList = new LinkedList<>();
@@ -20,7 +20,6 @@ public class TestPerformance {
 
     private static void testGetMethod() {
         ArrayList<String> arrayList = new ArrayList<>();
-
 
 
         for (int i = 0; i < 100000; i++) {

@@ -28,7 +28,7 @@ public class UserRepository {
         }
 
 
-        throw new Exception("Cant update user with namme " + user.getName());
+        throw new Exception("Cant update user with name " + user.getName());
     }
 
     public void delete(long id) throws Exception {
