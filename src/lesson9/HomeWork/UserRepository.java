@@ -78,4 +78,15 @@ public class UserRepository {
         }
         return null;
     }
+
+
+    /*public User getUserByName(String name) {
+        if (name == null || users == null) return null;
+        for (User user : users) {
+            if (user != null && user.getName().equals(name)) {
+                return user;
+            }
+        }
+        return null;
+    }*/
 }
