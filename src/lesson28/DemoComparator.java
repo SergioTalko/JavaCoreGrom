@@ -9,7 +9,7 @@ public class DemoComparator {
         Capability capability1 = new Capability(1001, "test", "1", false, new Date(400000000));
         Capability capability2 = new Capability(1005, "test", "1", false, new Date(300000000));
         Capability capability3 = new Capability(900, "test", "1", true, new Date(100000000));
-        Capability capability4 = new Capability(900, "test", "1", false, new Date(2000000000));
+        Capability capability4 = new Capability(900, "test", "1", false, new Date());
 
 
         ArrayList<Capability> capabilities = new ArrayList<>();
@@ -19,8 +19,8 @@ public class DemoComparator {
         capabilities.add(capability4);
 
         // capabilities.sort(new IsActiveComparator());
-        // capabilities.sort(new FullComparator());
-        capabilities.sort(new DateComparator());
+        capabilities.sort(new FullComparator());
+        //capabilities.sort(new DateComparator());
         System.out.println(capabilities);
 
 
