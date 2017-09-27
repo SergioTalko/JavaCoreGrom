@@ -1,8 +1,5 @@
 package lesson29;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
-
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 

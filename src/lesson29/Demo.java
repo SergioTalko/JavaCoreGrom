@@ -1,7 +1,5 @@
 package lesson29;
 
-import java.util.HashSet;
-
 public class Demo {
     public static void main(String[] args) throws Exception {
         Order order = new Order(1,  "1", "1", "1");
