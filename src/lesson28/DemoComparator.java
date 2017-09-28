@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class DemoComparator {
     public static void main(String[] args) throws Exception {
-        Capability capability1 = new Capability(1001, "1", "1", false, new Date(400000000));
+        Capability capability1 = new Capability(1001, "A", "1", false, new Date(400000000));
         Capability capability2 = new Capability(1005, "test", "1", false, new Date(300000000));
         Capability capability3 = new Capability(900, "pest1", "1", true, new Date(100000000));
         Capability capability4 = new Capability(900, "test", "1", false, new Date());

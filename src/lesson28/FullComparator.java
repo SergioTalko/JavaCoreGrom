@@ -16,11 +16,11 @@ public class FullComparator implements Comparator<Capability> {
         checkNull(o1);
         checkNull(o2);
 
-        if (o1.getChannelName() != null && o2.getChannelName() != null && !o1.getChannelName().equals(o2.getChannelName())) {
+        if (!o1.getChannelName().equals(o2.getChannelName())) {
             return o1.getChannelName().compareTo(o2.getChannelName());
-        } else if (o1.getFingerPrint() != null && o2.getFingerPrint() != null && !o1.getFingerPrint().equals(o2.getFingerPrint())) {
+        } else if (!o1.getFingerPrint().equals(o2.getFingerPrint())) {
             return o1.getFingerPrint().compareTo(o2.getFingerPrint());
-        } else if (o1.getDateCreated() != null && o2.getDateCreated() != null && !o2.getDateCreated().equals(o1.getDateCreated())) {
+        } else if (!o2.getDateCreated().equals(o1.getDateCreated())) {
             return o2.getDateCreated().compareTo(o1.getDateCreated());
         }
         return 0;

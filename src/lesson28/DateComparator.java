@@ -15,7 +15,7 @@ public class DateComparator implements Comparator<Capability>
         FullComparator.checkNull(o1);
         FullComparator.checkNull(o2);
 
-        if (o1.getDateCreated() != null && o2.getDateCreated() != null && !o2.getDateCreated().equals(o1.getDateCreated())) {
+        if (!o2.getDateCreated().equals(o1.getDateCreated())) {
             return o2.getDateCreated().compareTo(o1.getDateCreated());
         }
         return 0;
