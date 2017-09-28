@@ -12,6 +12,9 @@ public class DateComparator implements Comparator<Capability>
 
         if (o1 == null || o2 == null) throw new NullPointerException("Please check input info.We have null there");
 
+        FullComparator.checkNull(o1);
+        FullComparator.checkNull(o2);
+
         if (o1.getDateCreated() != null && o2.getDateCreated() != null && !o2.getDateCreated().equals(o1.getDateCreated())) {
             return o2.getDateCreated().compareTo(o1.getDateCreated());
         }
