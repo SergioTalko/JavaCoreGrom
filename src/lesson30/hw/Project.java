@@ -1,6 +1,5 @@
 package lesson30.hw;
 
-import java.util.ArrayList;
 
 public class Project {
     String name;
