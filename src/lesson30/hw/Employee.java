@@ -1,8 +1,5 @@
 package lesson30.hw;
 
-import lesson30.hw.DAO.DepartmentDAO;
-import lesson30.hw.DAO.ProjectDAO;
-
 import java.util.ArrayList;
 import java.util.Date;
 

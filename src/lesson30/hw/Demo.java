@@ -1,10 +1,5 @@
 package lesson30.hw;
 
-import lesson30.hw.DAO.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Demo {
     public static void main(String[] args) throws Exception {
         Controller controller = new Controller();

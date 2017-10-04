@@ -1,14 +1,10 @@
-package lesson30.hw.DAO;
-
-import lesson30.hw.Customer;
-import lesson30.hw.Project;
+package lesson30.hw;
 
 import java.util.ArrayList;
 
 public class ProjectDAO {
 
     private static ArrayList<Project> projects = new ArrayList<>();
-    private CustomerDAO customerDAO;
 
 
     public ProjectDAO() throws Exception {
@@ -22,7 +18,7 @@ public class ProjectDAO {
     }
 
     private Customer findCustomer(String customerName) throws Exception {
-        for (Customer customer1 : customerDAO.getCustomers()) {
+        for (Customer customer1 : CustomerDAO.getCustomers()) {
             if (customer1.getName().equals(customerName)) {
                 return customer1;
             }

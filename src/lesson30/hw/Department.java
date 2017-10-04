@@ -1,9 +1,6 @@
 package lesson30.hw;
 
-import lesson30.hw.DAO.EmployeeDAO;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class Department {
     private DepartmentType type;

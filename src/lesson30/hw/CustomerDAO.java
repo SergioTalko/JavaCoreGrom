@@ -1,4 +1,4 @@
-package lesson30.hw.DAO;
+package lesson30.hw;
 
 import lesson30.hw.Customer;
 

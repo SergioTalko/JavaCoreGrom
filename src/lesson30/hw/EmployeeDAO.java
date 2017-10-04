@@ -1,6 +1,4 @@
-package lesson30.hw.DAO;
-
-import lesson30.hw.*;
+package lesson30.hw;
 
 import java.util.ArrayList;
 import java.util.Date;

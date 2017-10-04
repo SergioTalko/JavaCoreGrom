@@ -1,8 +1,4 @@
-package lesson30.hw.DAO;
-
-import lesson30.hw.Department;
-import lesson30.hw.DepartmentType;
-import lesson30.hw.Employee;
+package lesson30.hw;
 
 import java.util.ArrayList;
 

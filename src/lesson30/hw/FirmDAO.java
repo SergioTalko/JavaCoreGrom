@@ -1,8 +1,5 @@
-package lesson30.hw.DAO;
+package lesson30.hw;
 
-import lesson30.hw.Firm;
-
-import java.util.ArrayList;
 import java.util.Date;
 
 public class FirmDAO {
