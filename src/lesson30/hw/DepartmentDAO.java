@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class DepartmentDAO<T> {
 
     private static ArrayList<Department> departments = new ArrayList<>();
-    private EmployeeDAO employeeDAO;
 
 
     public DepartmentDAO()throws Exception {

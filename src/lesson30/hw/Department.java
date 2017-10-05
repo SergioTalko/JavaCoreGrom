@@ -20,15 +20,6 @@ public class Department {
                 '}';
     }
 
-    /*public void find() {
-
-        for (Employee em : EmployeeDAO.getEmployees()) {
-            if (em.getDepartment().equals(type)) {
-                employees.add(em);
-            }
-        }
-    }*/
-
 
     public DepartmentType getType() {
         return type;
