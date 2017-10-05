@@ -15,12 +15,15 @@ public class EmployeeDAO {
         employees.add(new Employee("Stepan", "Stepanov", new Date(), Position.DEVELOPER, DepartmentType.PROGRAMMERS));
         employees.add(new Employee("Valerii", "Ivanov", new Date(), Position.DEVELOPER, DepartmentType.PROGRAMMERS));
         employees.add(new Employee("Mat", "Smith", new Date(), Position.OTHER, DepartmentType.FINANCES));
+        employees.add(new Employee("Petro", "Test", new Date(), Position.TEAM_LEAD, DepartmentType.PROGRAMMERS));
         addProjectToUser("project1", "Vova");
         addProjectToUser("project2", "Ivan");
         addProjectToUser("project2", "Stepan");
-        addProjectToUser("project2", "Vova");
+      //  addProjectToUser("project2", "Petro");
+        addProjectToUser("project1", "Petro");
+      //  addProjectToUser("project2", "Vova");
         addProjectToUser("project1", "Mat");
-        addProjectToUser("project1", "Valerii");
+        findEmployee("Valerii").setProjects(new ArrayList<>());
 
     }
 
@@ -32,8 +35,9 @@ public class EmployeeDAO {
 
     private Project findProject(String projectName) throws Exception {
 
+        if (projectName == null) throw new Exception("Input data is null");
         for (Project project : ProjectDAO.getProjects()) {
-            if (project.getName().equals(projectName)) {
+            if (project != null && project.getName().equals(projectName)) {
                 return project;
             }
         }
@@ -42,6 +46,7 @@ public class EmployeeDAO {
     }
 
     private Employee findEmployee(String name) throws Exception {
+        if (name == null) throw new Exception("Input data is null");
         for (Employee employee : EmployeeDAO.getEmployees()) {
             if (employee.getFirstName().equals(name)) {
                 return employee;
