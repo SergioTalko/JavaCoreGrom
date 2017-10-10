@@ -2,14 +2,15 @@ package lesson30.hw;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 public class Firm {
     private Date dateFounded;
-    private ArrayList<Department> departments;
+    private Set<Department> departments;
     private ArrayList<Customer> customers;
 
 
-    public Firm(Date dateFounded, ArrayList<Department> departments, ArrayList<Customer> customers) {
+    public Firm(Date dateFounded, Set<Department> departments, ArrayList<Customer> customers) {
         this.dateFounded = dateFounded;
         this.departments = departments;
         this.customers = customers;
@@ -24,7 +25,7 @@ public class Firm {
                 '}';
     }
 
-    public ArrayList<Department> getDepartments() {
+    public Set<Department> getDepartments() {
         return departments;
     }
 
@@ -32,9 +33,7 @@ public class Firm {
         return customers;
     }
 
-    public void setDepartments(ArrayList<Department> departments) {
-        this.departments = departments;
-    }
+
 
     public void setCustomers(ArrayList<Customer> customers) {
         this.customers = customers;

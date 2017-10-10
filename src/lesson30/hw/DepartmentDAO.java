@@ -1,10 +1,12 @@
 package lesson30.hw;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DepartmentDAO<T> {
 
-    private static ArrayList<Department> departments = new ArrayList<>();
+    private static Set<Department> departments = new HashSet<>();
 
 
     public DepartmentDAO()throws Exception {
@@ -14,12 +16,12 @@ public class DepartmentDAO<T> {
     }
 
 
-    public static ArrayList<Department> getDepartments() {
+    public static Set<Department> getDepartments() {
         return departments;
     }
 
-    public void setDepartments(ArrayList<Department> departments) {
-        this.departments = departments;
+    public static void setDepartments(Set<Department> departments) {
+        DepartmentDAO.departments = departments;
     }
 
     private ArrayList<Employee> listForDepartment(DepartmentType type) throws Exception {

@@ -69,7 +69,7 @@ public class Controller {
 
         for (Project project : lead.getProjects()) {
             for (Employee employee : EmployeeDAO.getEmployees()) {
-                if (employee.getProjects().contains(project)) {
+                if (project != null && employee != null && employee.getProjects().contains(project)) {
                     result.add(employee);
                 }
 
@@ -121,7 +121,7 @@ public class Controller {
         ArrayList<Project> result = new ArrayList<>();
 
         for (Project project : ProjectDAO.getProjects()) {
-            if (project.getCustomer().equals(customer)) {
+            if (project != null && project.getCustomer().equals(customer)) {
                 result.add(project);
             }
         }
@@ -137,7 +137,7 @@ public class Controller {
 
         for (Employee employee : EmployeeDAO.getEmployees()) {
             for (Project project : employee.getProjects())
-                if (project.getCustomer().equals(customer)) {
+                if (employee != null && project != null && project.getCustomer().equals(customer)) {
                     result.add(employee);
                 }
         }
