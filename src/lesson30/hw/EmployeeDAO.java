@@ -86,6 +86,57 @@ public class EmployeeDAO {
         return result;
     }
 
+    public static ArrayList<Employee> teamLeadsByEmployee(Employee employee) throws Exception {
+
+        if (employee == null) throw new Exception("Input data is null");
+        ArrayList<Employee> teamLeads = new ArrayList<>();
+
+
+        for (Project project : employee.getProjects()) {
+            for (Employee employee1 : employees) {
+                if (employee1 != null && employee1.getProjects().contains(project) && employee1.getPosition() == Position.TEAM_LEAD) {
+                    teamLeads.add(employee1);
+                }
+            }
+        }
+
+        return teamLeads;
+    }
+
+    public static ArrayList<Employee> employeesByProjectEmployee(Employee employee) {
+
+        ArrayList<Employee> result = new ArrayList<>();
+
+        for (Project project : employee.getProjects()) {
+            for (Employee employee1 : employees) {
+                if (project != null && employee1 != null && employee1.getProjects().contains(project)) {
+                    result.add(employee1);
+                }
+            }
+        }
+        result.remove(employee);
+
+        return result;
+    }
+
+    public static ArrayList<Employee> employeesByCustomerProjects(Customer customer) throws Exception {
+
+
+        if (customer == null) throw new Exception("Input data is null");
+
+        ArrayList<Employee> result = new ArrayList<>();
+
+        for (Employee employee : employees) {
+            for (Project project : employee.getProjects())
+                if (employee != null && project != null && project.getCustomer().equals(customer)) {
+                    result.add(employee);
+                }
+        }
+        return result;
+
+
+    }
+
 
     public static ArrayList<Employee> employeesByDepartmentWithoutProject(DepartmentType type) throws Exception {
         if (type == null) throw new Exception("Input data is null");

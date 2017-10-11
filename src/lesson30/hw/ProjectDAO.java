@@ -25,4 +25,18 @@ public class ProjectDAO {
         }
         throw new Exception("Cant find customer with name " + customerName);
     }
+
+    public static ArrayList<Project> projectsByCustomer(Customer customer) throws Exception {
+
+        if (customer == null) throw new Exception("Input data is null");
+
+        ArrayList<Project> result = new ArrayList<>();
+
+        for (Project project : projects) {
+            if (project != null && project.getCustomer().equals(customer)) {
+                result.add(project);
+            }
+        }
+        return result;
+    }
 }
