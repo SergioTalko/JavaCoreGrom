@@ -6,79 +6,30 @@ public class Controller {
 
 
     public ArrayList<Employee> employeesByProject(Project project) throws Exception {
-        if (project == null) throw new Exception("Input data is null");
-        ArrayList<Employee> result = new ArrayList<>();
-        for (Employee employee : EmployeeDAO.getEmployees()) {
-            if (employee != null && employee.getProjects().contains(project)) {
-                result.add(employee);
-            }
-
-        }
-        return result;
+        return EmployeeDAO.employeesByProject(project);
     }
 
 
     public ArrayList<Project> projectsByEMployee(Employee employee) throws Exception {
 
-        if (employee == null) throw new Exception("Input data is null");
-        for (Employee employee1 : EmployeeDAO.getEmployees()) {
-            if (employee1 != null && employee1.equals(employee)) {
-                return employee1.getProjects();
-            }
-        }
-
-        throw new Exception("Cant find in DB employee with name " + employee.getFirstName());
+        return EmployeeDAO.projectsByEMployee(employee);
     }
 
     public ArrayList<Employee> employeesByDepartmentWithoutProject(DepartmentType type) throws Exception {
-        if (type == null) throw new Exception("Input data is null");
-
-        ArrayList<Employee> result = new ArrayList<>();
-        for (Employee employee : allEmployeeInDepartment(type)) {
-            if (employee != null && employee.getProjects() == null || employee.getProjects().isEmpty()) {
-                result.add(employee);
-            }
-        }
-
-
-        return result;
+        return EmployeeDAO.employeesByDepartmentWithoutProject(type);
 
     }
 
 
-    public ArrayList<Employee> employeesWithoutProject() {
+    public ArrayList<Employee> employeesWithoutProject() throws Exception {
 
-        ArrayList<Employee> result = new ArrayList<>();
-        for (Employee employee : EmployeeDAO.getEmployees()) {
-            if (employee != null && employee.getProjects() == null || employee.getProjects().isEmpty()) {
-                result.add(employee);
-            }
-        }
-
-
-        return result;
+        return EmployeeDAO.employeesWithoutProject();
 
     }
 
     public ArrayList<Employee> employeesByTeamLead(Employee lead) throws Exception {
 
-        if (lead == null) throw new Exception("Input data is null");
-
-
-        ArrayList<Employee> result = new ArrayList<>();
-
-        for (Project project : lead.getProjects()) {
-            for (Employee employee : EmployeeDAO.getEmployees()) {
-                if (project != null && employee != null && employee.getProjects().contains(project)) {
-                    result.add(employee);
-                }
-
-            }
-        }
-
-        result.remove(lead);
-
-        return result;
+       return EmployeeDAO.employeesByTeamLead(lead);
     }
 
     public ArrayList<Employee> teamLeadsByEmployee(Employee employee) throws Exception {
@@ -144,19 +95,6 @@ public class Controller {
         return result;
 
 
-    }
-
-
-    private ArrayList<Employee> allEmployeeInDepartment(DepartmentType type) throws Exception {
-
-        if (type == null) throw new Exception("Input data is null");
-        for (Department department : DepartmentDAO.getDepartments()) {
-            if (department != null && department.getType().equals(type)) {
-                return department.getEmployees();
-            }
-        }
-
-        throw new Exception("Cant find this department in DB");
     }
 
 
