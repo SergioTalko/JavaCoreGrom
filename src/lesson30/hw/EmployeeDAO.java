@@ -94,7 +94,7 @@ public class EmployeeDAO {
 
         for (Project project : employee.getProjects()) {
             for (Employee employee1 : employees) {
-                if (employee1 != null && employee1.getProjects().contains(project) && employee1.getPosition() == Position.TEAM_LEAD) {
+                if (project != null && employee1 != null && employee1.getProjects().contains(project) && employee1.getPosition() == Position.TEAM_LEAD) {
                     teamLeads.add(employee1);
                 }
             }
