@@ -1,6 +1,5 @@
 package lesson31.hw;
 
-import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -12,22 +11,17 @@ public class Solution {
         if (text == null || text.isEmpty()) throw new Exception("Input string is empty or null");
 
         char[] chars = text.toCharArray();
-        Arrays.sort(chars);
 
         Map<Character, Integer> result = new Hashtable<>();
 
+
         int index = 1;
-        for (Character character : chars) {
-            if (Character.isLetter(character)) {
-                if (!result.containsKey(character)) {
-                    index = 1;
-                }
-                result.put(character, index++);
+        for (int i = 0; i < chars.length; i++) {
+            if (Character.isLetter(chars[i])) {
+                result.merge(chars[i], 1, (a, b) -> a + b);
 
             }
-
         }
-
         if (result.isEmpty()) System.out.println("Input text doesnt have letter");
 
         return result;
@@ -42,28 +36,21 @@ public class Solution {
 
 
         String[] words = text.toLowerCase().split(" ");
-        Arrays.sort(words);
 
         Map<String, Integer> result = new Hashtable<>();
 
 
-        int index = 1;
-        for (String word : words) {
-            if (word.length() > 2 && checkLetter(word)) {
-                if (!result.containsKey(word)) {
-                    index = 1;
-                }
-                result.put(word, index++);
-
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length() > 2 && checkLetter(words[i])) {
+                result.merge(words[i], 1, (a, b) -> a + b);
             }
-
         }
 
         if (result.isEmpty()) System.out.println("Input text doesn't have word with length more than 2");
 
         return result;
-
     }
+
 
     private static boolean checkLetter(String word) {
 
@@ -75,6 +62,5 @@ public class Solution {
         }
         return true;
     }
-
 
 }
