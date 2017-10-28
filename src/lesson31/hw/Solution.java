@@ -1,7 +1,6 @@
 package lesson31.hw;
 
-import java.util.Hashtable;
-import java.util.Map;
+import java.util.*;
 
 public class Solution {
 
@@ -12,16 +11,20 @@ public class Solution {
 
         char[] chars = text.toCharArray();
 
+
         Map<Character, Integer> result = new Hashtable<>();
 
 
-        int index = 1;
-        for (int i = 0; i < chars.length; i++) {
-            if (Character.isLetter(chars[i])) {
-                result.merge(chars[i], 1, (a, b) -> a + b);
-
+        for (Character character : chars) {
+            if (Character.isLetter(character)) {
+                if (result.containsKey(character)) {
+                    result.put(character, result.get(character) + 1);
+                } else
+                    result.put(character, 1);
             }
         }
+
+
         if (result.isEmpty()) System.out.println("Input text doesnt have letter");
 
         return result;
@@ -40,9 +43,12 @@ public class Solution {
         Map<String, Integer> result = new Hashtable<>();
 
 
-        for (int i = 0; i < words.length; i++) {
-            if (words[i].length() > 2 && checkLetter(words[i])) {
-                result.merge(words[i], 1, (a, b) -> a + b);
+        for (String word : words) {
+            if (word.length() > 2 && checkLetter(word)) {
+                if (result.containsKey(word)) {
+                    result.put(word, result.get(word) + 1);
+                } else
+                    result.put(word, 1);
             }
         }
 
@@ -64,3 +70,9 @@ public class Solution {
     }
 
 }
+ /* for (int i = 0; i < chars.length; i++) {
+            if (Character.isLetter(chars[i])) {
+                result.merge(chars[i], 1, (a, b) -> a + b);
+
+            }
+        }*/
