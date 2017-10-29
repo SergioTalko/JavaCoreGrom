@@ -46,10 +46,9 @@ public class Solution<T> {
 
         for (String word : words) {
             if (word.length() > 2 && checkLetter(word)) {
-                if (result.containsKey(word)) {
+                if (!result.containsKey(word)) {
                     result.put(word, new Solution<String>().countRepeat(words, word));
-                } else
-                    result.put(word, 1);
+                }
             }
         }
 
