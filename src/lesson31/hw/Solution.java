@@ -20,6 +20,7 @@ public class Solution<T> {
             if (Character.isLetter(character)) {
                 if (!result.containsKey(character)) {
                     result.put(character, new Solution<Character>().countRepeat(chars, character));
+                    //чи може краще було написати result.get(character) + 1 ?
                 }
             }
         }
