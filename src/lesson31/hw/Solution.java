@@ -10,6 +10,7 @@ public class Solution<T> {
         if (text == null || text.isEmpty()) throw new Exception("Input string is empty or null");
 
 
+        //char[] to Character[]
         Character[] chars = text.chars().mapToObj(c -> (char) c).toArray(Character[]::new);
 
         Map<Character, Integer> result = new Hashtable<>();
