@@ -2,6 +2,7 @@ package lesson27.hw;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UserRepository {
 
@@ -9,7 +10,8 @@ public class UserRepository {
 
 
     public User save(User user) throws Exception {
-        if (user == null) throw new Exception("User is null");
+
+        if (user == null || users == null) throw new Exception("User or Array is null");
 
         if (!users.contains(user)) {
             users.add(user);
@@ -19,11 +21,11 @@ public class UserRepository {
     }
 
     public User update(User user) throws Exception {
-        if (user == null) throw new Exception("User is null");
+        if (user == null || users == null) throw new Exception("User or Array is null");
 
 
         if (users.contains(findById(user.getId()))) {
-            users.set(users.indexOf(findById(user.getId())), user);
+            Collections.replaceAll(users,findById(user.getId()),user);
             return user;
         }
 
@@ -38,7 +40,7 @@ public class UserRepository {
 
 
     private User findById(long id) throws Exception {
-
+        if (users == null) throw new Exception("Array is null");
         if (id <= 0) throw new Exception(id + " is incorrect");
         if (users.isEmpty()) throw new Exception("List is empty");
 
@@ -52,6 +54,16 @@ public class UserRepository {
 
         throw new Exception(id + " not found");
     }
+
+    //Дженерик
+   /* public static <T> T replaceAll(List<T> list, T oldVal, T newVal) {
+        for (T t : list) {
+            if (oldVal.equals(newVal)) {
+                oldVal = newVal;
+            }
+        }
+        return newVal;
+    }*/
 
     public ArrayList<User> getUsers() {
         return users;
