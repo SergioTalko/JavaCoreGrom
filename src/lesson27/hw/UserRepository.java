@@ -3,6 +3,9 @@ package lesson27.hw;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
 public class UserRepository {
 
@@ -24,13 +27,18 @@ public class UserRepository {
         if (user == null || users == null) throw new Exception("User or Array is null");
 
 
-        if (users.contains(findById(user.getId()))) {
-            Collections.replaceAll(users,findById(user.getId()),user);
-            return user;
-        }
+ /*       UnaryOperator<User> operator = new UnaryOperator<User>() {
+            @Override
+            public User apply(User userBeforeSave) {
+                return (userBeforeSave != null && userBeforeSave.getId() == user.getId() ? user : userBeforeSave);
+            }
+        };*/
+
+            users.replaceAll(userBeforeSave -> userBeforeSave != null && userBeforeSave.getId() == user.getId() ? user : userBeforeSave);
 
 
-        throw new Exception("Cant update user with name " + user.getName());
+        return user;
+
     }
 
     public void delete(long id) throws Exception {
@@ -55,15 +63,6 @@ public class UserRepository {
         throw new Exception(id + " not found");
     }
 
-    //Дженерик
-   /* public static <T> T replaceAll(List<T> list, T oldVal, T newVal) {
-        for (T t : list) {
-            if (oldVal.equals(newVal)) {
-                oldVal = newVal;
-            }
-        }
-        return newVal;
-    }*/
 
     public ArrayList<User> getUsers() {
         return users;
