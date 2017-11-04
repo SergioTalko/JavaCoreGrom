@@ -13,23 +13,23 @@ public class Solution {
 
         int count = 3;
         String inputString;
-        boolean checkValid = false;
+        boolean inputCheckPoint = false;
         do {
-            count--;
+
             System.out.println("Please enter 10 digits: ");
             inputString = bufferedReader.readLine();
-
+            count--;
             if (!validChecker(inputString)) {
                 System.out.println("You write " + inputString + "." + "Your numbers are wrong. You have " + count + " attempts to try again");
             } else {
-                System.out.println("Sum of your digits is " + countDigit(inputString) + "!");
-                checkValid = true;
+                System.out.println("Sum of your digits is " + sumOfDigit(inputString) + "!");
+                inputCheckPoint = true;
 
             }
-        } while (!validChecker(inputString) && count > 0);
+        } while (!inputCheckPoint && count > 0);
 
 
-        if (!checkValid) System.out.println("Your numbers are wrong. Number of attempts exceeded");
+        if (!inputCheckPoint) System.out.println("Your numbers are wrong. Number of attempts exceeded");
 
 
     }
@@ -62,7 +62,7 @@ public class Solution {
         return true;
     }
 
-    private static int countDigit(String input) {
+    private static int sumOfDigit(String input) {
 
         String[] digits = input.split(" ");
         int sum = 0;
