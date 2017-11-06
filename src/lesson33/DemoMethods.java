@@ -3,7 +3,7 @@ package lesson33;
 import java.io.*;
 import java.util.Scanner;
 
-public class Solution {
+public class DemoMethods {
     public static void main(String[] args) throws IOException {
         readwriteScanner();
 
@@ -38,6 +38,16 @@ public class Solution {
 
     }
 
+    public static void readwriteBufferReader() throws IOException {
 
+        FileReader in = new FileReader("C:/read.txt");
+        BufferedReader br = new BufferedReader(in);
+        String line = br.readLine();
+        while (line != null) {
+            System.out.println(line);
+            line = br.readLine();
+        }
+        in.close();
+    }
 }
 
