@@ -10,6 +10,10 @@ public class SolutionWriter {
 
     public static void writeToFileFromConsole(String path) {
 
+       if (!checkPath(path)){
+           System.err.println("File with path " + path + " not found");
+           return;
+        }
 
         ArrayList<String> arrayOfInputsStrings = inputDataArray();
 
@@ -17,7 +21,6 @@ public class SolutionWriter {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            //TODO USe other constructor
             fileWriter = new FileWriter(path, true);
             bufferedWriter = new BufferedWriter(fileWriter);
 
@@ -67,6 +70,18 @@ public class SolutionWriter {
             IOUtils.closeQuietly(bufferedReader);
         }
         return arrayOfInputsStrings;
+    }
+
+    private static boolean checkPath(String path) {
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader(path);
+            return true;
+        } catch (FileNotFoundException e) {
+            return false;
+        } finally {
+            IOUtils.closeQuietly(fileReader);
+        }
     }
 
 }

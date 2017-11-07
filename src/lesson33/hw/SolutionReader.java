@@ -4,7 +4,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 
-public class Solution {
+public class SolutionReader {
 
 
     public static void readFileByConsolePath() {
@@ -30,10 +30,10 @@ public class Solution {
         } catch (IOException e) {
             System.err.println("Can't read file by path " + path);
         } finally {
-            IOUtils.closeQuietly(bufferedReader);
-            IOUtils.closeQuietly(fileReader);
-        }
 
+            IOUtils.closeQuietly(fileReader);
+            IOUtils.closeQuietly(bufferedReader);
+        }
 
     }
 
