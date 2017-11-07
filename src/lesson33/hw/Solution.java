@@ -5,20 +5,11 @@ import org.apache.commons.io.IOUtils;
 import java.io.*;
 
 public class Solution {
-    public static void main(String[] args) {
-        readFileByConsolePath();
-    }
+
 
     public static void readFileByConsolePath() {
 
-        String path = null;
-        try {
-            System.out.println("Please, enter file path to enter:");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            path = bufferedReader.readLine();
-        } catch (IOException e) {
-            System.err.println("Reading from keyboard failed");
-        }
+        String path = inputPath();
 
 
         FileReader fileReader;
@@ -44,6 +35,24 @@ public class Solution {
         }
 
 
+    }
+
+    private static String inputPath() {
+        String path = null;
+        InputStreamReader inputStreamReader = null;
+        BufferedReader bufferedReader = null;
+        try {
+            System.out.println("Please, enter file path to enter:");
+            inputStreamReader = new InputStreamReader(System.in);
+            bufferedReader = new BufferedReader(inputStreamReader);
+            path = bufferedReader.readLine();
+        } catch (IOException e) {
+            System.err.println("Reading from keyboard failed");
+        } finally {
+            IOUtils.closeQuietly(inputStreamReader);
+            IOUtils.closeQuietly(bufferedReader);
+        }
+        return path;
     }
 
 }
