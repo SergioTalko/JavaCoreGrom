@@ -1,6 +1,5 @@
 package lesson33.hw;
 
-import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 
@@ -12,45 +11,31 @@ public class SolutionReader {
         String path = inputPath();
 
 
-        FileReader fileReader;
-        try {
-            fileReader = new FileReader(path);
-        } catch (FileNotFoundException e) {
-            System.err.println("File with path " + path + " not found");
-            return;
-        }
+        try (FileReader fileReader = new FileReader(path);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-        try {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 System.out.println(line);
             }
+
+        } catch (FileNotFoundException e) {
+            System.err.println("File with path " + path + " not found");
+            return;
         } catch (IOException e) {
             System.err.println("Can't read file by path " + path);
-        } finally {
-
-            IOUtils.closeQuietly(fileReader);
-            IOUtils.closeQuietly(bufferedReader);
         }
 
     }
 
     private static String inputPath() {
         String path = null;
-        InputStreamReader inputStreamReader = null;
-        BufferedReader bufferedReader = null;
-        try {
+
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("Please, enter file path to enter:");
-            inputStreamReader = new InputStreamReader(System.in);
-            bufferedReader = new BufferedReader(inputStreamReader);
             path = bufferedReader.readLine();
         } catch (IOException e) {
             System.err.println("Reading from keyboard failed");
-        } finally {
-            IOUtils.closeQuietly(inputStreamReader);
-            IOUtils.closeQuietly(bufferedReader);
         }
         return path;
     }
