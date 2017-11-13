@@ -1,6 +1,5 @@
 package lesson33.hw;
 
-import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,8 +21,8 @@ public class SolutionWriter {
 
             for (String s : arrayOfInputsStrings) {
                 if (s != null) {
-                    bufferedWriter.append(s);
                     bufferedWriter.newLine();
+                    bufferedWriter.append(s);
                 }
             }
         } catch (IOException e) {
@@ -33,8 +32,8 @@ public class SolutionWriter {
     }
 
     private static ArrayList<String> inputDataArray() {
-        String write = "wr";
         String inputData = "";
+        boolean timeToWrite = false;
 
         ArrayList<String> arrayOfInputsStrings = new ArrayList<>();
 
@@ -43,11 +42,14 @@ public class SolutionWriter {
 
             System.out.println("Enter file content to write in the file:");
 
-            while (!inputData.equals(write)) {
+
+            do {
                 inputData = bufferedReader.readLine();
-                arrayOfInputsStrings.add(inputData);
-            }
-            arrayOfInputsStrings.remove(arrayOfInputsStrings.size() - 1); //TODO maybe smth else
+                if (inputData.equals("wr")) timeToWrite = true;
+
+                if (timeToWrite == false) arrayOfInputsStrings.add(inputData);
+
+            } while (!timeToWrite);
 
 
         } catch (IOException e) {
