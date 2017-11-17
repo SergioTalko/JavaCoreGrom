@@ -2,28 +2,40 @@ package lesson33.hw;
 
 
 import java.io.*;
-import java.util.ArrayList;
 
 public class SolutionWriter {
 
 
     public static void writeToFileFromConsole(String path) {
 
+        if (path == null) throw new NullPointerException("Path to file is null");
+
+        String inputData;
+
         if (!checkPath(path)) {
             System.err.println("File with path " + path + " not found");
             return;
         }
 
-        ArrayList<String> arrayOfInputsStrings = inputDataArray();
+        boolean isFileEmpty = checkEmptyFile(path); //flag if file is empty
+
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, true))) {
 
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, true))) {
+            System.out.println("Enter file content to write in the file:");
 
-            for (String s : arrayOfInputsStrings) {
-                if (s != null) {
+
+            while (!(inputData = bufferedReader.readLine()).equals("wr")) {
+
+                if (isFileEmpty) {
+                    bufferedWriter.append(inputData);
+                    isFileEmpty = false;
+                } else {
                     bufferedWriter.newLine();
-                    bufferedWriter.append(s);
+                    bufferedWriter.append(inputData);
                 }
+
             }
         } catch (IOException e) {
             System.err.println("Cant write to file");
@@ -31,33 +43,6 @@ public class SolutionWriter {
         }
     }
 
-    private static ArrayList<String> inputDataArray() {
-        String inputData = "";
-        boolean timeToWrite = false;
-
-        ArrayList<String> arrayOfInputsStrings = new ArrayList<>();
-
-
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
-
-            System.out.println("Enter file content to write in the file:");
-
-
-            do {
-                inputData = bufferedReader.readLine();
-                if (inputData.equals("wr")) timeToWrite = true;
-
-                if (timeToWrite == false) arrayOfInputsStrings.add(inputData);
-
-            } while (!timeToWrite);
-
-
-        } catch (IOException e) {
-            System.err.println("Reading from keyboard failed");
-        }
-
-        return arrayOfInputsStrings;
-    }
 
     private static boolean checkPath(String path) {
 
@@ -68,6 +53,16 @@ public class SolutionWriter {
         } catch (IOException e) {
             return false;
         }
+    }
+
+    private static boolean checkEmptyFile(String path) {
+
+        File file = new File(path);
+        if (file.length() == 0) {
+            return true;
+        }
+        return false;
+
     }
 
 }
