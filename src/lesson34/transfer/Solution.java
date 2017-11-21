@@ -16,6 +16,8 @@ public class Solution {
 
     private static StringBuffer readFile(String path) throws Exception {
 
+        if (path == null) throw new NullPointerException("Path is null");
+
         StringBuffer stringToWrite = new StringBuffer();
         String dataFromLine;
 
@@ -24,7 +26,9 @@ public class Solution {
             while ((dataFromLine = br.readLine()) != null) {
                 stringToWrite = stringToWrite.append("\r\n").append(dataFromLine);
             }
-            stringToWrite = new StringBuffer(stringToWrite.substring(1));
+            if (stringToWrite.length() > 1) {
+                stringToWrite = new StringBuffer(stringToWrite.substring(1));
+            }
         } catch (IOException e) {
             throw new IOException("Can't read file with path  " + path);
         }
@@ -32,6 +36,9 @@ public class Solution {
     }
 
     private static void writeFile(String path, StringBuffer content) throws Exception {
+
+        if (path == null) throw new NullPointerException("Path is null");
+        if (content == null) throw new NullPointerException("Content to write is null");
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, true))) {
             bufferedWriter.append(content);
