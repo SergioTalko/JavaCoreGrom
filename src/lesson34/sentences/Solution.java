@@ -7,10 +7,7 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Solution {
-    public static void main(String[] args) throws Exception {
 
-        transferSentences("C:\\read.txt", "C:\\read1.txt", "hello");
-    }
 
 
     public static void transferSentences(String fileFromPath, String fileToPath, String word) throws Exception {
@@ -52,7 +49,6 @@ public class Solution {
     private static StringBuffer[] splitText(StringBuffer text, String word) throws Exception {
 
         String[] sentences = Pattern.compile("\\.").split(text);
-        System.out.println(Arrays.toString(sentences));
         StringBuffer sentencesWithWord = new StringBuffer();
         StringBuffer sentencesWithoutWord = new StringBuffer();
 
