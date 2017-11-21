@@ -40,7 +40,9 @@ public class Solution {
             while ((dataFromLine = br.readLine()) != null) {
                 stringToWrite = stringToWrite.append("\r\n").append(dataFromLine);
             }
-            stringToWrite = new StringBuffer(stringToWrite.substring(1));
+            if (stringToWrite.length() > 1) {
+                stringToWrite = new StringBuffer(stringToWrite.substring(1));
+            }
         } catch (IOException e) {
             throw new IOException("Can't read file with path  " + path);
         }
