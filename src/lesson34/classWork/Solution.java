@@ -36,49 +36,7 @@ public class Solution {
             throw new IOException("File didn't copy.We have some problem ");
         }
     }
-
-
-
-
-
-   /* private static StringBuilder readFile(String path) throws Exception {
-
-        StringBuilder content = new StringBuilder();
-        boolean isEmptyFile = checkEmptyFile(path);
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))
-        ) {
-
-            String dataFromFile;
-            while ((dataFromFile = bufferedReader.readLine()) != null) {
-
-                if (isEmptyFile) {
-                    content.append(dataFromFile);
-                    isEmptyFile = false;
-                }
-                content.append("\n").append(dataFromFile);
-
-
-            }
-
-        } catch (IOException e) {
-            throw new IOException("Can't read file with path " + path);
-        }
-        return content;
-    }*/
-
-   /* private static void writeFile(String path, StringBuilder content) throws Exception {
-
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, true))) {
-
-            bufferedWriter.append(content);
-
-        } catch (IOException e) {
-            throw new IOException("Can't write file with path " + path);
-        }
-
-    }*/
-
+    
 
     private static void checkBeforeCopy(String fileFromPath, String fileToPath) throws Exception {
 
