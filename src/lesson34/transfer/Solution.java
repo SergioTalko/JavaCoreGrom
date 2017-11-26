@@ -7,9 +7,11 @@ public class Solution {
 
     public static void transferFileContent(String fileFromPath, String fileToPath) throws Exception {
 
-        checkBeforeTransfer(fileFromPath, fileToPath);
+        checkBeforeTransfer(fileFromPath, fileToPath); // validation
 
-        writeFile(fileToPath, readFile(fileFromPath));
+        writeFile(fileToPath, readFile(fileFromPath),true); //copy
+
+        writeFile(fileFromPath,new StringBuffer(""),false); //delete in FromFile
 
     }
 
@@ -35,12 +37,12 @@ public class Solution {
         return stringToWrite;
     }
 
-    private static void writeFile(String path, StringBuffer content) throws Exception {
+    private static void writeFile(String path, StringBuffer content, boolean isAppend) throws Exception {
 
         if (path == null) throw new NullPointerException("Path is null");
         if (content == null) throw new NullPointerException("Content to write is null");
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, true))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, isAppend))) {
             bufferedWriter.append(content);
         } catch (IOException e) {
             throw new IOException("Can't write file with path  " + path);

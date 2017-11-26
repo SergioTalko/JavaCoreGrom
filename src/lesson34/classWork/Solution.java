@@ -3,40 +3,48 @@ package lesson34.classWork;
 import java.io.*;
 
 public class Solution {
-    public static void main(String[] args) throws Exception {
-
-        copyFileContent("C:\\read.txt", "C:\\read1.txt");
-    }
-
 
     public static void copyFileContent(String fileFromPath, String fileToPath) throws Exception {
 
         checkBeforeCopy(fileFromPath, fileToPath);
 
+        writeFile(fileToPath, readFile(fileFromPath));
+
+    }
+
+    private static StringBuffer readFile(String path) throws Exception {
+
+        if (path == null) throw new NullPointerException("Path is null");
+
+        StringBuffer stringToWrite = new StringBuffer();
+        String dataFromLine;
 
 
-
-        boolean isEmptyFile = checkEmptyFile(fileToPath);
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileFromPath));
-             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileToPath, true))
-        ) {
-
-            String dataFromFile;
-            while ((dataFromFile = bufferedReader.readLine()) != null) {
-
-                if (isEmptyFile) {
-                    bufferedWriter.append(dataFromFile);
-                    isEmptyFile = false;
-                }
-                bufferedWriter.newLine();
-                bufferedWriter.append(dataFromFile);
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            while ((dataFromLine = br.readLine()) != null) {
+                stringToWrite = stringToWrite.append("\r\n").append(dataFromLine);
+            }
+            if (stringToWrite.length() > 1) {
+                stringToWrite = new StringBuffer(stringToWrite.substring(1));
             }
         } catch (IOException e) {
-            throw new IOException("File didn't copy.We have some problem ");
+            throw new IOException("Can't read file with path  " + path);
+        }
+        return stringToWrite;
+    }
+
+    private static void writeFile(String path, StringBuffer content) throws Exception {
+
+        if (path == null) throw new NullPointerException("Path is null");
+        if (content == null) throw new NullPointerException("Content to write is null");
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, true))) {
+            bufferedWriter.append(content);
+        } catch (IOException e) {
+            throw new IOException("Can't write file with path  " + path);
         }
     }
-    
+
 
     private static void checkBeforeCopy(String fileFromPath, String fileToPath) throws Exception {
 
@@ -56,13 +64,4 @@ public class Solution {
 
     }
 
-    private static boolean checkEmptyFile(String path) {
-
-        File file = new File(path);
-        if (file.length() == 0) {
-            return true;
-        }
-        return false;
-
-    }
 }
