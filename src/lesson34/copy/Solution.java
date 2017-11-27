@@ -6,30 +6,34 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class Solution {
     public static void main(String[] args) {
 
     }
 
-    public void copyFileContent(String fileFromPath, String fileToPath) throws Exception {
+    public static void copyFileContent(String fileFromPath, String fileToPath) throws Exception {
 
         checkBeforeCopy(fileFromPath, fileToPath);
 
+        File from = new File(fileFromPath);
+        File to = new File(fileToPath);
+
         try {
-            Files.copy(new File(fileFromPath).toPath(), new File(fileToPath).toPath());
+            Files.copy(from.toPath(), to.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
-            System.err.println("Something going wrong.");
+            System.err.println("Smth going wrong");
         }
     }
 
-    public void copyFileContentApacheIO(String fileFromPath, String fileToPath) throws Exception {
+    public static void copyFileContentApacheIO(String fileFromPath, String fileToPath) throws Exception {
 
         checkBeforeCopy(fileFromPath, fileToPath);
 
         try {
-            FileUtils.copyFile(new File(fileToPath),(new File(fileFromPath)));
-        } catch (IOException e){
+            FileUtils.copyFile(new File(fileFromPath), (new File(fileToPath)));
+        } catch (IOException e) {
             System.err.println("Smth going wrong");
         }
     }
