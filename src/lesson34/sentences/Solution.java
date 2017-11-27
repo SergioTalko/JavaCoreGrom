@@ -7,7 +7,9 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Solution {
-
+    public static void main(String[] args) throws Exception {
+        System.out.println( readFile("C:\\read.txt"));
+    }
 
 
     public static void transferSentences(String fileFromPath, String fileToPath, String word) throws Exception {
@@ -18,11 +20,30 @@ public class Solution {
         //storage with sentences with and without word
         StringBuffer[] storage = splitText(readFile(fileFromPath), word);
 
-        //write sentences with word
-        writeFile(fileToPath, storage[0], true);
+        //check if file doesnt contain this word
+        if (storage[0].length() == 0) {
+            System.out.println("File doesn't contains this word " + word);
+            return;
+        }
 
-        //write sentences without word
-        writeFile(fileFromPath, storage[1], false);
+
+        StringBuffer backupFrom = readFile(fileFromPath);
+        StringBuffer backupTo = readFile(fileToPath);
+
+        try{
+            //write sentences with word
+            writeFile(fileToPath, storage[0], true);
+
+            //write sentences without word
+            writeFile(fileFromPath, storage[1], false);
+        }catch (Exception e){
+
+            writeFile(fileToPath, backupTo, false);
+            writeFile(fileFromPath, backupFrom, false);
+            System.err.println("Writing to destination file was incorrect.Please try again");
+        }
+
+
 
 
     }

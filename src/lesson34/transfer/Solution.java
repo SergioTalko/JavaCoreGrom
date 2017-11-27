@@ -9,9 +9,17 @@ public class Solution {
 
         checkBeforeTransfer(fileFromPath, fileToPath); // validation
 
-        writeFile(fileToPath, readFile(fileFromPath),true); //copy
+        StringBuffer backupFrom = readFile(fileFromPath);
+        StringBuffer backupTo = readFile(fileToPath);
 
-        writeFile(fileFromPath,new StringBuffer(""),false); //delete in FromFile
+        try{
+            writeFile(fileToPath, readFile(fileFromPath),true); //copy
+            writeFile(fileFromPath,new StringBuffer(""),false); //delete in FromFile
+        }catch (Exception e){
+            writeFile(fileToPath,backupFrom,false); //backup From file
+            writeFile(fileFromPath,backupTo,false); //backup To file
+            System.err.println("Writing to destination file was incorrect.Please try again");
+        }
 
     }
 
