@@ -1,15 +1,11 @@
 package lesson34.sentences;
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Solution {
-    public static void main(String[] args) throws Exception {
-        System.out.println( readFile("C:\\read.txt"));
-    }
+    private static StringBuffer storageWithWord = new StringBuffer();
+    private static StringBuffer storageWithoutWord = new StringBuffer();
 
 
     public static void transferSentences(String fileFromPath, String fileToPath, String word) throws Exception {
@@ -17,11 +13,11 @@ public class Solution {
         //checking files
         checkBeforeTransfer(fileFromPath, fileToPath);
 
-        //storage with sentences with and without word
-        StringBuffer[] storage = splitText(readFile(fileFromPath), word);
+       //split text and write to storageWith and storageWithout
+        splitText(readFile(fileFromPath),word);
 
         //check if file doesnt contain this word
-        if (storage[0].length() == 0) {
+        if (storageWithWord.length() == 0) {
             System.out.println("File doesn't contains this word " + word);
             return;
         }
@@ -30,20 +26,18 @@ public class Solution {
         StringBuffer backupFrom = readFile(fileFromPath);
         StringBuffer backupTo = readFile(fileToPath);
 
-        try{
+        try {
             //write sentences with word
-            writeFile(fileToPath, storage[0], true);
+            writeFile(fileToPath, storageWithWord, true);
 
             //write sentences without word
-            writeFile(fileFromPath, storage[1], false);
-        }catch (Exception e){
+            writeFile(fileFromPath, storageWithoutWord, false);
+        } catch (Exception e) {
 
             writeFile(fileToPath, backupTo, false);
             writeFile(fileFromPath, backupFrom, false);
             System.err.println("Writing to destination file was incorrect.Please try again");
         }
-
-
 
 
     }
@@ -67,21 +61,17 @@ public class Solution {
         return stringToWrite;
     }
 
-    private static StringBuffer[] splitText(StringBuffer text, String word) throws Exception {
+    private static void splitText(StringBuffer text, String word) throws Exception {
 
         String[] sentences = Pattern.compile("\\.").split(text);
-        StringBuffer sentencesWithWord = new StringBuffer();
-        StringBuffer sentencesWithoutWord = new StringBuffer();
 
         for (String sentence : sentences) {
             if (sentence != null && sentence.length() > 10 && sentence.contains(word)) {
-                sentencesWithWord.append(sentence).append(".");
+                storageWithWord.append(sentence).append(".");
             } else {
-                sentencesWithoutWord.append(sentence).append(".");
+                storageWithoutWord.append(sentence).append(".");
             }
         }
-        StringBuffer[] storageOfSentences = new StringBuffer[]{sentencesWithWord, sentencesWithoutWord};
-        return storageOfSentences;
     }
 
     private static void writeFile(String path, StringBuffer content, boolean isAppend) throws Exception {
