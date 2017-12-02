@@ -1,6 +1,7 @@
 package finalProgect.entity;
 
 import java.util.Date;
+import java.util.Random;
 
 public class Order {
     private long id;
@@ -11,8 +12,9 @@ public class Order {
     private double moneyPaid;
 
 
-    public Order(long id, User user, Room room, Date dateFrom, Date dateTo, double moneyPaid) {
-        this.id = id;
+    public Order(User user, Room room, Date dateFrom, Date dateTo, double moneyPaid) {
+        long random = new Random().nextInt(100000) + 10000;
+        this.id = random;
         this.user = user;
         this.room = room;
         this.dateFrom = dateFrom;

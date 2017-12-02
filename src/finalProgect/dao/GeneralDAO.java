@@ -1,7 +1,5 @@
 package finalProgect.dao;
 
-import lesson8.ads.BaseEntity;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;

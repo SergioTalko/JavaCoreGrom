@@ -10,8 +10,8 @@ public class Hotel {
     private String street;
 
     public Hotel(String country, String city, String street) {
-        long newId = new Random().nextInt(2000) + 1001;
-        this.id = newId;
+        long random = new Random().nextInt(2000) + 1001;
+        this.id = random;
         this.country = country;
         this.city = city;
         this.street = street;

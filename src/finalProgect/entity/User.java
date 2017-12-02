@@ -63,4 +63,26 @@ public class User {
     public String toString() {
         return id + "," + userName + "," + password + "," + country + "," + userType + "\n\r";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return userName != null ? userName.equals(user.userName) : user.userName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return userName != null ? userName.hashCode() : 0;
+    }
+
+    public static User createObjectFromSting(String stringUser){
+        String[] userFields = stringUser.split(",");
+
+        //TODO
+        return null;
+    }
 }

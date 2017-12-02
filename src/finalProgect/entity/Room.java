@@ -1,6 +1,7 @@
 package finalProgect.entity;
 
 import java.util.Date;
+import java.util.Random;
 
 public class Room {
     private long id;
@@ -11,8 +12,9 @@ public class Room {
     private Date dateAvailableFrom;
     private Hotel hotel;
 
-    public Room(long id, int numberOfGuests, double price, boolean breakfastIncluded, boolean petsAllowed, Date dateAvailableFrom, Hotel hotel) {
-        this.id = id;
+    public Room(int numberOfGuests, double price, boolean breakfastIncluded, boolean petsAllowed, Date dateAvailableFrom, Hotel hotel) {
+        long random = new Random().nextInt(4000) + 2001;
+        this.id = random;
         this.numberOfGuests = numberOfGuests;
         this.price = price;
         this.breakfastIncluded = breakfastIncluded;
