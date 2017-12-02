@@ -4,8 +4,6 @@ import java.io.*;
 import java.util.regex.Pattern;
 
 public class Solution {
-    private static StringBuffer storageWithWord = new StringBuffer();
-    private static StringBuffer storageWithoutWord = new StringBuffer();
 
 
     public static void transferSentences(String fileFromPath, String fileToPath, String word) throws Exception {
@@ -13,8 +11,18 @@ public class Solution {
         //checking files
         checkBeforeTransfer(fileFromPath, fileToPath);
 
-       //split text and write to storageWith and storageWithout
-        splitText(readFile(fileFromPath),word);
+        //split text and write to storageWith and storageWithout
+        StringBuffer storageWithWord = new StringBuffer();
+        StringBuffer storageWithoutWord = new StringBuffer();
+        String[] sentences = Pattern.compile("\\.").split(readFile(fileFromPath));
+
+        for (String sentence : sentences) {
+            if (sentence != null && sentence.length() > 10 && sentence.contains(word)) {
+                storageWithWord.append(sentence).append(".");
+            } else {
+                storageWithoutWord.append(sentence).append(".");
+            }
+        }
 
         //check if file doesnt contain this word
         if (storageWithWord.length() == 0) {
@@ -59,19 +67,6 @@ public class Solution {
             throw new IOException("Can't read file with path  " + path);
         }
         return stringToWrite;
-    }
-
-    private static void splitText(StringBuffer text, String word) throws Exception {
-
-        String[] sentences = Pattern.compile("\\.").split(text);
-
-        for (String sentence : sentences) {
-            if (sentence != null && sentence.length() > 10 && sentence.contains(word)) {
-                storageWithWord.append(sentence).append(".");
-            } else {
-                storageWithoutWord.append(sentence).append(".");
-            }
-        }
     }
 
     private static void writeFile(String path, StringBuffer content, boolean isAppend) throws Exception {
