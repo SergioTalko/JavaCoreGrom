@@ -1,4 +1,4 @@
-package demo;
+package finalProgect.demo;
 
 import finalProgect.dao.UserDAO;
 import finalProgect.entity.User;
