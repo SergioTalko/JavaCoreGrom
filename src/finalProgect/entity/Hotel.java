@@ -51,7 +51,7 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return id + "," + country + "," + city + "," + street + "\n\r";
+        return id + "," + country + "," + city + "," + street;
 
     }
 }

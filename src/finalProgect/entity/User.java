@@ -19,6 +19,14 @@ public class User {
         this.userType = UserType.USER;
     }
 
+    private User(long id, String userName, String password, String country, UserType userType) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.country = country;
+        this.userType = userType;
+    }
+
     public long getId() {
         return id;
     }
@@ -59,9 +67,11 @@ public class User {
         this.userType = userType;
     }
 
+
+
     @Override
     public String toString() {
-        return id + "," + userName + "," + password + "," + country + "," + userType + "\n\r";
+        return id + "," + userName + "," + password + "," + country + "," + userType;
     }
 
     @Override
@@ -79,10 +89,11 @@ public class User {
         return userName != null ? userName.hashCode() : 0;
     }
 
-    public static User createObjectFromSting(String stringUser){
+    public static User createObjectFromString(String stringUser) {
         String[] userFields = stringUser.split(",");
 
-        //TODO
-        return null;
+        User resultUser = new User(Long.parseLong(userFields[0]), userFields[1], userFields[2], userFields[3], UserType.valueOf(userFields[4]));
+        //TODO maybe smth else
+        return resultUser;
     }
 }
