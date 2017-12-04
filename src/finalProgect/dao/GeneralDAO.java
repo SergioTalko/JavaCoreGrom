@@ -1,9 +1,9 @@
 package finalProgect.dao;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import finalProgect.entity.User;
+
+import java.io.*;
+import java.util.ArrayList;
 
 public class GeneralDAO<T> {
 
@@ -24,6 +24,13 @@ public class GeneralDAO<T> {
 
         return t;
     }
+
+    public T delete(String path, T t){
+
+        //TODO
+        return null;
+    }
+
 
 
 }

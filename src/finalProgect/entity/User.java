@@ -1,5 +1,7 @@
 package finalProgect.entity;
 
+import finalProgect.exceptions.FormatDataInDatabaseException;
+
 import java.util.Date;
 import java.util.Random;
 
@@ -89,11 +91,19 @@ public class User {
         return userName != null ? userName.hashCode() : 0;
     }
 
-    public static User createObjectFromString(String stringUser) {
+    public static User createObjectFromString(String stringUser) throws FormatDataInDatabaseException {
         String[] userFields = stringUser.split(",");
+        if (userFields.length != 5) throw new FormatDataInDatabaseException("Please check data in DB");
 
-        User resultUser = new User(Long.parseLong(userFields[0]), userFields[1], userFields[2], userFields[3], UserType.valueOf(userFields[4]));
-        //TODO maybe smth else
-        return resultUser;
+            long id = Long.parseLong(userFields[0]);
+            String name = userFields[1];
+            String password =  userFields[2];
+            String country = userFields[3];
+            UserType type =  UserType.valueOf(userFields[4]);
+
+
+            User resultUser = new User(id, name, password, country, type);
+            return resultUser;
+
     }
 }
