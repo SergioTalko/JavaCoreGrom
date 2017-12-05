@@ -20,7 +20,7 @@ public class Hotel {
         this.street = street;
     }
 
-    public Hotel(String name,String country, String city, String street) {
+    public Hotel(String name, String country, String city, String street) {
         long random = new Random().nextInt(2000) + 1001;
         this.id = random;
         this.name = name;
@@ -71,10 +71,9 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return id + "," + country + "," + city + "," + street;
+        return id + "," + name + "," + country + "," + city + "," + street;
 
     }
-
 
 
     public static Hotel createObjectFromString(String stringHotel) throws FormatDataInDatabaseException {
@@ -88,7 +87,7 @@ public class Hotel {
         String street = hotelFields[4];
 
 
-        Hotel resultHotel = new Hotel(id,name,country, city, street);
+        Hotel resultHotel = new Hotel(id, name, country, city, street);
         return resultHotel;
 
     }

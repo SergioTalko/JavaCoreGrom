@@ -5,7 +5,9 @@ import finalProgect.services.UserService;
 
 public class UserController {
     private UserService userService = new UserService();
-    public static User isLogin = null;
+
+
+
 
     public User registerUser(User user) throws Exception {
         return userService.registerUser(user);
@@ -13,10 +15,10 @@ public class UserController {
     }
 
     public void login(String name, String password) throws Exception {
-      isLogin = userService.login(name, password);
+     userService.login(name, password);
     }
 
     public void logout() {
-        isLogin = null;
+       UserLogin.logout();
     }
 }

@@ -1,6 +1,8 @@
 package finalProgect.dao;
 
+import finalProgect.controller.UserLogin;
 import finalProgect.entity.User;
+import finalProgect.exceptions.BadRequestException;
 import finalProgect.exceptions.HasDuplicateException;
 import finalProgect.exceptions.UserNotFoundException;
 
@@ -40,6 +42,8 @@ public class UserDAO extends GeneralDAO<User> {
 
     }
 
+
+
     private boolean findDuplicate(User user) throws Exception {
         if (user == null) throw new NullPointerException("User in is null");
         for (User user1 : getAllUsers()) {
@@ -49,6 +53,8 @@ public class UserDAO extends GeneralDAO<User> {
         }
         return false;
     }
+
+
 
 
 }

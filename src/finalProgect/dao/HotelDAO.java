@@ -2,9 +2,12 @@ package finalProgect.dao;
 
 
 import finalProgect.controller.UserController;
+import finalProgect.controller.UserLogin;
 import finalProgect.entity.Hotel;
+import finalProgect.entity.User;
 import finalProgect.entity.UserType;
-import finalProgect.exceptions.NotLoginException;
+import finalProgect.exceptions.BadRequestException;
+import lesson20.task1.exception.UserNotFoundException;
 
 
 import java.io.BufferedReader;
@@ -19,14 +22,10 @@ public class HotelDAO extends GeneralDAO<Hotel> {
 
 
    public  Hotel addHotel(Hotel hotel) throws Exception {
-       if (UserController.isLogin != null && UserController.isLogin.getUserType() == UserType.ADMIN) {
            return add(HOTEL_DB, hotel);
-       }
-       throw new AccessDeniedException("You have not access to this operation");
     }
 
    public Hotel findHoteByName(String name) throws Exception {
-       if (UserController.isLogin == null) throw new NotLoginException("You not login in system");
        if (name == null) throw new NullPointerException("Name is null");
 
        for (Hotel hotel : getAllHotels()){
@@ -58,5 +57,9 @@ public class HotelDAO extends GeneralDAO<Hotel> {
 
 
     }
+
+
+
+
 
 }
