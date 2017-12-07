@@ -1,10 +1,9 @@
 package finalProgect.dao;
 
-import finalProgect.controller.UserLogin;
 import finalProgect.entity.User;
 import finalProgect.exceptions.BadRequestException;
 import finalProgect.exceptions.HasDuplicateException;
-import finalProgect.exceptions.UserNotFoundException;
+import sun.awt.image.BadDepthException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ public class UserDAO extends GeneralDAO<User> {
     }
 
 
-    public ArrayList<User> getAllUsers() throws Exception {
+    public ArrayList<User> getAll() throws Exception {
         ArrayList<User> users = new ArrayList<>();
         String stringUser;
 
@@ -33,8 +32,8 @@ public class UserDAO extends GeneralDAO<User> {
             }
 
         } catch (IOException e) {
-            System.err.println("Method " + getAllUsers() + " is closed.Try again later");
-        }catch (Exception e){
+            System.err.println("Method " + getAll() + " is closed.Try again later");
+        } catch (Exception e) {
             System.err.println("Please check data in User_DB " + USER_DB + " You have wrong format data there");
         }
         return users;
@@ -44,17 +43,16 @@ public class UserDAO extends GeneralDAO<User> {
 
 
 
+
     private boolean findDuplicate(User user) throws Exception {
         if (user == null) throw new NullPointerException("User in is null");
-        for (User user1 : getAllUsers()) {
+        for (User user1 : getAll()) {
             if (user1.equals(user)) {
                 return true;
             }
         }
         return false;
     }
-
-
 
 
 }

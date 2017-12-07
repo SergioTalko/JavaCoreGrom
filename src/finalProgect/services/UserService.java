@@ -17,7 +17,7 @@ public class UserService {
 
     public void login(String name, String password) throws Exception {
         if (name == null || password == null) throw new NullPointerException("You put null for checking");
-        for (User user : userDAO.getAllUsers()) {
+        for (User user : userDAO.getAll()) {
             if (user.getUserName().equals(name) && user.getPassword().equals(password)) {
                  UserLogin.getInstance().login(user.getId(),user.getUserName(),user.getUserType());
             }

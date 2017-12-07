@@ -18,6 +18,18 @@ public class HotelController {
             throw new AccessDeniedException("Please login in system");
     }
 
+   public Hotel findHotelByCity(String city) throws Exception {
+       if (UserLogin.getUserName() != null) {
+           return hotelService.findHotelByCity(city);
+       }else
+           throw new AccessDeniedException("Please login in system");
+   }
+
+    public void deleteHotel(Hotel hotel) throws Exception {
+        hotelService.deleteHotel(hotel);
+    }
+
+
     public Hotel addHotel(Hotel hotel) throws Exception {
         if (UserLogin.getUserName() != null && UserLogin.getUserType() == UserType.ADMIN) {
             return hotelService.addHotel(hotel);
