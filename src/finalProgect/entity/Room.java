@@ -1,5 +1,10 @@
 package finalProgect.entity;
 
+import finalProgect.exceptions.FormatDataInDatabaseException;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
@@ -11,6 +16,20 @@ public class Room {
     private boolean petsAllowed;
     private Date dateAvailableFrom;
     private Hotel hotel;
+
+
+    private DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+    private Room(long id, int numberOfGuests, double price, boolean breakfastIncluded, boolean petsAllowed, Date dateAvailableFrom, Hotel hotel) {
+        this.id = id;
+        this.numberOfGuests = numberOfGuests;
+        this.price = price;
+        this.breakfastIncluded = breakfastIncluded;
+        this.petsAllowed = petsAllowed;
+        this.dateAvailableFrom = dateAvailableFrom;
+        this.hotel = hotel;
+
+    }
 
     public Room(int numberOfGuests, double price, boolean breakfastIncluded, boolean petsAllowed, Date dateAvailableFrom, Hotel hotel) {
         long random = new Random().nextInt(4000) + 2001;
@@ -77,5 +96,31 @@ public class Room {
 
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
+    }
+
+    @Override
+    public String toString() {
+        return id + "," + numberOfGuests + "," + price + "," + breakfastIncluded + "," + petsAllowed + "," + df.format(dateAvailableFrom) + "," + hotel.toString();
+
+
+    }
+
+    public static Room createObjectFromString(String stringRoom) throws FormatDataInDatabaseException, ParseException {
+        String[] roomFields = stringRoom.split(",");
+        if (roomFields.length != 7) throw new FormatDataInDatabaseException("Please check data in DB");
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+        long id = Long.parseLong(roomFields[0]);
+        int numberOfGuests = Integer.parseInt(roomFields[1]);
+        double price = Double.parseDouble(roomFields[2]);
+        boolean breakfastIncluded = Boolean.parseBoolean(roomFields[3]);
+        boolean petsAllowed = Boolean.parseBoolean(roomFields[4]);
+        Date dateAvailableFrom = df.parse(roomFields[5]);
+        Hotel hotel = Hotel.createObjectFromString(roomFields[6]);
+
+
+        Room room = new Room(id, numberOfGuests, price, breakfastIncluded, petsAllowed, dateAvailableFrom, hotel);
+        return room;
+
     }
 }

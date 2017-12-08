@@ -26,7 +26,14 @@ public class HotelController {
    }
 
     public void deleteHotel(Hotel hotel) throws Exception {
-        hotelService.deleteHotel(hotel);
+        if (UserLogin.getUserName() != null && UserLogin.getUserType() == UserType.ADMIN) {
+             hotelService.deleteHotel(hotel);
+        }
+        if (UserLogin.getUserName() == null) {
+            throw new AccessDeniedException("You dont login in system");
+        } else {
+            throw new AccessDeniedException("User with name " + UserLogin.getUserName() + "  have not access to this operation");
+        }
     }
 
 

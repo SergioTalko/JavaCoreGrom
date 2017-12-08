@@ -76,5 +76,5 @@ public class HotelDAO extends GeneralDAO<Hotel> {
         }
         throw new BadRequestException("User with name " + name + " not found");
     }*/
-    
+
 }
