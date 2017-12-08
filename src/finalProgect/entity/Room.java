@@ -100,7 +100,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return id + "," + numberOfGuests + "," + price + "," + breakfastIncluded + "," + petsAllowed + "," + df.format(dateAvailableFrom) + "," + hotel.toString();
+        return id + "," + numberOfGuests + "," + price + "," + breakfastIncluded + "," + petsAllowed + "," + df.format(dateAvailableFrom) + "," + hotel.toString().replace(",", "-");
 
 
     }
@@ -108,6 +108,7 @@ public class Room {
     public static Room createObjectFromString(String stringRoom) throws FormatDataInDatabaseException, ParseException {
         String[] roomFields = stringRoom.split(",");
         if (roomFields.length != 7) throw new FormatDataInDatabaseException("Please check data in DB");
+        String changeChars = roomFields[6].replace("-", ",");
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
         long id = Long.parseLong(roomFields[0]);
@@ -116,7 +117,8 @@ public class Room {
         boolean breakfastIncluded = Boolean.parseBoolean(roomFields[3]);
         boolean petsAllowed = Boolean.parseBoolean(roomFields[4]);
         Date dateAvailableFrom = df.parse(roomFields[5]);
-        Hotel hotel = Hotel.createObjectFromString(roomFields[6]);
+
+        Hotel hotel = Hotel.createObjectFromString(changeChars);
 
 
         Room room = new Room(id, numberOfGuests, price, breakfastIncluded, petsAllowed, dateAvailableFrom, hotel);

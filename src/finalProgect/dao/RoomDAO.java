@@ -17,7 +17,7 @@ public class RoomDAO  extends GeneralDAO<Room>{
     }
 
     @Override
-    ArrayList<Room> getAll() throws Exception {
+  public   ArrayList<Room> getAll() throws Exception {
         ArrayList<Room> rooms = new ArrayList<>();
         String stringRoom;
 
@@ -44,8 +44,15 @@ public class RoomDAO  extends GeneralDAO<Room>{
 
     public ArrayList<Room> findRooms(Filter filter) throws Exception {
 
-        
+        ArrayList<Room> filteredRooms = new ArrayList<>();
+
+        for (Room room : getAll()){
+            if (filter.findRoomByFilter(room)){
+                filteredRooms.add(room);
+            }
+        }
+
         //TODO
-        return null;
+        return filteredRooms;
     }
 }

@@ -1,10 +1,14 @@
 package finalProgect.demo;
 
 import finalProgect.controller.HotelController;
+import finalProgect.controller.RoomController;
 import finalProgect.controller.UserController;
 import finalProgect.dao.UserDAO;
 import finalProgect.entity.Hotel;
+import finalProgect.entity.Room;
 import finalProgect.entity.User;
+
+import java.util.Date;
 
 
 public class UserDemo {
@@ -23,7 +27,11 @@ public class UserDemo {
 
     //    hotelController.addHotel(hotel);
      //  hotelController.addHotel(hotel1);
-       hotelController.deleteHotel(hotel);
+    //   hotelController.deleteHotel(hotel);
+        Hotel hotel2 = new Hotel("R","R","R","R");
+        Room room = new Room(10,200.5,false,true, new Date(), hotel2);
+        RoomController roomController = new RoomController();
+        roomController.addRoom(room);
 
 
     }
