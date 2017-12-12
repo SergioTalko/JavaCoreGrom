@@ -93,7 +93,7 @@ public class User {
 
     public static User createObjectFromString(String stringUser) throws FormatDataInDatabaseException {
         String[] userFields = stringUser.split(",");
-        if (userFields.length != 5) throw new FormatDataInDatabaseException("Please check data in DB");
+       if (userFields.length != 5) throw new FormatDataInDatabaseException("Please check data in DB");
 
             long id = Long.parseLong(userFields[0]);
             String name = userFields[1];
@@ -103,6 +103,7 @@ public class User {
 
 
             User resultUser = new User(id, name, password, country, type);
+            resultUser.setId(id);
             return resultUser;
 
     }

@@ -41,7 +41,5 @@ public class Filter {
         return true;
 
 
-        //TODO
-
     }
 }

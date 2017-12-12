@@ -26,7 +26,7 @@ public class RoomDAO  extends GeneralDAO<Room>{
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(ROOM_DB))) {
             while ((stringRoom = bufferedReader.readLine()) != null) {
                 rooms.add(Room.createObjectFromString(stringRoom));
-                //TODO
+
             }
 
         } catch (IOException e) {
@@ -53,7 +53,6 @@ public class RoomDAO  extends GeneralDAO<Room>{
             }
         }
 
-        //TODO
         return filteredRooms;
     }
 

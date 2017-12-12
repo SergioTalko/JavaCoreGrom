@@ -100,7 +100,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return id + "," + numberOfGuests + "," + price + "," + breakfastIncluded + "," + petsAllowed + "," + df.format(dateAvailableFrom) + "," + hotel.toString().replace(",", "-");
+        return id + "," + numberOfGuests + "," + price + "," + breakfastIncluded + "," + petsAllowed + "," + df.format(dateAvailableFrom) + "," + hotel.toString().replace(",", ";");
 
 
     }
@@ -108,8 +108,8 @@ public class Room {
     public static Room createObjectFromString(String stringRoom) throws FormatDataInDatabaseException, ParseException {
         String[] roomFields = stringRoom.split(",");
         if (roomFields.length != 7) throw new FormatDataInDatabaseException("Please check data in DB");
-        String changeChars = roomFields[6].replace("-", ",");
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String changeChars = roomFields[6].replace(";", ",");
+        DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
 
         long id = Long.parseLong(roomFields[0]);
         int numberOfGuests = Integer.parseInt(roomFields[1]);
@@ -122,7 +122,23 @@ public class Room {
 
 
         Room room = new Room(id, numberOfGuests, price, breakfastIncluded, petsAllowed, dateAvailableFrom, hotel);
+        room.setId(id);
         return room;
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Room room = (Room) o;
+
+        return id == room.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
 }

@@ -28,7 +28,6 @@ public class UserDAO extends GeneralDAO<User> {
             while ((stringUser = bufferedReader.readLine()) != null) {
                 users.add(User.createObjectFromString(stringUser));
 
-                //TODO
             }
 
         } catch (IOException e) {

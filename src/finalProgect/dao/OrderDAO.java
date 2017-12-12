@@ -25,7 +25,7 @@ public class OrderDAO extends GeneralDAO<Order> {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(ORDER_DB))) {
             while ((stringOrder = bufferedReader.readLine()) != null) {
                 orders.add(Order.createObjectFromString(stringOrder));
-                //TODO
+
             }
 
         } catch (IOException e) {

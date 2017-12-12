@@ -50,7 +50,7 @@ public class HotelDAO extends GeneralDAO<Hotel> {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(HOTEL_DB))) {
             while ((stringHotel = bufferedReader.readLine()) != null) {
                 hotels.add(Hotel.createObjectFromString(stringHotel));
-                //TODO
+
             }
 
         } catch (IOException e) {

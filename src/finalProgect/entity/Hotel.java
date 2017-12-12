@@ -71,7 +71,7 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return id + "," + name + "," + country + "," + city + "," + street;
+        return id + "," + name + "," + country + "," + city + "," + street ;
 
     }
 
@@ -88,6 +88,7 @@ public class Hotel {
 
 
         Hotel resultHotel = new Hotel(id, name, country, city, street);
+        resultHotel.setId(id);
         return resultHotel;
 
     }

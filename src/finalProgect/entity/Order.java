@@ -1,5 +1,10 @@
 package finalProgect.entity;
 
+import finalProgect.exceptions.FormatDataInDatabaseException;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
@@ -11,6 +16,16 @@ public class Order {
     private Date dateTo;
     private double moneyPaid;
 
+    private DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+
+    private Order(long id, User user, Room room, Date dateFrom, Date dateTo, double moneyPaid) {
+        this.id = id;
+        this.user = user;
+        this.room = room;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.moneyPaid = moneyPaid;
+    }
 
     public Order(User user, Room room, Date dateFrom, Date dateTo, double moneyPaid) {
         long random = new Random().nextInt(100000) + 10000;
@@ -69,4 +84,53 @@ public class Order {
     public void setMoneyPaid(double moneyPaid) {
         this.moneyPaid = moneyPaid;
     }
+
+    @Override
+    public String toString() {
+        return id + "," + user.toString().replace(",", ":") + "," + room.toString().replace(",", ":") + "," + dateFormat.format(dateFrom) + "," + dateFormat.format(dateTo) + "," + moneyPaid;
+
+    }
+
+
+
+    public static Order createObjectFromString(String stringOrder) throws FormatDataInDatabaseException, ParseException {
+        String[] orderFields = stringOrder.split(",");
+        if (orderFields.length != 6) throw new FormatDataInDatabaseException("Please check data in DB");
+        String changeCharsUser = orderFields[1].replace(":", ",");
+        String changeCharsRoom =   orderFields[2].replace(":", ",");
+
+       // System.out.println(changeCharsRoom.length());
+        DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+
+        long id = Long.parseLong(orderFields[0]);
+        User user = User.createObjectFromString(changeCharsUser);
+        Room room = Room.createObjectFromString(changeCharsRoom);
+        Date dateFrom = df.parse(orderFields[3]);
+        Date dateTo = df.parse(orderFields[4]);
+        double moneyPaid = Double.parseDouble(orderFields[5]);
+
+
+        Order order = new Order(id, user, room, dateFrom, dateTo, moneyPaid);
+        return order;
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        if (user != null ? !user.equals(order.user) : order.user != null) return false;
+        return room != null ? room.equals(order.room) : order.room == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = user != null ? user.hashCode() : 0;
+        result = 31 * result + (room != null ? room.hashCode() : 0);
+        return result;
+    }
 }
+

@@ -35,6 +35,11 @@ public class RoomController {
     }
 
     public ArrayList<Room> findRooms(Filter filter) throws Exception {
-        return roomService.findRooms(filter);
+        if (UserLogin.getUserName() != null) {
+            return roomService.findRooms(filter);
+
+        }
+        throw new AccessDeniedException("Please login in system");
     }
+
 }

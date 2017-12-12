@@ -3,10 +3,12 @@ package finalProgect.demo;
 import finalProgect.controller.HotelController;
 import finalProgect.controller.RoomController;
 import finalProgect.controller.UserController;
+import finalProgect.dao.HotelDAO;
 import finalProgect.dao.UserDAO;
 import finalProgect.entity.Hotel;
 import finalProgect.entity.Room;
 import finalProgect.entity.User;
+import finalProgect.services.HotelService;
 
 import java.util.Date;
 
@@ -25,14 +27,20 @@ public class UserDemo {
         Hotel hotel = new Hotel("Ritz", "Spain", "Madrid", "La Cafe");
         Hotel hotel1 = new Hotel("Ritz1", "Spain", "Madrid", "La Cafe");
 
-    //    hotelController.addHotel(hotel);
-     //  hotelController.addHotel(hotel1);
-    //   hotelController.deleteHotel(hotel);
-        Hotel hotel2 = new Hotel("R","R","R","R");
-        Room room = new Room(10,200.5,false,true, new Date(), hotel2);
+        hotelController.addHotel(hotel);
+//      hotelController.addHotel(hotel1);
+//       hotelController.deleteHotel(hotel1);
+       /* HotelService hotel2 = new HotelService();
+        Room room = new Room(10,200.5,false,true, new Date(), hotel2.findHoteByName("Ritz1"));
+        RoomController roomController = new RoomController();
+        roomController.addRoom(room);*/
+
+//        HotelDAO hotelDAO = new HotelDAO();
+//        hotelDAO.deleteHotel(hotel1);
+
+
+        Room room = new Room(10,200.5,false,true, new Date(), hotelController.findHoteByName("Ritz"));
         RoomController roomController = new RoomController();
         roomController.addRoom(room);
-
-
     }
 }
