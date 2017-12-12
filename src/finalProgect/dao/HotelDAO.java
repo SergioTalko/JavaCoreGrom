@@ -67,14 +67,16 @@ public class HotelDAO extends GeneralDAO<Hotel> {
        delete(HOTEL_DB,hotel);
     }
 
-   /* private Hotel findByName(String name) throws Exception {
-        if (name == null) throw new NullPointerException("Name is null");
-        for (Hotel hotel : getAll()) {
-            if (hotel.getName().equals(name)) {
+    public Hotel findHotelById(long id) throws Exception {
+
+        if (id <= 0) throw new BadRequestException("Please check your id " + id);
+
+        for (Hotel hotel : getAll()){
+            if (hotel.getId() == id){
                 return hotel;
             }
         }
-        throw new BadRequestException("User with name " + name + " not found");
-    }*/
+        throw new BadRequestException("Cant find hotel with id " + id);
+    }
 
 }

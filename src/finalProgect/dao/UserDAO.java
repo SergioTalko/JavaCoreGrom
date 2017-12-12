@@ -43,6 +43,16 @@ public class UserDAO extends GeneralDAO<User> {
 
 
 
+    public User findUserById(long id) throws Exception {
+        if(id <= 0) throw new BadRequestException("Please check you id " + id);
+
+        for (User user : getAll()){
+            if (user.getId() == id){
+                return user;
+            }
+        }
+        throw new BadRequestException("Cant find user with id " + id);
+    }
 
     private boolean findDuplicate(User user) throws Exception {
         if (user == null) throw new NullPointerException("User in is null");

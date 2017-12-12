@@ -2,6 +2,7 @@ package finalProgect.dao;
 
 import finalProgect.entity.Filter;
 import finalProgect.entity.Room;
+import lesson22.hw.exception.BadRequestException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -54,5 +55,17 @@ public class RoomDAO  extends GeneralDAO<Room>{
 
         //TODO
         return filteredRooms;
+    }
+
+    public Room findRoomById(long id) throws Exception {
+
+        if (id <= 0) throw new BadRequestException("Please check your id " + id);
+
+        for (Room room : getAll()){
+            if (room.getId() == id){
+                return room;
+            }
+        }
+        throw new BadRequestException("Cant find room with id " + id);
     }
 }
