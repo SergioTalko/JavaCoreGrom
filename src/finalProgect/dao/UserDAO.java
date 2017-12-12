@@ -3,7 +3,6 @@ package finalProgect.dao;
 import finalProgect.entity.User;
 import finalProgect.exceptions.BadRequestException;
 import finalProgect.exceptions.HasDuplicateException;
-import sun.awt.image.BadDepthException;
 
 import java.io.*;
 import java.util.ArrayList;

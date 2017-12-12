@@ -3,12 +3,11 @@ package finalProgect.demo;
 import finalProgect.controller.HotelController;
 import finalProgect.controller.RoomController;
 import finalProgect.controller.UserController;
-import finalProgect.dao.HotelDAO;
 import finalProgect.dao.UserDAO;
 import finalProgect.entity.Hotel;
 import finalProgect.entity.Room;
 import finalProgect.entity.User;
-import finalProgect.services.HotelService;
+
 
 import java.util.Date;
 

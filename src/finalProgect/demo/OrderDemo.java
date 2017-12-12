@@ -2,13 +2,7 @@ package finalProgect.demo;
 
 
 import finalProgect.dao.OrderDAO;
-import finalProgect.entity.Hotel;
-import finalProgect.entity.Order;
-import finalProgect.entity.Room;
-import finalProgect.entity.User;
 import finalProgect.services.OrderService;
-
-import java.util.Date;
 
 public class OrderDemo {
     public static void main(String[] args) throws Exception {

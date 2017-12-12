@@ -2,7 +2,6 @@ package finalProgect.entity;
 
 import finalProgect.exceptions.FormatDataInDatabaseException;
 
-import java.util.Date;
 import java.util.Random;
 
 public class User {

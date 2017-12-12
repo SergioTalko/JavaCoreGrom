@@ -1,16 +1,9 @@
 package finalProgect.demo;
 
-
-import finalProgect.controller.HotelController;
 import finalProgect.controller.RoomController;
-import finalProgect.dao.HotelDAO;
 import finalProgect.dao.RoomDAO;
-import finalProgect.entity.Filter;
 import finalProgect.entity.Hotel;
 import finalProgect.entity.Room;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RoomDemo {

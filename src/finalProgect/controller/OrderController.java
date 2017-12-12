@@ -1,7 +1,6 @@
 package finalProgect.controller;
 
 import finalProgect.services.OrderService;
-import lesson22.hw.exception.BadRequestException;
 
 import java.nio.file.AccessDeniedException;
 
