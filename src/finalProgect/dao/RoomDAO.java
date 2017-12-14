@@ -67,4 +67,8 @@ public class RoomDAO  extends GeneralDAO<Room>{
         }
         throw new BadRequestException("Cant find room with id " + id);
     }
+
+    public void updateRoom(Room room) throws Exception {
+        update(ROOM_DB,room);
+    }
 }

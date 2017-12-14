@@ -84,5 +84,33 @@ public abstract class GeneralDAO<T> {
         }
     }
 
+    public void update(String path, T t) throws Exception {
+
+        ArrayList<T> data = getAll();
+
+        StringBuffer backup = readFile(path);
+        StringBuffer updatedFile = new StringBuffer();
+
+
+        boolean flag = false;
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, false))) {
+            for (T t1 : data) {
+                if (t1 != null && t1.equals(t)) {
+                    if (!flag) {
+                        bufferedWriter.append(t.toString());
+                        flag = true;
+                    }else {
+                        bufferedWriter.newLine();
+                        bufferedWriter.append(t1.toString());
+                    }
+
+                }
+            }
+
+        } catch (IOException e) {
+            writeFile(path, backup, false);
+            System.err.println("Smth going wrong please try again later");
+        }
+    }
 
 }

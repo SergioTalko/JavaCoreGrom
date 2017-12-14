@@ -40,4 +40,8 @@ public class OrderDAO extends GeneralDAO<Order> {
     public void deleteOrder(Order order) throws Exception {
         delete(ORDER_DB, order);
     }
+
+    public void update(Order order) throws Exception {
+        update(ORDER_DB,order);
+    }
 }
