@@ -24,8 +24,7 @@ public class OrderService {
         User user = userDAO.findUserById(userId);
         Room room = roomDAO.findRoomById(roomId);
 
-        Order order = orderDAO.addOrder(new Order(user, room, new Date(), new Date(), 0));
-
+        Order order = orderDAO.addOrder(new Order(user, room, room.getDateAvailableFrom(), new Date(), room.getPrice()));
         room.setDateAvailableFrom(order.getDateTo()); //change availible date to room
 
         roomDAO.updateRoom(room); //update availible date in DB
@@ -41,7 +40,9 @@ public class OrderService {
                 roomDAO.findRoomById(roomId).setDateAvailableFrom(order.getDateFrom());
                 orderDAO.deleteOrder(order);
                 roomDAO.updateRoom(roomDAO.findRoomById(roomId));
+                break;
             }
+
 
         }
 

@@ -6,6 +6,14 @@ import java.util.ArrayList;
 
 public abstract class GeneralDAO<T> {
 
+    public static final String HOTEL_DB = "E://data//HotelDB.txt";
+    public static final String ORDER_DB = "E://data//Order.txt";
+    public static final String ROOM_DB = "E://data//RoomDB.txt";
+    public static final String USER_DB = "E://data//UserDB.txt";
+
+
+
+
 
     public T add(String path, T t) throws Exception {
 

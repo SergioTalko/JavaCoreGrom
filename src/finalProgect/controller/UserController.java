@@ -19,6 +19,6 @@ public class UserController {
     }
 
     public void logout() {
-       UserLogin.logout();
+       Session.logout();
     }
 }

@@ -27,15 +27,6 @@ public class UserDemo {
         Hotel hotel1 = new Hotel("Ritz1", "Spain", "Madrid", "La Cafe");
 
         hotelController.addHotel(hotel);
-//      hotelController.addHotel(hotel1);
-//       hotelController.deleteHotel(hotel1);
-       /* HotelService hotel2 = new HotelService();
-        Room room = new Room(10,200.5,false,true, new Date(), hotel2.findHoteByName("Ritz1"));
-        RoomController roomController = new RoomController();
-        roomController.addRoom(room);*/
-
-//        HotelDAO hotelDAO = new HotelDAO();
-//        hotelDAO.deleteHotel(hotel1);
 
 
         Room room = new Room(10,200.5,false,true, new Date(), hotelController.findHoteByName("Ritz"));

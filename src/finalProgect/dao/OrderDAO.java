@@ -9,9 +9,6 @@ import java.util.ArrayList;
 
 public class OrderDAO extends GeneralDAO<Order> {
 
-
-    public static final String ORDER_DB = "E://data//Order.txt";
-
     public Order addOrder(Order order) throws Exception {
         return add(ORDER_DB, order);
     }

@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 public class UserDAO extends GeneralDAO<User> {
 
-    public static final String USER_DB = "E://data//UserDB.txt";
-
     public User registerUser(User user) throws Exception {
         if (findDuplicate(user))
             throw new HasDuplicateException("User with name " + user.getUserName() + " already exists");

@@ -12,14 +12,14 @@ public class RoomDemo {
        Hotel hotel = new Hotel("R","R","R","R");
         Room room = new Room(10,200.5,false,true, new Date(), hotel);
         RoomController roomController = new RoomController();
-    //    roomController.addRoom(room);
+       roomController.addRoom(room);
 
 
 
         RoomDAO roomDAO = new RoomDAO();
 
-        roomDAO.deleteRoom(roomDAO.findRoomById(4393));
-      //  System.out.println(roomDAO.getAll().get(0).getHotel());
+//        roomDAO.deleteRoom(roomDAO.findRoomById(5986));
+
 
     }
 }

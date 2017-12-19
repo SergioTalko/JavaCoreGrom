@@ -16,7 +16,7 @@ public class Order {
     private Date dateTo;
     private double moneyPaid;
 
-    private DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+    private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     private Order(long id, User user, Room room, Date dateFrom, Date dateTo, double moneyPaid) {
         this.id = id;
@@ -100,7 +100,7 @@ public class Order {
         String changeCharsRoom =   orderFields[2].replace(":", ",");
 
        // System.out.println(changeCharsRoom.length());
-        DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
         long id = Long.parseLong(orderFields[0]);
         User user = User.createObjectFromString(changeCharsUser);
