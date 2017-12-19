@@ -122,15 +122,12 @@ public class Order {
 
         Order order = (Order) o;
 
-        if (user != null ? !user.equals(order.user) : order.user != null) return false;
-        return room != null ? room.equals(order.room) : order.room == null;
+        return id == order.id;
     }
 
     @Override
     public int hashCode() {
-        int result = user != null ? user.hashCode() : 0;
-        result = 31 * result + (room != null ? room.hashCode() : 0);
-        return result;
+        return (int) (id ^ (id >>> 32));
     }
 }
 

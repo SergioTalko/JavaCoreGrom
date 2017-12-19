@@ -100,18 +100,11 @@ public class Hotel {
 
         Hotel hotel = (Hotel) o;
 
-        if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
-        if (country != null ? !country.equals(hotel.country) : hotel.country != null) return false;
-        if (city != null ? !city.equals(hotel.city) : hotel.city != null) return false;
-        return street != null ? street.equals(hotel.street) : hotel.street == null;
+        return id == hotel.id;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (country != null ? country.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (street != null ? street.hashCode() : 0);
-        return result;
+        return (int) (id ^ (id >>> 32));
     }
 }

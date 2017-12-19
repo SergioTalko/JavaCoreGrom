@@ -12,13 +12,13 @@ public class OrderDemo {
         Order order = new Order(user,room,new Date(),new Date(),200);*/
         OrderService orderService = new OrderService();
 //       orderService.bookRoom(5986,336,2370);
-       orderService.cancelReservation(5986,336,2370);
+        orderService.cancelReservation(5986, 336);
 //       orderService.bookRoom(4393,336,2370);
 //        orderService.cancelReservation(4845,336,1286);
         //
 
         OrderDAO orderDAO = new OrderDAO();
-     System.out.println(orderDAO.getAll());
+        System.out.println(orderDAO.getAll());
     }
 
 }
