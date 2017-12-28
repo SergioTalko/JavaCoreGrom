@@ -12,8 +12,12 @@ import java.util.ArrayList;
 
 public class HotelDAO extends GeneralDAO<Hotel> {
 
-   public  Hotel addHotel(Hotel hotel) throws Exception {
-           return add(HOTEL_DB, hotel);
+    public HotelDAO() {
+        super.setPath("E://data//HotelDB.txt");
+    }
+
+    public  Hotel addHotel(Hotel hotel) throws Exception {
+           return add(hotel);
     }
 
    public Hotel findHoteByName(String name) throws Exception {
@@ -44,7 +48,7 @@ public class HotelDAO extends GeneralDAO<Hotel> {
         String stringHotel;
 
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(HOTEL_DB))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(getPath()))) {
             while ((stringHotel = bufferedReader.readLine()) != null) {
                 hotels.add(Hotel.createObjectFromString(stringHotel));
 
@@ -53,7 +57,7 @@ public class HotelDAO extends GeneralDAO<Hotel> {
         } catch (IOException e) {
             System.err.println("Method " + getAll() + " is closed.Try again later");
         }catch (NumberFormatException e) {
-            System.err.println("Please check data on this path " + HOTEL_DB + " You have wrong format data there");
+            System.err.println("Please check data on this path " + getPath() + " You have wrong format data there");
         }
         return hotels;
 
@@ -61,7 +65,7 @@ public class HotelDAO extends GeneralDAO<Hotel> {
     }
 
     public void deleteHotel(Hotel hotel) throws Exception {
-       delete(HOTEL_DB,hotel);
+       delete(hotel);
     }
 
     public Hotel findHotelById(long id) throws Exception {
@@ -75,5 +79,6 @@ public class HotelDAO extends GeneralDAO<Hotel> {
         }
         throw new BadRequestException("Cant find hotel with id " + id);
     }
+
 
 }

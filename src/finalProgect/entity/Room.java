@@ -20,16 +20,6 @@ public class Room {
 
     private DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
-    private Room(long id, int numberOfGuests, double price, boolean breakfastIncluded, boolean petsAllowed, Date dateAvailableFrom, Hotel hotel) {
-        this.id = id;
-        this.numberOfGuests = numberOfGuests;
-        this.price = price;
-        this.breakfastIncluded = breakfastIncluded;
-        this.petsAllowed = petsAllowed;
-        this.dateAvailableFrom = dateAvailableFrom;
-        this.hotel = hotel;
-
-    }
 
     public Room(int numberOfGuests, double price, boolean breakfastIncluded, boolean petsAllowed, Date dateAvailableFrom, Hotel hotel) {
         long random = new Random().nextInt(4000) + 2001;
@@ -121,7 +111,7 @@ public class Room {
         Hotel hotel = Hotel.createObjectFromString(changeChars);
 
 
-        Room room = new Room(id, numberOfGuests, price, breakfastIncluded, petsAllowed, dateAvailableFrom, hotel);
+        Room room = new Room( numberOfGuests, price, breakfastIncluded, petsAllowed, dateAvailableFrom, hotel);
         room.setId(id);
         return room;
 

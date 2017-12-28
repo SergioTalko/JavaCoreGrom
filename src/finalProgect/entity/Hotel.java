@@ -12,13 +12,6 @@ public class Hotel {
     private String city;
     private String street;
 
-    private Hotel(long id, String name, String country, String city, String street) {
-        this.id = id;
-        this.name = name;
-        this.country = country;
-        this.city = city;
-        this.street = street;
-    }
 
     public Hotel(String name, String country, String city, String street) {
         long random = new Random().nextInt(2000) + 1001;
@@ -87,7 +80,7 @@ public class Hotel {
         String street = hotelFields[4];
 
 
-        Hotel resultHotel = new Hotel(id, name, country, city, street);
+        Hotel resultHotel = new Hotel(name, country, city, street);
         resultHotel.setId(id);
         return resultHotel;
 

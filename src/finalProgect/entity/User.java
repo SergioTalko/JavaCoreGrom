@@ -20,13 +20,6 @@ public class User {
         this.userType = UserType.USER;
     }
 
-    private User(long id, String userName, String password, String country, UserType userType) {
-        this.id = id;
-        this.userName = userName;
-        this.password = password;
-        this.country = country;
-        this.userType = userType;
-    }
 
     public long getId() {
         return id;
@@ -101,8 +94,9 @@ public class User {
             UserType type =  UserType.valueOf(userFields[4]);
 
 
-            User resultUser = new User(id, name, password, country, type);
+            User resultUser = new User(name, password, country);
             resultUser.setId(id);
+            resultUser.setUserType(type);
             return resultUser;
 
     }

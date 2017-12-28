@@ -11,8 +11,12 @@ import java.util.ArrayList;
 
 public class RoomDAO  extends GeneralDAO<Room>{
 
+    public RoomDAO() {
+        super.setPath("E://data//RoomDB.txt");
+    }
+
     public  Room addRoom(Room room) throws Exception {
-        return add(ROOM_DB,room);
+        return add(room);
     }
 
     @Override
@@ -21,7 +25,7 @@ public class RoomDAO  extends GeneralDAO<Room>{
         String stringRoom;
 
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(ROOM_DB))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(getPath()))) {
             while ((stringRoom = bufferedReader.readLine()) != null) {
                 rooms.add(Room.createObjectFromString(stringRoom));
 
@@ -30,7 +34,7 @@ public class RoomDAO  extends GeneralDAO<Room>{
         } catch (IOException e) {
             System.err.println("Method " + getAll() + " is closed.Try again later");
         }catch (NumberFormatException e) {
-            System.err.println("Please check data on this path " + ROOM_DB + " You have wrong format data there");
+            System.err.println("Please check data on this path " + getPath() + " You have wrong format data there");
         }
         return rooms;
 
@@ -38,7 +42,7 @@ public class RoomDAO  extends GeneralDAO<Room>{
     }
 
     public void deleteRoom(Room room) throws Exception {
-        delete(ROOM_DB,room);
+        delete(room);
     }
 
     public ArrayList<Room> findRooms(Filter filter) throws Exception {
@@ -67,6 +71,6 @@ public class RoomDAO  extends GeneralDAO<Room>{
     }
 
     public void updateRoom(Room room) throws Exception {
-        update(ROOM_DB,room);
+        update(room);
     }
 }

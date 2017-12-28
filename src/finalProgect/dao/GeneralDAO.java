@@ -6,16 +6,10 @@ import java.util.ArrayList;
 
 public abstract class GeneralDAO<T> {
 
-    public static final String HOTEL_DB = "E://data//HotelDB.txt";
-    public static final String ORDER_DB = "E://data//Order.txt";
-    public static final String ROOM_DB = "E://data//RoomDB.txt";
-    public static final String USER_DB = "E://data//UserDB.txt";
+    private String path;
+    
 
-
-
-
-
-    public T add(String path, T t) throws Exception {
+    public T add(T t) throws Exception {
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, true))) {
 
@@ -34,7 +28,7 @@ public abstract class GeneralDAO<T> {
 
     abstract ArrayList<T> getAll() throws Exception;
 
-    public void delete(String path, T t) throws Exception {
+    public void delete(T t) throws Exception {
 
         ArrayList<T> data = getAll();
 
@@ -49,7 +43,36 @@ public abstract class GeneralDAO<T> {
                     if (!flag) {
                         bufferedWriter.append(t1.toString());
                         flag = true;
-                    }else {
+                    } else {
+                        bufferedWriter.newLine();
+                        bufferedWriter.append(t1.toString());
+                    }
+
+                }
+            }
+
+        } catch (IOException e) {
+            writeFile(path, backup, false);
+            System.err.println("Smth going wrong please try again later");
+        }
+    }
+
+    public void update(T t) throws Exception {
+
+        ArrayList<T> data = getAll();
+
+        StringBuffer backup = readFile(path);
+        StringBuffer updatedFile = new StringBuffer();
+
+
+        boolean flag = false;
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, false))) {
+            for (T t1 : data) {
+                if (t1 != null && t1.equals(t)) {
+                    if (!flag) {
+                        bufferedWriter.append(t.toString());
+                        flag = true;
+                    } else {
                         bufferedWriter.newLine();
                         bufferedWriter.append(t1.toString());
                     }
@@ -92,33 +115,12 @@ public abstract class GeneralDAO<T> {
         }
     }
 
-    public void update(String path, T t) throws Exception {
 
-        ArrayList<T> data = getAll();
-
-        StringBuffer backup = readFile(path);
-        StringBuffer updatedFile = new StringBuffer();
-
-
-        boolean flag = false;
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, false))) {
-            for (T t1 : data) {
-                if (t1 != null && t1.equals(t)) {
-                    if (!flag) {
-                        bufferedWriter.append(t.toString());
-                        flag = true;
-                    }else {
-                        bufferedWriter.newLine();
-                        bufferedWriter.append(t1.toString());
-                    }
-
-                }
-            }
-
-        } catch (IOException e) {
-            writeFile(path, backup, false);
-            System.err.println("Smth going wrong please try again later");
-        }
+    public void setPath(String path) {
+        this.path = path;
     }
 
+    public String getPath() {
+        return path;
+    }
 }

@@ -18,14 +18,6 @@ public class Order {
 
     private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-    private Order(long id, User user, Room room, Date dateFrom, Date dateTo, double moneyPaid) {
-        this.id = id;
-        this.user = user;
-        this.room = room;
-        this.dateFrom = dateFrom;
-        this.dateTo = dateTo;
-        this.moneyPaid = moneyPaid;
-    }
 
     public Order(User user, Room room, Date dateFrom, Date dateTo, double moneyPaid) {
         long random = new Random().nextInt(100000) + 10000;
@@ -110,7 +102,8 @@ public class Order {
         double moneyPaid = Double.parseDouble(orderFields[5]);
 
 
-        Order order = new Order(id, user, room, dateFrom, dateTo, moneyPaid);
+        Order order = new Order(user, room, dateFrom, dateTo, moneyPaid);
+        order.setId(id);
         return order;
 
     }

@@ -9,8 +9,12 @@ import java.util.ArrayList;
 
 public class OrderDAO extends GeneralDAO<Order> {
 
+    public OrderDAO() {
+        super.setPath("E://data//Order.txt");
+    }
+
     public Order addOrder(Order order) throws Exception {
-        return add(ORDER_DB, order);
+        return add( order);
     }
 
 
@@ -19,7 +23,7 @@ public class OrderDAO extends GeneralDAO<Order> {
         String stringOrder;
 
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(ORDER_DB))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(getPath()))) {
             while ((stringOrder = bufferedReader.readLine()) != null) {
                 orders.add(Order.createObjectFromString(stringOrder));
 
@@ -28,17 +32,17 @@ public class OrderDAO extends GeneralDAO<Order> {
         } catch (IOException e) {
             System.err.println("Method " + getAll() + " is closed.Try again later");
         }catch (NumberFormatException e) {
-            System.err.println("Please check data on this path " + ORDER_DB + " You have wrong format data there");
+            System.err.println("Please check data on this path " + getPath() + " You have wrong format data there");
         }
         return orders;
     }
 
 
     public void deleteOrder(Order order) throws Exception {
-        delete(ORDER_DB, order);
+        delete( order);
     }
 
     public void update(Order order) throws Exception {
-        update(ORDER_DB,order);
+        update(order);
     }
 }
