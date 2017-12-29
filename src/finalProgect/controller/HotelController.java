@@ -12,26 +12,26 @@ public class HotelController {
 
 
     public Hotel findHoteByName(String name) throws Exception {
-        if (Session.getUser() != null) {
+        if (Session.getUserInSession() != null) {
             return hotelService.findHoteByName(name);
         } else
             throw new AccessDeniedException("Please login in system");
     }
 
     public Hotel findHotelByCity(String city) throws Exception {
-        if (Session.getUser() != null) {
+        if (Session.getUserInSession() != null) {
             return hotelService.findHotelByCity(city);
         } else
             throw new AccessDeniedException("Please login in system");
     }
 
     public void deleteHotel(Hotel hotel) throws Exception {
-        if (Session.getUser() == null) throw new AccessDeniedException("You dont login in system");
+        if (Session.getUserInSession() == null) throw new AccessDeniedException("You dont login in system");
 
-        if (Session.getUser().getUserType() == UserType.ADMIN) {
+        if (Session.getUserInSession().getUserType() == UserType.ADMIN) {
             hotelService.deleteHotel(hotel);
         } else {
-            throw new AccessDeniedException("User with name " + Session.getUser().getUserName() + "  have not access to this operation");
+            throw new AccessDeniedException("User with name " + Session.getUserInSession().getUserName() + "  have not access to this operation");
 
 
         }
@@ -40,12 +40,12 @@ public class HotelController {
 
     public Hotel addHotel(Hotel hotel) throws Exception {
 
-        if (Session.getUser() == null) throw new AccessDeniedException("You dont login in system");
+        if (Session.getUserInSession() == null) throw new AccessDeniedException("You dont login in system");
 
-        if (Session.getUser() != null && Session.getUser().getUserType() == UserType.ADMIN) {
+        if (Session.getUserInSession() != null && Session.getUserInSession().getUserType() == UserType.ADMIN) {
             return hotelService.addHotel(hotel);
         } else {
-            throw new AccessDeniedException("User with name " + Session.getUser().getUserName() + "  have not access to this operation");
+            throw new AccessDeniedException("User with name " + Session.getUserInSession().getUserName() + "  have not access to this operation");
 
         }
     }

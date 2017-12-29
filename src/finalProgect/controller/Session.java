@@ -1,30 +1,23 @@
 package finalProgect.controller;
 
 import finalProgect.entity.User;
-import finalProgect.entity.UserType;
 
 public class Session {
-    private static Session instance;
 
-    private static User user;
+    private static User userInSession;
 
-    public static Session getInstance() {
-        if (instance == null)
-            instance = new Session();
-        return instance;
-    }
 
     public static void login(User user) {
-        if (instance != null) {
-            instance.user = user;
+        if (userInSession != null) {
+            userInSession = user;
         }
     }
 
     public static void logout() {
-        instance.user = null;
+        userInSession = null;
     }
 
-    public static User getUser() {
-        return user;
+    public static User getUserInSession() {
+        return userInSession;
     }
 }

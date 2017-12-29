@@ -24,7 +24,10 @@ public class OrderService {
         User user = userDAO.findUserById(userId);
         Room room = roomDAO.findRoomById(roomId);
 
-        Order order = orderDAO.addOrder(new Order(user, room, room.getDateAvailableFrom(), new Date(), room.getPrice()));
+
+        Order order = orderDAO.addOrder(new Order(user, room, room.getDateAvailableFrom(),new Date(), room.getPrice()) );
+        int days = order.getDateTo().getDay() - order.getDateFrom().getDay();
+        order.setMoneyPaid(order.getMoneyPaid() * days); // price and int days in order
         room.setDateAvailableFrom(order.getDateTo()); //change availible date to room
 
         roomDAO.updateRoom(room); //update availible date in DB
@@ -34,12 +37,13 @@ public class OrderService {
 
     public void cancelReservation(long roomId, long userId) throws Exception {
 
+        Room roomForCancel = roomDAO.findRoomById(roomId);
 
         for (Order order : orderDAO.getAll()) {
-            if (order.getRoom().getId() == roomId && order.getUser().getId() == userId ) {
-                roomDAO.findRoomById(roomId).setDateAvailableFrom(order.getDateFrom());
+            if (order.getRoom().getId() == roomId && order.getUser().getId() == userId) {
+                roomForCancel.setDateAvailableFrom(order.getDateFrom());
                 orderDAO.deleteOrder(order);
-                roomDAO.updateRoom(roomDAO.findRoomById(roomId));
+                roomDAO.updateRoom(roomForCancel);
                 break;
             }
 
