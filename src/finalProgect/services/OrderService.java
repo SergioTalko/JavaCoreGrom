@@ -26,7 +26,10 @@ public class OrderService {
 
 
         Order order = orderDAO.addOrder(new Order(user, room, room.getDateAvailableFrom(),new Date(), room.getPrice()) );
-        int days = order.getDateTo().getDay() - order.getDateFrom().getDay();
+
+
+        long difference = order.getDateTo().getTime()  - order.getDateFrom().getTime();
+        long days = difference/(24*60*60*1000);
         order.setMoneyPaid(order.getMoneyPaid() * days); // price and int days in order
         room.setDateAvailableFrom(order.getDateTo()); //change availible date to room
 
