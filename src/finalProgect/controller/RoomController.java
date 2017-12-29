@@ -15,7 +15,7 @@ public class RoomController {
     public Room addRoom(Room room) throws Exception {
         if (Session.getUserInSession() == null) throw new AccessDeniedException("You dont login in system");
 
-        if (Session.getUserInSession() != null && Session.getUserInSession().getUserType() == UserType.ADMIN) {
+        if (Session.getUserInSession().getUserType() == UserType.ADMIN) {
             return roomService.addRoom(room);
         } else {
             throw new AccessDeniedException("User with name " + Session.getUserInSession().getUserName() + "  have not access to this operation");
@@ -26,7 +26,7 @@ public class RoomController {
     public void deleteRoom(Room room) throws Exception {
         if (Session.getUserInSession() == null) throw new AccessDeniedException("You dont login in system");
 
-        if (Session.getUserInSession() != null && Session.getUserInSession().getUserType() == UserType.ADMIN) {
+        if (Session.getUserInSession().getUserType() == UserType.ADMIN) {
             roomService.deleteRoom(room);
         } else {
             throw new AccessDeniedException("User with name " + Session.getUserInSession().getUserName() + "  have not access to this operation");

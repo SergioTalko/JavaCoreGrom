@@ -42,7 +42,7 @@ public class HotelController {
 
         if (Session.getUserInSession() == null) throw new AccessDeniedException("You dont login in system");
 
-        if (Session.getUserInSession() != null && Session.getUserInSession().getUserType() == UserType.ADMIN) {
+        if (Session.getUserInSession().getUserType() == UserType.ADMIN) {
             return hotelService.addHotel(hotel);
         } else {
             throw new AccessDeniedException("User with name " + Session.getUserInSession().getUserName() + "  have not access to this operation");
