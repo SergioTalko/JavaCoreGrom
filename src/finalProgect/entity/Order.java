@@ -84,30 +84,6 @@ public class Order {
     }
 
 
-
-    public static Order createObjectFromString(String stringOrder) throws FormatDataInDatabaseException, ParseException {
-        String[] orderFields = stringOrder.split(",");
-        if (orderFields.length != 6) throw new FormatDataInDatabaseException("Please check data in DB");
-        String changeCharsUser = orderFields[1].replace(":", ",");
-        String changeCharsRoom =   orderFields[2].replace(":", ",");
-
-       // System.out.println(changeCharsRoom.length());
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-
-        long id = Long.parseLong(orderFields[0]);
-        User user = User.createObjectFromString(changeCharsUser);
-        Room room = Room.createObjectFromString(changeCharsRoom);
-        Date dateFrom = df.parse(orderFields[3]);
-        Date dateTo = df.parse(orderFields[4]);
-        double moneyPaid = Double.parseDouble(orderFields[5]);
-
-
-        Order order = new Order(user, room, dateFrom, dateTo, moneyPaid);
-        order.setId(id);
-        return order;
-
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

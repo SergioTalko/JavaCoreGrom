@@ -11,7 +11,7 @@ public class OrderDemo {
         Room room = new Room(10,200.5,false,true, new Date(), hotel);
         Order order = new Order(user,room,new Date(),new Date(),200);*/
         OrderService orderService = new OrderService();
-       orderService.bookRoom(5986,336);
+   //    orderService.bookRoom(5986,336);
 //        orderService.cancelReservation(5986, 336);
 //       orderService.bookRoom(4393,336,2370);
 //        orderService.cancelReservation(4845,336,1286);

@@ -1,7 +1,10 @@
 package finalProgect.dao;
 
 
+import finalProgect.exceptions.FormatDataInDatabaseException;
+
 import java.io.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public abstract class GeneralDAO<T> {
@@ -26,7 +29,24 @@ public abstract class GeneralDAO<T> {
         return t;
     }
 
-    abstract ArrayList<T> getAll() throws Exception;
+    public ArrayList<T> getAll() throws Exception{
+        ArrayList<T> list = new ArrayList<>();
+        String stringRow;
+        
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
+            while ((stringRow = bufferedReader.readLine()) != null) {
+                list.add(createObjectFromString(stringRow));
+
+            }
+
+        } catch (IOException e) {
+            System.err.println("Method is closed.Try again later");
+        }catch (NumberFormatException e) {
+            System.err.println("Please check data on this path " + getPath() + " You have wrong format data there");
+        }
+        return list;
+
+    }
 
     public void delete(T t) throws Exception {
 
@@ -123,4 +143,6 @@ public abstract class GeneralDAO<T> {
     public String getPath() {
         return path;
     }
+
+    abstract T createObjectFromString(String stringRow) throws Exception;
 }

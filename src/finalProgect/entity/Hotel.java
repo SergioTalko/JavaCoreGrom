@@ -69,23 +69,6 @@ public class Hotel {
     }
 
 
-    public static Hotel createObjectFromString(String stringHotel) throws FormatDataInDatabaseException {
-        String[] hotelFields = stringHotel.split(",");
-        if (hotelFields.length != 5) throw new FormatDataInDatabaseException("Please check data in DB");
-
-        long id = Long.parseLong(hotelFields[0]);
-        String name = hotelFields[1];
-        String country = hotelFields[2];
-        String city = hotelFields[3];
-        String street = hotelFields[4];
-
-
-        Hotel resultHotel = new Hotel(name, country, city, street);
-        resultHotel.setId(id);
-        return resultHotel;
-
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

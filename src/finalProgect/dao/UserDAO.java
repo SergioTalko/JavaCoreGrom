@@ -1,7 +1,9 @@
 package finalProgect.dao;
 
 import finalProgect.entity.User;
+import finalProgect.entity.UserType;
 import finalProgect.exceptions.BadRequestException;
+import finalProgect.exceptions.FormatDataInDatabaseException;
 import finalProgect.exceptions.HasDuplicateException;
 
 import java.io.*;
@@ -21,33 +23,16 @@ public class UserDAO extends GeneralDAO<User> {
 
 
     public ArrayList<User> getAll() throws Exception {
-        ArrayList<User> users = new ArrayList<>();
-        String stringUser;
 
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(getPath()))) {
-            while ((stringUser = bufferedReader.readLine()) != null) {
-                users.add(User.createObjectFromString(stringUser));
-
-            }
-
-        } catch (IOException e) {
-            System.err.println("Method " + getAll() + " is closed.Try again later");
-        } catch (Exception e) {
-            System.err.println("Please check data in User_DB " + getPath() + " You have wrong format data there");
-        }
-        return users;
-
-
+        return super.getAll();
     }
 
 
-
     public User findUserById(long id) throws Exception {
-        if(id <= 0) throw new BadRequestException("Please check you id " + id);
+        if (id <= 0) throw new BadRequestException("Please check you id " + id);
 
-        for (User user : getAll()){
-            if (user.getId() == id){
+        for (User user : getAll()) {
+            if (user.getId() == id) {
                 return user;
             }
         }
@@ -64,5 +49,21 @@ public class UserDAO extends GeneralDAO<User> {
         return false;
     }
 
+    public User createObjectFromString(String stringUser) throws FormatDataInDatabaseException {
+        String[] userFields = stringUser.split(",");
+        if (userFields.length != 5) throw new FormatDataInDatabaseException("Please check data in DB");
 
+        long id = Long.parseLong(userFields[0]);
+        String name = userFields[1];
+        String password = userFields[2];
+        String country = userFields[3];
+        UserType type = UserType.valueOf(userFields[4]);
+
+
+        User resultUser = new User(name, password, country);
+        resultUser.setId(id);
+        resultUser.setUserType(type);
+        return resultUser;
+
+    }
 }

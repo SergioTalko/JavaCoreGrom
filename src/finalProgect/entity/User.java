@@ -83,21 +83,4 @@ public class User {
         return userName != null ? userName.hashCode() : 0;
     }
 
-    public static User createObjectFromString(String stringUser) throws FormatDataInDatabaseException {
-        String[] userFields = stringUser.split(",");
-       if (userFields.length != 5) throw new FormatDataInDatabaseException("Please check data in DB");
-
-            long id = Long.parseLong(userFields[0]);
-            String name = userFields[1];
-            String password =  userFields[2];
-            String country = userFields[3];
-            UserType type =  UserType.valueOf(userFields[4]);
-
-
-            User resultUser = new User(name, password, country);
-            resultUser.setId(id);
-            resultUser.setUserType(type);
-            return resultUser;
-
-    }
 }
